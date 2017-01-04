@@ -371,9 +371,6 @@
     <ClInclude Include="util\win_logger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="port\unistd.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="zlib\crc32.h">
       <Filter>Header Files</Filter>
     </ClInclude>

@@ -4,8 +4,11 @@
 
 #include "leveldb/c.h"
 
+#ifndef _MSC_VER
+#include <unistd.h>
+#endif
+
 #include <stdlib.h>
-#include "port/unistd.h"
 #include "leveldb/cache.h"
 #include "leveldb/comparator.h"
 #include "leveldb/db.h"
