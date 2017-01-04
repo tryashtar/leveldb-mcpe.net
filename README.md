@@ -8,6 +8,7 @@ This project was made and tested in Visual Studio Community 2015.
 4. Build the LevelDB-MCPE project
 
 The project should output a DLL at: `\Release\LevelDB-MCPE.dll` or `\x64\Release\LevelDB-MCPE.dll`
+
 Visual Studio will output lots of warnings when compiling as x86; these warnings aren't super critical, but it'd be nice if someone could help fix them.
 
 # LevelDB Info
