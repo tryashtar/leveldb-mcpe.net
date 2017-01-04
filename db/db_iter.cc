@@ -2,6 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 
+#include <inttypes.h>
+
 #include "db/db_iter.h"
 
 #include "db/filename.h"
@@ -13,6 +15,11 @@
 #include "util/logging.h"
 #include "util/mutexlock.h"
 #include "util/random.h"
+
+#if defined(_MSC_VER)
+#include <BaseTsd.h>
+typedef SSIZE_T ssize_t;
+#endif
 
 namespace leveldb {
 
