@@ -1,4 +1,10 @@
 build_config.mk
+*.dll
+*.pdb
+*.obj
+*.tlog
+*.exp
+*.sdf
 *.a
 *.o
 *.dylib*
