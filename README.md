@@ -1,3 +1,18 @@
+# Compiling as a DLL
+
+This project was made and tested in Visual Studio Community 2015. 
+
+1. Clone the repository using: `git clone --recursive https://github.com/jocopa3/leveldb-mcpe.git`
+2. Open the `.sln` file in Visual Studio 2015
+3. Set the configuration as "Release" and chose either x86 or x64.
+4. Build the LevelDB-MCPE project
+
+The project should output a DLL at: `\Release\LevelDB-MCPE.dll` or `\x64\Release\LevelDB-MCPE.dll`
+
+Visual Studio will output lots of warnings when compiling as x86; these warnings aren't super critical, but it'd be nice if someone could help fix them.
+
+# LevelDB Info
+
 **LevelDB is a fast key-value storage library written at Google that provides an ordered mapping from string keys to string values.**
 
 [![Build Status](https://travis-ci.org/google/leveldb.svg?branch=master)](https://travis-ci.org/google/leveldb)
