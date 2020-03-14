@@ -54,13 +54,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LevelDB-mcpe.Net\LevelDB-mcpe.Net.csproj">
-      <Project>{887fecd2-b6a7-44bc-a986-0e6518b9c3d6}</Project>
-      <Name>LevelDB-mcpe.Net</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="..\Test\Test-Source\Test-Source.projitems" Label="Shared" />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
