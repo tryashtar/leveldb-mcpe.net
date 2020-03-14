@@ -23,7 +23,7 @@ creating it if necessary:
 <p>
 <pre>
   #include &lt;cassert&gt;
-  #include "leveldb/db.h"
+  #include "Leveldb-Mcpe/include/leveldb/db.h"
 
   leveldb::DB* db;
   leveldb::Options options;
@@ -78,7 +78,7 @@ Such problems can be avoided by using the <code>WriteBatch</code> class to
 atomically apply a set of updates:
 <p>
 <pre>
-  #include "leveldb/write_batch.h"
+  #include "Leveldb-Mcpe/include/leveldb/write_batch.h"
   ...
   std::string value;
   leveldb::Status s = db-&gt;Get(leveldb::ReadOptions(), key1, &amp;value);
@@ -351,7 +351,7 @@ filesystem and each file stores a sequence of compressed blocks.  If
 uncompressed block contents.
 <p>
 <pre>
-  #include "leveldb/cache.h"
+  #include "Leveldb-Mcpe/include/leveldb/cache.h"
 
   leveldb::Options options;
   options.cache = leveldb::NewLRUCache(100 * 1048576);  // 100MB cache

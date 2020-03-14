@@ -1,0 +1,18 @@
+﻿  adler32.c
+  compress.c
+  crc32.c
+  deflate.c
+  gzclose.c
+  gzlib.c
+  gzread.c
+  gzwrite.c
+  infback.c
+  inffast.c
+  inflate.c
+  inftrees.c
+  trees.c
+  uncompr.c
+  zutil.c
+  Generating Code...
+     Creating library D:\Mijn Projecten\Software\Git Hub\LevelDB-mcpe.Net\x64\Debug\LevelDB-MCPE.lib and object D:\Mijn Projecten\Software\Git Hub\LevelDB-mcpe.Net\x64\Debug\LevelDB-MCPE.exp
+  LevelDB-MCPE.vcxproj -> D:\Mijn Projecten\Software\Git Hub\LevelDB-mcpe.Net\x64\Debug\LevelDB-MCPE.dll

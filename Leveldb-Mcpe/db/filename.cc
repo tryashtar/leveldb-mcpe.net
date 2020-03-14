@@ -4,10 +4,10 @@
 
 #include <ctype.h>
 #include <stdio.h>
-#include "db/filename.h"
-#include "db/dbformat.h"
-#include "leveldb/env.h"
-#include "util/logging.h"
+#include "Leveldb-Mcpe/db/filename.h"
+#include "Leveldb-Mcpe/db/dbformat.h"
+#include "Leveldb-Mcpe/include/leveldb/env.h"
+#include "Leveldb-Mcpe/util/logging.h"
 
 namespace leveldb {
 

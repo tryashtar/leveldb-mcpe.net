@@ -1,7 +1,7 @@
 
 #ifdef SNAPPY
 
-#include "leveldb/snappy_compressor.h"
+#include "Leveldb-Mcpe/include/leveldb/snappy_compressor.h"
 
 #include <snappy/snappy.h>
 

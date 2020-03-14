@@ -7,8 +7,8 @@
 
 #include <stdint.h>
 #include <stdio.h>
-#include "leveldb/iterator.h"
-#include "leveldb/options.h"
+#include "Leveldb-Mcpe/include/leveldb/iterator.h"
+#include "Leveldb-Mcpe/include/leveldb/options.h"
 
 namespace leveldb {
 

@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 
-#include "leveldb/db.h"
+#include "Leveldb-Mcpe/include/leveldb/db.h"
 
-#include "db/memtable.h"
-#include "db/write_batch_internal.h"
-#include "leveldb/env.h"
-#include "util/logging.h"
-#include "util/testharness.h"
+#include "Leveldb-Mcpe/db/memtable.h"
+#include "Leveldb-Mcpe/db/write_batch_internal.h"
+#include "Leveldb-Mcpe/include/leveldb/env.h"
+#include "Leveldb-Mcpe/util/logging.h"
+#include "Leveldb-Mcpe/util/testharness.h"
 
 namespace leveldb {
 

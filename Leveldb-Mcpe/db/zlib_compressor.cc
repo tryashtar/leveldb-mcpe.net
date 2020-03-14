@@ -1,9 +1,9 @@
 #ifndef NO_ZLIB
 
-#include "leveldb/zlib_compressor.h"
+#include "Leveldb-Mcpe/include/leveldb/zlib_compressor.h"
 
 //#include <zlib.h>
-#include "zlib/zlib.h"
+#include "Leveldb-Mcpe/zlib/zlib.h"
 #include <algorithm>
 
 namespace leveldb {

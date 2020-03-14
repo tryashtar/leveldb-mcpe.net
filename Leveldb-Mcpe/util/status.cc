@@ -3,8 +3,8 @@
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 
 #include <stdio.h>
-#include "port/port.h"
-#include "leveldb/status.h"
+#include "Leveldb-Mcpe/port/port.h"
+#include "Leveldb-Mcpe/include/leveldb/status.h"
 
 namespace leveldb {
 

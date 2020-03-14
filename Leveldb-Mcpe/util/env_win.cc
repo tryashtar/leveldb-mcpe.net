@@ -14,12 +14,12 @@
 #include <sys/types.h>
 #include <time.h>
 #include <io.h>
-#include "leveldb/env.h"
-#include "leveldb/slice.h"
+#include "Leveldb-Mcpe/include/leveldb/env.h"
+#include "Leveldb-Mcpe/include/leveldb/slice.h"
 
-#include "util/win_logger.h"
-#include "port/port.h"
-#include "util/logging.h"
+#include "Leveldb-Mcpe/util/win_logger.h"
+#include "Leveldb-Mcpe/port/port.h"
+#include "Leveldb-Mcpe/util/logging.h"
 
 
 #include <fstream>
@@ -261,7 +261,7 @@ namespace leveldb {
 			}
 			Status getLastWindowsError(const std::string& name) {
 				char lpBuffer[256] = "?";
-				FormatMessageA(FORMAT_MESSAGE_FROM_SYSTEM,                 // It´s a system error
+				FormatMessageA(FORMAT_MESSAGE_FROM_SYSTEM,                 // Itï¿½s a system error
 					NULL,                                      // No string to be formatted needed
 					GetLastError(),                               // Hey Windows: Please explain this error!
 					MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),  // Do it in the standard language

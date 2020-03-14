@@ -7,12 +7,12 @@
 #define VC_EXTRALEAN            // Exclude rarely-used stuff
 #define WIN32_LEAN_AND_MEAN     // Exclude rarely-used stuff from Windows headers
 #include <windows.h>
-#include "leveldb/env.h"
-#include "leveldb/slice.h"
+#include "Leveldb-Mcpe/include/leveldb/env.h"
+#include "Leveldb-Mcpe/include/leveldb/slice.h"
 
-#include "util/win_logger.h"
-#include "port/port.h"
-#include "util/logging.h"
+#include "Leveldb-Mcpe/util/win_logger.h"
+#include "Leveldb-Mcpe/port/port.h"
+#include "Leveldb-Mcpe/util/logging.h"
 
 
 #include <deque>
@@ -23,7 +23,7 @@
 #include <memory>
 #include <condition_variable>
 #include <thread>
-#include "Filepath.h"
+#include "Leveldb-Mcpe/Filepath.h"
 
 #define MAX_FILENAME 512
 
@@ -57,7 +57,7 @@ namespace leveldb {
 
 		static Status GetLastWindowsError(const std::string& name) {
 			WCHAR lpBuffer[256] = L"?";
-			FormatMessageW(FORMAT_MESSAGE_FROM_SYSTEM,                 // It´s a system error
+			FormatMessageW(FORMAT_MESSAGE_FROM_SYSTEM,                 // Itï¿½s a system error
 				NULL,                                      // No string to be formatted needed
 				GetLastError(),                               // Hey Windows: Please explain this error!
 				MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),  // Do it in the standard language

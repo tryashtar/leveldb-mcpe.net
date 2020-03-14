@@ -3,9 +3,9 @@
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 
 #include <stdio.h>
-#include "leveldb/dumpfile.h"
-#include "leveldb/env.h"
-#include "leveldb/status.h"
+#include "Leveldb-Mcpe/include/leveldb/dumpfile.h"
+#include "Leveldb-Mcpe/include/leveldb/env.h"
+#include "Leveldb-Mcpe/include/leveldb/status.h"
 
 namespace leveldb {
 namespace {

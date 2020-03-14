@@ -2,24 +2,24 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 
-#include "leveldb/c.h"
+#include "Leveldb-Mcpe/include/leveldb/c.h"
 
 #ifndef _MSC_VER
 #include <unistd.h>
 #endif
 
 #include <stdlib.h>
-#include "leveldb/cache.h"
-#include "leveldb/comparator.h"
-#include "leveldb/db.h"
-#include "leveldb/env.h"
-#include "leveldb/filter_policy.h"
-#include "leveldb/iterator.h"
-#include "leveldb/options.h"
-#include "leveldb/status.h"
-#include "leveldb/write_batch.h"
-#include "leveldb/zlib_compressor.h"
-//#include "leveldb/snappy_compressor.h"
+#include "Leveldb-Mcpe/include/leveldb/cache.h"
+#include "Leveldb-Mcpe/include/leveldb/comparator.h"
+#include "Leveldb-Mcpe/include/leveldb/db.h"
+#include "Leveldb-Mcpe/include/leveldb/env.h"
+#include "Leveldb-Mcpe/include/leveldb/filter_policy.h"
+#include "Leveldb-Mcpe/include/leveldb/iterator.h"
+#include "Leveldb-Mcpe/include/leveldb/options.h"
+#include "Leveldb-Mcpe/include/leveldb/status.h"
+#include "Leveldb-Mcpe/include/leveldb/write_batch.h"
+#include "Leveldb-Mcpe/include/leveldb/zlib_compressor.h"
+//#include "Leveldb-Mcpe/include/leveldb/snappy_compressor.h"
 
 using leveldb::Cache;
 using leveldb::Comparator;

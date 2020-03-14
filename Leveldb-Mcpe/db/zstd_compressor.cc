@@ -1,6 +1,6 @@
 #ifdef ZSTD
 
-#include "leveldb/zstd_compressor.h"
+#include "Leveldb-Mcpe/include/leveldb/zstd_compressor.h"
 
 #include <zstd.h>
 

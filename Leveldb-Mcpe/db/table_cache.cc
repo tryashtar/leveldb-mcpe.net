@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 
-#include "db/table_cache.h"
+#include "Leveldb-Mcpe/db/table_cache.h"
 
-#include "db/filename.h"
-#include "leveldb/env.h"
-#include "leveldb/table.h"
-#include "util/coding.h"
+#include "Leveldb-Mcpe/db/filename.h"
+#include "Leveldb-Mcpe/include/leveldb/env.h"
+#include "Leveldb-Mcpe/include/leveldb/table.h"
+#include "Leveldb-Mcpe/util/coding.h"
 
 namespace leveldb {
 

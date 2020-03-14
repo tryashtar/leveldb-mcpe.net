@@ -18,12 +18,12 @@
 #include <unistd.h>
 #include <deque>
 #include <set>
-#include "leveldb/env.h"
-#include "leveldb/slice.h"
-#include "port/port.h"
-#include "util/logging.h"
-#include "util/mutexlock.h"
-#include "util/posix_logger.h"
+#include "Leveldb-Mcpe/include/leveldb/env.h"
+#include "Leveldb-Mcpe/include/leveldb/slice.h"
+#include "Leveldb-Mcpe/port/port.h"
+#include "Leveldb-Mcpe/util/logging.h"
+#include "Leveldb-Mcpe/util/mutexlock.h"
+#include "Leveldb-Mcpe/util/posix_logger.h"
 
 namespace leveldb {
 
