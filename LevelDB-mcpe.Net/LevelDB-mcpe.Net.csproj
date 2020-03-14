@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -39,6 +41,7 @@
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>bin\x64\Release\</OutputPath>
@@ -49,6 +52,7 @@
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -59,6 +63,7 @@
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -69,6 +74,7 @@
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -81,10 +87,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\BloomFilterPolicy.cs" />
+    <Compile Include="Classes\Cache.cs" />
+    <Compile Include="Classes\Comparator.cs" />
+    <Compile Include="Classes\CompressionLevel.cs" />
+    <Compile Include="Classes\DB.cs" />
+    <Compile Include="Classes\Env.cs" />
+    <Compile Include="Classes\Iterator.cs" />
+    <Compile Include="Classes\LevelDBException.cs" />
+    <Compile Include="Classes\LevelDBHandle.cs" />
+    <Compile Include="Static Classes\LevelDBInterop.cs" />
+    <Compile Include="Static Classes\LevelDBInterop - Iterator.cs" />
+    <Compile Include="Static Classes\LevelDBInterop - Env.cs" />
+    <Compile Include="Static Classes\LevelDBInterop - Functions.cs" />
+    <Compile Include="Static Classes\LevelDBInterop - DB.cs" />
+    <Compile Include="Static Classes\LevelDBInterop - Initialize.cs" />
+    <Compile Include="Classes\Options.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Classes\ReadOptions.cs" />
+    <Compile Include="Classes\SnapShot.cs" />
+    <Compile Include="Classes\WriteBatch.cs" />
+    <Compile Include="Classes\WriteOptions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LevelDB-MCPE.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>copy /B "$(SolutionDir)Leveldb-Mcpe\bin\Release-$(PlatformName)\LevelDB-MCPE.dll" "$(TargetDir)LevelDB-MCPE.dll"</PreBuildEvent>
+    <PreBuildEvent>copy /B "$(SolutionDir)Leveldb-Mcpe\bin\Release-$(PlatformName)\LevelDB-MCPE.dll" "$(TargetDir)MCPE.dll"
+copy /B "$(SolutionDir)Leveldb-Mcpe\bin\Release-$(PlatformName)\LevelDB-MCPE.dll" "$(ProjectDir)LevelDB-MCPE.dll"</PreBuildEvent>
   </PropertyGroup>
 </Project>

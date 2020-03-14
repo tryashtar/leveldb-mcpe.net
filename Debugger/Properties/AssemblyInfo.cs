@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("LevelDB-MCPE.Net")]
+[assembly: AssemblyTitle("Debugger")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("LevelDB-MCPE.Net")]
+[assembly: AssemblyProduct("Debugger")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("c9fedfaf-baa8-4112-8743-66994164af73")]
+[assembly: Guid("38cf457f-f225-4489-87e0-79f0fe3bb887")]
 
 // Version information for an assembly consists of the following four values:
 //
