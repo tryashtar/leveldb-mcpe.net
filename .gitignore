@@ -21,6 +21,8 @@ Nuget/runtimes
 Nuget/lib
 nuget.exe
 
+DLLs\
+
 # User-specific files
 *.suo
 *.user
