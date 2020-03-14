@@ -2,11 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 
-#include "Leveldb-Mcpe/table/merger.h"
+#include "table/merger.h"
 
-#include "Leveldb-Mcpe/include/leveldb/comparator.h"
-#include "Leveldb-Mcpe/include/leveldb/iterator.h"
-#include "Leveldb-Mcpe/table/iterator_wrapper.h"
+#include "include/leveldb/comparator.h"
+#include "include/leveldb/iterator.h"
+#include "table/iterator_wrapper.h"
 
 namespace leveldb {
 

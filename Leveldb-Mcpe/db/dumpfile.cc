@@ -3,18 +3,18 @@
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 
 #include <stdio.h>
-#include "Leveldb-Mcpe/db/dbformat.h"
-#include "Leveldb-Mcpe/db/filename.h"
-#include "Leveldb-Mcpe/db/log_reader.h"
-#include "Leveldb-Mcpe/db/version_edit.h"
-#include "Leveldb-Mcpe/db/write_batch_internal.h"
-#include "Leveldb-Mcpe/include/leveldb/env.h"
-#include "Leveldb-Mcpe/include/leveldb/iterator.h"
-#include "Leveldb-Mcpe/include/leveldb/options.h"
-#include "Leveldb-Mcpe/include/leveldb/status.h"
-#include "Leveldb-Mcpe/include/leveldb/table.h"
-#include "Leveldb-Mcpe/include/leveldb/write_batch.h"
-#include "Leveldb-Mcpe/util/logging.h"
+#include "db/dbformat.h"
+#include "db/filename.h"
+#include "db/log_reader.h"
+#include "db/version_edit.h"
+#include "db/write_batch_internal.h"
+#include "include/leveldb/env.h"
+#include "include/leveldb/iterator.h"
+#include "include/leveldb/options.h"
+#include "include/leveldb/status.h"
+#include "include/leveldb/table.h"
+#include "include/leveldb/write_batch.h"
+#include "util/logging.h"
 
 namespace leveldb {
 

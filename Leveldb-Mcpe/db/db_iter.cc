@@ -4,17 +4,17 @@
 
 #include <inttypes.h>
 
-#include "Leveldb-Mcpe/db/db_iter.h"
+#include "db/db_iter.h"
 
-#include "Leveldb-Mcpe/db/filename.h"
-#include "Leveldb-Mcpe/db/db_impl.h"
-#include "Leveldb-Mcpe/db/dbformat.h"
-#include "Leveldb-Mcpe/include/leveldb/env.h"
-#include "Leveldb-Mcpe/include/leveldb/iterator.h"
-#include "Leveldb-Mcpe/port/port.h"
-#include "Leveldb-Mcpe/util/logging.h"
-#include "Leveldb-Mcpe/util/mutexlock.h"
-#include "Leveldb-Mcpe/util/random.h"
+#include "db/filename.h"
+#include "db/db_impl.h"
+#include "db/dbformat.h"
+#include "include/leveldb/env.h"
+#include "include/leveldb/iterator.h"
+#include "port/port.h"
+#include "util/logging.h"
+#include "util/mutexlock.h"
+#include "util/random.h"
 
 #if defined(_MSC_VER)
 #include <BaseTsd.h>

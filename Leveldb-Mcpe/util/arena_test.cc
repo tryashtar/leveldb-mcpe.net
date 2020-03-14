@@ -2,10 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 
-#include "Leveldb-Mcpe/util/arena.h"
+#include "util/arena.h"
 
-#include "Leveldb-Mcpe/util/random.h"
-#include "Leveldb-Mcpe/util/testharness.h"
+#include "util/random.h"
+#include "util/testharness.h"
 
 namespace leveldb {
 

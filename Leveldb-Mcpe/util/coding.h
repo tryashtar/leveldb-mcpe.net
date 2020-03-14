@@ -13,8 +13,8 @@
 #include <stdint.h>
 #include <string.h>
 #include <string>
-#include "Leveldb-Mcpe/include/leveldb/slice.h"
-#include "Leveldb-Mcpe/port/port.h"
+#include "include/leveldb/slice.h"
+#include "port/port.h"
 
 namespace leveldb {
 

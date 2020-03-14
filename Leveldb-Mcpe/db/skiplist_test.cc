@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 
-#include "Leveldb-Mcpe/db/skiplist.h"
+#include "db/skiplist.h"
 #include <set>
-#include "Leveldb-Mcpe/include/leveldb/env.h"
-#include "Leveldb-Mcpe/util/arena.h"
-#include "Leveldb-Mcpe/util/hash.h"
-#include "Leveldb-Mcpe/util/random.h"
-#include "Leveldb-Mcpe/util/testharness.h"
+#include "include/leveldb/env.h"
+#include "util/arena.h"
+#include "util/hash.h"
+#include "util/random.h"
+#include "util/testharness.h"
 
 namespace leveldb {
 

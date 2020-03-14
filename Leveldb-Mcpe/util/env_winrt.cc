@@ -7,12 +7,12 @@
 #define VC_EXTRALEAN            // Exclude rarely-used stuff
 #define WIN32_LEAN_AND_MEAN     // Exclude rarely-used stuff from Windows headers
 #include <windows.h>
-#include "Leveldb-Mcpe/include/leveldb/env.h"
-#include "Leveldb-Mcpe/include/leveldb/slice.h"
+#include "include/leveldb/env.h"
+#include "include/leveldb/slice.h"
 
-#include "Leveldb-Mcpe/util/win_logger.h"
-#include "Leveldb-Mcpe/port/port.h"
-#include "Leveldb-Mcpe/util/logging.h"
+#include "util/win_logger.h"
+#include "port/port.h"
+#include "util/logging.h"
 
 
 #include <deque>
@@ -23,7 +23,7 @@
 #include <memory>
 #include <condition_variable>
 #include <thread>
-#include "Leveldb-Mcpe/Filepath.h"
+#include "Filepath.h"
 
 #define MAX_FILENAME 512
 

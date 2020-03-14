@@ -6,22 +6,22 @@
 // the last "sync". It then checks for data loss errors by purposely dropping
 // file data (or entire files) not protected by a "sync".
 
-#include "Leveldb-Mcpe/include/leveldb/db.h"
+#include "include/leveldb/db.h"
 
 #include <map>
 #include <set>
-#include "Leveldb-Mcpe/db/db_impl.h"
-#include "Leveldb-Mcpe/db/filename.h"
-#include "Leveldb-Mcpe/db/log_format.h"
-#include "Leveldb-Mcpe/db/version_set.h"
-#include "Leveldb-Mcpe/include/leveldb/cache.h"
-#include "Leveldb-Mcpe/include/leveldb/env.h"
-#include "Leveldb-Mcpe/include/leveldb/table.h"
-#include "Leveldb-Mcpe/include/leveldb/write_batch.h"
-#include "Leveldb-Mcpe/util/logging.h"
-#include "Leveldb-Mcpe/util/mutexlock.h"
-#include "Leveldb-Mcpe/util/testharness.h"
-#include "Leveldb-Mcpe/util/testutil.h"
+#include "db/db_impl.h"
+#include "db/filename.h"
+#include "db/log_format.h"
+#include "db/version_set.h"
+#include "include/leveldb/cache.h"
+#include "include/leveldb/env.h"
+#include "include/leveldb/table.h"
+#include "include/leveldb/write_batch.h"
+#include "util/logging.h"
+#include "util/mutexlock.h"
+#include "util/testharness.h"
+#include "util/testutil.h"
 
 namespace leveldb {
 

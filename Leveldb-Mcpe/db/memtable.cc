@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 
-#include "Leveldb-Mcpe/db/memtable.h"
-#include "Leveldb-Mcpe/db/dbformat.h"
-#include "Leveldb-Mcpe/include/leveldb/comparator.h"
-#include "Leveldb-Mcpe/include/leveldb/env.h"
-#include "Leveldb-Mcpe/include/leveldb/iterator.h"
-#include "Leveldb-Mcpe/util/coding.h"
+#include "db/memtable.h"
+#include "db/dbformat.h"
+#include "include/leveldb/comparator.h"
+#include "include/leveldb/env.h"
+#include "include/leveldb/iterator.h"
+#include "util/coding.h"
 
 namespace leveldb {
 

@@ -5,18 +5,18 @@
 #include <sys/types.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "Leveldb-Mcpe/db/db_impl.h"
-#include "Leveldb-Mcpe/db/version_set.h"
-#include "Leveldb-Mcpe/include/leveldb/cache.h"
-#include "Leveldb-Mcpe/include/leveldb/db.h"
-#include "Leveldb-Mcpe/include/leveldb/env.h"
-#include "Leveldb-Mcpe/include/leveldb/write_batch.h"
-#include "Leveldb-Mcpe/port/port.h"
-#include "Leveldb-Mcpe/util/crc32c.h"
-#include "Leveldb-Mcpe/util/histogram.h"
-#include "Leveldb-Mcpe/util/mutexlock.h"
-#include "Leveldb-Mcpe/util/random.h"
-#include "Leveldb-Mcpe/util/testutil.h"
+#include "db/db_impl.h"
+#include "db/version_set.h"
+#include "include/leveldb/cache.h"
+#include "include/leveldb/db.h"
+#include "include/leveldb/env.h"
+#include "include/leveldb/write_batch.h"
+#include "port/port.h"
+#include "util/crc32c.h"
+#include "util/histogram.h"
+#include "util/mutexlock.h"
+#include "util/random.h"
+#include "util/testutil.h"
 
 // Comma-separated list of operations to run in the specified order
 //   Actual benchmarks:

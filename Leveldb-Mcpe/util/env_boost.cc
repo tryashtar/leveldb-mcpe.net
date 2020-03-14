@@ -36,16 +36,16 @@
 #if defined(LEVELDB_PLATFORM_ANDROID)
 #include <sys/stat.h>
 #endif
-#include "Leveldb-Mcpe/include/leveldb/env.h"
-#include "Leveldb-Mcpe/include/leveldb/slice.h"
+#include "include/leveldb/env.h"
+#include "include/leveldb/slice.h"
 
 #ifdef WIN32
-#include "Leveldb-Mcpe/util/win_logger.h"
+#include "util/win_logger.h"
 #else
-#include "Leveldb-Mcpe/util/posix_logger.h"
+#include "util/posix_logger.h"
 #endif
-#include "Leveldb-Mcpe/port/port.h"
-#include "Leveldb-Mcpe/util/logging.h"
+#include "port/port.h"
+#include "util/logging.h"
 
 #ifdef __linux
 #include <sys/sysinfo.h>

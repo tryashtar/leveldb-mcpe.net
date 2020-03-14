@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 
-#include "Leveldb-Mcpe/helpers/memenv/memenv.h"
+#include "helpers/memenv/memenv.h"
 
-#include "Leveldb-Mcpe/db/db_impl.h"
-#include "Leveldb-Mcpe/include/leveldb/db.h"
-#include "Leveldb-Mcpe/include/leveldb/env.h"
-#include "Leveldb-Mcpe/util/testharness.h"
+#include "db/db_impl.h"
+#include "include/leveldb/db.h"
+#include "include/leveldb/env.h"
+#include "util/testharness.h"
 #include <string>
 #include <vector>
 

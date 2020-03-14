@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Leveldb-Mcpe/compressor.h"
+#include "compressor.h"
 
 namespace leveldb {
 	class DLLX SnappyCompressor : public Compressor 

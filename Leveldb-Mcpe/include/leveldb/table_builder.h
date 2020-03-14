@@ -14,8 +14,8 @@
 #define STORAGE_LEVELDB_INCLUDE_TABLE_BUILDER_H_
 
 #include <stdint.h>
-#include "Leveldb-Mcpe/include/leveldb/options.h"
-#include "Leveldb-Mcpe/include/leveldb/status.h"
+#include "include/leveldb/options.h"
+#include "include/leveldb/status.h"
 
 namespace leveldb {
 

@@ -14,12 +14,12 @@
 #include <sys/types.h>
 #include <time.h>
 #include <io.h>
-#include "Leveldb-Mcpe/include/leveldb/env.h"
-#include "Leveldb-Mcpe/include/leveldb/slice.h"
+#include "include/leveldb/env.h"
+#include "include/leveldb/slice.h"
 
-#include "Leveldb-Mcpe/util/win_logger.h"
-#include "Leveldb-Mcpe/port/port.h"
-#include "Leveldb-Mcpe/util/logging.h"
+#include "util/win_logger.h"
+#include "port/port.h"
+#include "util/logging.h"
 
 
 #include <fstream>

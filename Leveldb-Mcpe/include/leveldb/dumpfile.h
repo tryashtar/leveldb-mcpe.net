@@ -6,8 +6,8 @@
 #define STORAGE_LEVELDB_INCLUDE_DUMPFILE_H_
 
 #include <string>
-#include "Leveldb-Mcpe/include/leveldb/env.h"
-#include "Leveldb-Mcpe/include/leveldb/status.h"
+#include "include/leveldb/env.h"
+#include "include/leveldb/status.h"
 
 namespace leveldb {
 

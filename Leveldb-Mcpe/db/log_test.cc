@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 
-#include "Leveldb-Mcpe/db/log_reader.h"
-#include "Leveldb-Mcpe/db/log_writer.h"
-#include "Leveldb-Mcpe/include/leveldb/env.h"
-#include "Leveldb-Mcpe/util/coding.h"
-#include "Leveldb-Mcpe/util/crc32c.h"
-#include "Leveldb-Mcpe/util/random.h"
-#include "Leveldb-Mcpe/util/testharness.h"
+#include "db/log_reader.h"
+#include "db/log_writer.h"
+#include "include/leveldb/env.h"
+#include "util/coding.h"
+#include "util/crc32c.h"
+#include "util/random.h"
+#include "util/testharness.h"
 
 namespace leveldb {
 namespace log {

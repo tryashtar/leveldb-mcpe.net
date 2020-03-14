@@ -4,8 +4,8 @@
 
 #include <math.h>
 #include <stdio.h>
-#include "Leveldb-Mcpe/port/port.h"
-#include "Leveldb-Mcpe/util/histogram.h"
+#include "port/port.h"
+#include "util/histogram.h"
 
 namespace leveldb {
 

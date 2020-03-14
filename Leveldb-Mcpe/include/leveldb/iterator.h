@@ -15,8 +15,8 @@
 #ifndef STORAGE_LEVELDB_INCLUDE_ITERATOR_H_
 #define STORAGE_LEVELDB_INCLUDE_ITERATOR_H_
 
-#include "Leveldb-Mcpe/include/leveldb/slice.h"
-#include "Leveldb-Mcpe/include/leveldb/status.h"
+#include "include/leveldb/slice.h"
+#include "include/leveldb/status.h"
 
 namespace leveldb {
 

@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 
-#include "Leveldb-Mcpe/table/two_level_iterator.h"
+#include "table/two_level_iterator.h"
 
-#include "Leveldb-Mcpe/include/leveldb/table.h"
-#include "Leveldb-Mcpe/table/block.h"
-#include "Leveldb-Mcpe/table/format.h"
-#include "Leveldb-Mcpe/table/iterator_wrapper.h"
+#include "include/leveldb/table.h"
+#include "table/block.h"
+#include "table/format.h"
+#include "table/iterator_wrapper.h"
 
 namespace leveldb {
 

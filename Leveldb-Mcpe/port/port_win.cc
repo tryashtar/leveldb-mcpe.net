@@ -28,7 +28,7 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#include "Leveldb-Mcpe/port/port_win.h"
+#include "port/port_win.h"
 
 #include <windows.h>
 #include <cassert>
@@ -38,7 +38,7 @@
 #ifdef SNAPPY
 	#include <snappy/snappy.h>
 #elif defined(ZLIB)
-	#include "Leveldb-Mcpe/zlib/zlib.h"
+	#include "zlib/zlib.h"
 #endif
 
 namespace leveldb {

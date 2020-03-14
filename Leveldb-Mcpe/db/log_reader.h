@@ -7,9 +7,9 @@
 
 #include <stdint.h>
 
-#include "Leveldb-Mcpe/db/log_format.h"
-#include "Leveldb-Mcpe/include/leveldb/slice.h"
-#include "Leveldb-Mcpe/include/leveldb/status.h"
+#include "db/log_format.h"
+#include "include/leveldb/slice.h"
+#include "include/leveldb/status.h"
 
 namespace leveldb {
 

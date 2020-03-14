@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 
-#include "Leveldb-Mcpe/table/format.h"
+#include "table/format.h"
 
-#include "Leveldb-Mcpe/include/leveldb/env.h"
-#include "Leveldb-Mcpe/include/leveldb/compressor.h"
-#include "Leveldb-Mcpe/port/port.h"
-#include "Leveldb-Mcpe/table/block.h"
-#include "Leveldb-Mcpe/util/coding.h"
-#include "Leveldb-Mcpe/util/crc32c.h"
+#include "include/leveldb/env.h"
+#include "include/leveldb/compressor.h"
+#include "port/port.h"
+#include "table/block.h"
+#include "util/coding.h"
+#include "util/crc32c.h"
 
 namespace leveldb {
 

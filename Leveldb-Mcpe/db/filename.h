@@ -9,9 +9,9 @@
 
 #include <stdint.h>
 #include <string>
-#include "Leveldb-Mcpe/include/leveldb/slice.h"
-#include "Leveldb-Mcpe/include/leveldb/status.h"
-#include "Leveldb-Mcpe/port/port.h"
+#include "include/leveldb/slice.h"
+#include "include/leveldb/status.h"
+#include "port/port.h"
 
 namespace leveldb {
 

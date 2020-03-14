@@ -2,21 +2,21 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 
-#include "Leveldb-Mcpe/db/version_set.h"
+#include "db/version_set.h"
 
 #include <algorithm>
 #include <stdio.h>
-#include "Leveldb-Mcpe/db/filename.h"
-#include "Leveldb-Mcpe/db/log_reader.h"
-#include "Leveldb-Mcpe/db/log_writer.h"
-#include "Leveldb-Mcpe/db/memtable.h"
-#include "Leveldb-Mcpe/db/table_cache.h"
-#include "Leveldb-Mcpe/include/leveldb/env.h"
-#include "Leveldb-Mcpe/include/leveldb/table_builder.h"
-#include "Leveldb-Mcpe/table/merger.h"
-#include "Leveldb-Mcpe/table/two_level_iterator.h"
-#include "Leveldb-Mcpe/util/coding.h"
-#include "Leveldb-Mcpe/util/logging.h"
+#include "db/filename.h"
+#include "db/log_reader.h"
+#include "db/log_writer.h"
+#include "db/memtable.h"
+#include "db/table_cache.h"
+#include "include/leveldb/env.h"
+#include "include/leveldb/table_builder.h"
+#include "table/merger.h"
+#include "table/two_level_iterator.h"
+#include "util/coding.h"
+#include "util/logging.h"
 
 namespace leveldb {
 

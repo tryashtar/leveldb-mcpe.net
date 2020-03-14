@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "Leveldb-Mcpe/include/leveldb/compressor.h"
+#include "include/leveldb/compressor.h"
 
 namespace leveldb {
 

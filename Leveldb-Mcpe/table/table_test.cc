@@ -2,23 +2,23 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 
-#include "Leveldb-Mcpe/include/leveldb/table.h"
+#include "include/leveldb/table.h"
 
 #include <map>
 #include <string>
-#include "Leveldb-Mcpe/db/dbformat.h"
-#include "Leveldb-Mcpe/db/memtable.h"
-#include "Leveldb-Mcpe/db/write_batch_internal.h"
-#include "Leveldb-Mcpe/include/leveldb/db.h"
-#include "Leveldb-Mcpe/include/leveldb/env.h"
-#include "Leveldb-Mcpe/include/leveldb/iterator.h"
-#include "Leveldb-Mcpe/include/leveldb/table_builder.h"
-#include "Leveldb-Mcpe/table/block.h"
-#include "Leveldb-Mcpe/table/block_builder.h"
-#include "Leveldb-Mcpe/table/format.h"
-#include "Leveldb-Mcpe/util/random.h"
-#include "Leveldb-Mcpe/util/testharness.h"
-#include "Leveldb-Mcpe/util/testutil.h"
+#include "db/dbformat.h"
+#include "db/memtable.h"
+#include "db/write_batch_internal.h"
+#include "include/leveldb/db.h"
+#include "include/leveldb/env.h"
+#include "include/leveldb/iterator.h"
+#include "include/leveldb/table_builder.h"
+#include "table/block.h"
+#include "table/block_builder.h"
+#include "table/format.h"
+#include "util/random.h"
+#include "util/testharness.h"
+#include "util/testutil.h"
 
 namespace leveldb {
 
