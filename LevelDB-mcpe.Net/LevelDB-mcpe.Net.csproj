@@ -87,8 +87,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\BloomFilterPolicy.cs" />
-    <Compile Include="Classes\Cache.cs" />
+    <Compile Include="Classes\BloomFilterPolicy\BloomFilterPolicy.cs" />
+    <Compile Include="Classes\Cache\Cache.cs" />
     <Compile Include="Classes\Comparator.cs" />
     <Compile Include="Classes\CompressionLevel.cs" />
     <Compile Include="Classes\DB.cs" />
