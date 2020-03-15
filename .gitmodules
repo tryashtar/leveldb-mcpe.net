@@ -1,3 +1,3 @@
-[submodule "Leveldb-Mcpe\\zlib"]
-	path = Leveldb-Mcpe\\zlib
+[submodule "Leveldb-Mcpe/zlib"]
+	path = Leveldb-Mcpe/zlib
 	url = https://github.com/madler/zlib.git
