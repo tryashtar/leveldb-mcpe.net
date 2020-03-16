@@ -1,6 +1,7 @@
 #pragma once
 
 #include "compressor.h"
+#ifdef SNAPPY
 
 namespace leveldb {
 	class DLLX SnappyCompressor : public Compressor 
@@ -21,3 +22,5 @@ namespace leveldb {
 		virtual bool decompress(const char* input, size_t length, ::std::string& output) const override;
 	};
 }
+
+#endif // SNAPPY

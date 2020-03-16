@@ -20,11 +20,11 @@
 #include "db/table_cache.h"
 #include "db/version_set.h"
 #include "db/write_batch_internal.h"
-#include "include/leveldb/db.h"
-#include "include/leveldb/env.h"
-#include "include/leveldb/status.h"
-#include "include/leveldb/table.h"
-#include "include/leveldb/table_builder.h"
+#include "leveldb/db.h"
+#include "leveldb/env.h"
+#include "leveldb/status.h"
+#include "leveldb/table.h"
+#include "leveldb/table_builder.h"
 #include "port/port.h"
 #include "table/block.h"
 #include "table/merger.h"
@@ -96,6 +96,7 @@ Options SanitizeOptions(const std::string& dbname,
   result.filter_policy = (src.filter_policy != NULL) ? ipolicy : NULL;
   ClipToRange(&result.max_open_files,    64 + kNumNonTableCacheFiles, 50000);
   ClipToRange(&result.write_buffer_size, 64<<10,                      1<<30);
+  ClipToRange(&result.max_file_size,     1<<20,                       1<<30);
   ClipToRange(&result.block_size,        1<<10,                       4<<20);
   if (result.info_log == NULL) {
     // Open a log file in the same directory as the db
@@ -649,7 +650,7 @@ void DBImpl::MaybeScheduleCompaction() {
     // Already scheduled
   } else if (shutting_down_.Acquire_Load()) {
     // DB is being deleted; no more background compactions
-  } else if (suspending_compaction_.Acquire_Load()) {
+  } else if (imm_ == NULL && suspending_compaction_.Acquire_Load()) {
 	// DB is being suspended; no more background compactions
   } else if (!bg_error_.ok()) {
     // Already got an error; no more changes
@@ -665,17 +666,16 @@ void DBImpl::MaybeScheduleCompaction() {
 
 void DBImpl::SuspendCompaction() {
 	// set suspend flag and wait for any currently executing bg tasks to complete
+    Log(options_.info_log, "BG suspend compaction\n");
 	mutex_.Lock();
 	suspending_compaction_.Release_Store(this);  // Any non-NULL value is ok
-	while (bg_compaction_scheduled_) {
-		bg_cv_.Wait();
-	}
 	mutex_.Unlock();
-	Log(options_.info_log, "db BG suspended\n");
+	Log(options_.info_log, "BG suspended\n");
 }
 
 void DBImpl::ResumeCompaction() {
-	mutex_.Lock();
+    Log(options_.info_log, "BG resume compaction\n");
+    mutex_.Lock();
 	suspending_compaction_.Release_Store(nullptr);
 	mutex_.Unlock();
 	Log(options_.info_log, "db BG resumed\n");
@@ -700,7 +700,9 @@ void DBImpl::BackgroundCall() {
 
   // Previous compaction may have produced too many files in a level,
   // so reschedule another compaction if needed.
-  MaybeScheduleCompaction();
+  if(!suspending_compaction_.Acquire_Load()) {
+      MaybeScheduleCompaction();
+  }
   bg_cv_.SignalAll();
 }
 
@@ -1365,6 +1367,9 @@ Status DBImpl::MakeRoomForWrite(bool force) {
                (mem_->ApproximateMemoryUsage() <= options_.write_buffer_size)) {
       // There is room in current memtable
       break;
+    } else if(suspending_compaction_.Acquire_Load()) {
+        // suspending, don't do this now
+        break;
     } else if (imm_ != NULL) {
       // We have filled up the current memtable, but the previous
       // one is still being compacted, so we wait.
@@ -1395,7 +1400,9 @@ Status DBImpl::MakeRoomForWrite(bool force) {
       mem_ = new MemTable(internal_comparator_);
       mem_->Ref();
       force = false;   // Do not force another compaction if have room
-      MaybeScheduleCompaction();
+      if(!suspending_compaction_.Acquire_Load()) {
+         MaybeScheduleCompaction();
+      }
     }
   }
   return s;
@@ -1436,7 +1443,7 @@ bool DBImpl::GetProperty(const Slice& property, std::string* value) {
       if (stats_[level].micros > 0 || files > 0) {
         snprintf(
             buf, sizeof(buf),
-            "%3d %8d %8.0f %9.0f %8.0f %9.0f\n",
+            "%3d %8d %8.0f %9.2f %8.2f %9.2f\n",
             level,
             files,
             versions_->NumLevelBytes(level) / 1048576.0,
@@ -1447,6 +1454,52 @@ bool DBImpl::GetProperty(const Slice& property, std::string* value) {
       }
     }
     return true;
+	// BLOCK ADDED FOR MINECRAFT
+  } else if (in == "jsonstats") {
+	  char buf[200];
+	  value->append("{\n");
+	  value->append("\"levels\"");
+	  value->append(": [\n");
+	  bool first = true;
+	  for (int level = 0; level < config::kNumLevels; level++) {
+		  int files = versions_->NumLevelFiles(level);
+		  if (stats_[level].micros > 0 || files > 0) {
+
+			  // Nth items in array append ,\n to previous entry
+			  if (!first) {
+				  value->append(",\n");
+			  }
+			  value->append("{\n");
+
+			  value->append("\"level\"");
+			  snprintf(buf, sizeof(buf), ": %3d,\n", level);
+			  value->append(buf);
+
+			  value->append("\"files\"");
+			  snprintf(buf, sizeof(buf), ": %3d,\n", files);
+			  value->append(buf);
+
+			  snprintf(buf, sizeof(buf), "\"sizeMB\": %0.3f,\n", versions_->NumLevelBytes(level) / 1048576.0);
+			  value->append(buf);
+
+			  snprintf(buf, sizeof(buf), "\"tsec\": %0.3f,\n", stats_[level].micros / 1e6);
+			  value->append(buf);
+
+			  snprintf(buf, sizeof(buf), "\"readMB\": %0.3f,\n", stats_[level].bytes_read / 1048576.0);
+			  value->append(buf);
+
+			  snprintf(buf, sizeof(buf), "\"writeMB\": %0.3f\n", stats_[level].bytes_written / 1048576.0);
+			  value->append(buf);
+
+			  // append end }
+			  value->append("}");
+
+			  first = false;
+		  }
+	  }
+	  value->append("]\n");
+	  value->append("}");
+
   } else if (in == "sstables") {
     *value = versions_->current()->DebugString();
     return true;

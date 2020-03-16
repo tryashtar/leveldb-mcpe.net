@@ -13,7 +13,7 @@
 #include <stdint.h>
 #include <string>
 #include <vector>
-#include "include/leveldb/slice.h"
+#include "leveldb/slice.h"
 #include "util/hash.h"
 
 namespace leveldb {

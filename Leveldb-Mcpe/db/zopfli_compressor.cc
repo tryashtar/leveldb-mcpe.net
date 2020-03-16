@@ -1,7 +1,7 @@
 #ifdef ZOPFLI
 
-#include "include/leveldb/zopfli_compressor.h"
-#include "include/leveldb/zlib_compressor.h"
+#include "leveldb/zopfli_compressor.h"
+#include "leveldb/zlib_compressor.h"
 
 #include <zlib.h>
 #include <zopfli/zopfli.h>

@@ -2,11 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 
-#include "include/leveldb/db.h"
+#include "leveldb/db.h"
 
 #include "db/memtable.h"
 #include "db/write_batch_internal.h"
-#include "include/leveldb/env.h"
+#include "leveldb/env.h"
 #include "util/logging.h"
 #include "util/testharness.h"
 
@@ -111,6 +111,23 @@ TEST(WriteBatchTest, Append) {
             "Put(b, vb)@201"
             "Delete(foo)@203",
             PrintContents(&b1));
+}
+
+TEST(WriteBatchTest, ApproximateSize) {
+  WriteBatch batch;
+  size_t empty_size = batch.ApproximateSize();
+
+  batch.Put(Slice("foo"), Slice("bar"));
+  size_t one_key_size = batch.ApproximateSize();
+  ASSERT_LT(empty_size, one_key_size);
+
+  batch.Put(Slice("baz"), Slice("boo"));
+  size_t two_keys_size = batch.ApproximateSize();
+  ASSERT_LT(one_key_size, two_keys_size);
+
+  batch.Delete(Slice("box"));
+  size_t post_delete_size = batch.ApproximateSize();
+  ASSERT_LT(two_keys_size, post_delete_size);
 }
 
 }  // namespace leveldb

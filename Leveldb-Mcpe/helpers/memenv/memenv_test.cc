@@ -5,8 +5,8 @@
 #include "helpers/memenv/memenv.h"
 
 #include "db/db_impl.h"
-#include "include/leveldb/db.h"
-#include "include/leveldb/env.h"
+#include "leveldb/db.h"
+#include "leveldb/env.h"
 #include "util/testharness.h"
 #include <string>
 #include <vector>

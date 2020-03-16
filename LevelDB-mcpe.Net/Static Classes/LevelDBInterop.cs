@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
+#pragma warning disable CA1401 // P/Invokes should not be visible
 namespace LevelDB {
     public static partial class LevelDBInterop {
 
@@ -177,3 +178,5 @@ namespace LevelDB {
         #endregion
     }
 }
+
+#pragma warning restore CA1401 // P/Invokes should not be visible

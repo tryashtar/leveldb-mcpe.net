@@ -36,8 +36,8 @@
 #if defined(LEVELDB_PLATFORM_ANDROID)
 #include <sys/stat.h>
 #endif
-#include "include/leveldb/env.h"
-#include "include/leveldb/slice.h"
+#include "leveldb/env.h"
+#include "leveldb/slice.h"
 
 #ifdef WIN32
 #include "util/win_logger.h"

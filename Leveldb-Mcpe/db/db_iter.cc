@@ -9,13 +9,14 @@
 #include "db/filename.h"
 #include "db/db_impl.h"
 #include "db/dbformat.h"
-#include "include/leveldb/env.h"
-#include "include/leveldb/iterator.h"
+#include "leveldb/env.h"
+#include "leveldb/iterator.h"
 #include "port/port.h"
 #include "util/logging.h"
 #include "util/mutexlock.h"
 #include "util/random.h"
 
+//Keep for conversion
 #if defined(_MSC_VER)
 #include <BaseTsd.h>
 typedef SSIZE_T ssize_t;

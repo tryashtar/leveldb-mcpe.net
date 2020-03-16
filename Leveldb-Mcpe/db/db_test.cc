@@ -2,15 +2,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 
-#include "include/leveldb/db.h"
-#include "include/leveldb/filter_policy.h"
+#include "leveldb/db.h"
+#include "leveldb/filter_policy.h"
 #include "db/db_impl.h"
 #include "db/filename.h"
 #include "db/version_set.h"
 #include "db/write_batch_internal.h"
-#include "include/leveldb/cache.h"
-#include "include/leveldb/env.h"
-#include "include/leveldb/table.h"
+#include "leveldb/cache.h"
+#include "leveldb/env.h"
+#include "leveldb/table.h"
 #include "util/hash.h"
 #include "util/logging.h"
 #include "util/mutexlock.h"
@@ -245,9 +245,6 @@ class DBTest {
         break;
       case kFilter:
         options.filter_policy = filter_policy_;
-        break;
-      case kUncompressed:
-        options.compression = kNoCompression;
         break;
       default:
         break;
@@ -1023,7 +1020,6 @@ TEST(DBTest, RepeatedWritesToSameKey) {
 
 TEST(DBTest, SparseMerge) {
   Options options = CurrentOptions();
-  options.compression = kNoCompression;
   Reopen(&options);
 
   FillLevels("A", "Z");
@@ -1076,7 +1072,6 @@ TEST(DBTest, ApproximateSizes) {
   do {
     Options options = CurrentOptions();
     options.write_buffer_size = 100000000;        // Large write buffer
-    options.compression = kNoCompression;
     DestroyAndReopen();
 
     ASSERT_TRUE(Between(Size("", "xyz"), 0, 0));
@@ -1133,7 +1128,6 @@ TEST(DBTest, ApproximateSizes) {
 TEST(DBTest, ApproximateSizes_MixOfSmallAndLarge) {
   do {
     Options options = CurrentOptions();
-    options.compression = kNoCompression;
     Reopen();
 
     Random rnd(301);
@@ -1922,6 +1916,10 @@ class ModelDB: public DB {
     }
   }
   virtual void CompactRange(const Slice* start, const Slice* end) {
+  }
+  virtual void SuspendCompaction(){
+  }
+  virtual void ResumeCompaction(){
   }
 
  private:

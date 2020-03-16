@@ -2,10 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 
-#include "include/leveldb/options.h"
+#include "leveldb/options.h"
 
-#include "include/leveldb/comparator.h"
-#include "include/leveldb/env.h"
+#include "leveldb/comparator.h"
+#include "leveldb/env.h"
 
 namespace leveldb {
 
@@ -21,10 +21,10 @@ Options::Options()
       block_cache(NULL),
       block_size(4096),
       block_restart_interval(16),
+      max_file_size(2<<20),
       reuse_logs(false),
       filter_policy(NULL) {
 
 	memset(compressors, 0, sizeof(compressors));
 }
-
 }  // namespace leveldb

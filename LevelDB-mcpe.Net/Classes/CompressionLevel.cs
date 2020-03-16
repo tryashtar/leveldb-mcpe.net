@@ -7,6 +7,8 @@
     /// </summary>
     public enum CompressionLevel {
         NoCompression = 0,
-        SnappyCompression = 1
+        SnappyCompression = 1,
+        ZlibCompression = 2,
+        ZlibRawCompression = 4
     }
 }

@@ -2,7 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 
-#ifndef WIN32
+#if defined(LEVELDB_PLATFORM_POSIX) || defined(LEVELDB_PLATFORM_ANDROID)
+
 #include "port/port_posix.h"
 
 #include <cstdlib>

@@ -6,7 +6,7 @@
 // the last "sync". It then checks for data loss errors by purposely dropping
 // file data (or entire files) not protected by a "sync".
 
-#include "include/leveldb/db.h"
+#include "leveldb/db.h"
 
 #include <map>
 #include <set>
@@ -14,10 +14,10 @@
 #include "db/filename.h"
 #include "db/log_format.h"
 #include "db/version_set.h"
-#include "include/leveldb/cache.h"
-#include "include/leveldb/env.h"
-#include "include/leveldb/table.h"
-#include "include/leveldb/write_batch.h"
+#include "leveldb/cache.h"
+#include "leveldb/env.h"
+#include "leveldb/table.h"
+#include "leveldb/write_batch.h"
 #include "util/logging.h"
 #include "util/mutexlock.h"
 #include "util/testharness.h"
