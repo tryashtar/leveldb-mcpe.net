@@ -1,4 +1,4 @@
-// Copyright (c) 2011 The LevelDB Authors. All rights reserved.
+﻿// Copyright (c) 2011 The LevelDB Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 
@@ -60,19 +60,20 @@ namespace leveldb {
 				Status s;
 				size_t r = fread_unlocked(scratch, 1, n, file_);
 				*result = Slice(scratch, r);
-				if(r < n) {
-					if(feof(file_)) {
+				if (r < n) {
+					if (feof(file_)) {
 						// We leave status as ok if we hit the end of the file
-					} else {
+					}
+					else {
 						// A partial read with an error: return a non-ok status
 						s = Status::IOError(filename_, strerror(errno));
 					}
-			}
+				}
 				return s;
-		}
+			}
 
 			virtual Status Skip(uint64_t n) {
-				if(fseek(file_, n, SEEK_CUR)) {
+				if (fseek(file_, n, SEEK_CUR)) {
 					return Status::IOError(filename_, strerror(errno));
 				}
 				return Status::OK();
@@ -96,14 +97,14 @@ namespace leveldb {
 				// no pread on Windows so we emulate it with a mutex
 				std::unique_lock<std::mutex> lock(mu_);
 
-				if(::_lseeki64(fd_, offset, SEEK_SET) == -1L) {
+				if (::_lseeki64(fd_, offset, SEEK_SET) == -1L) {
 					return Status::IOError(filename_, strerror(errno));
 				}
 
 				int r = ::_read(fd_, scratch, n);
 				*result = Slice(scratch, (r < 0) ? 0 : r);
 				lock.unlock();
-				if(r < 0) {
+				if (r < 0) {
 					// An error: return a non-ok status
 					s = Status::IOError(filename_, strerror(errno));
 				}
@@ -139,7 +140,7 @@ namespace leveldb {
 			virtual Status Append(const Slice& data) {
 				Status result;
 				file_.write(data.data(), data.size());
-				if(!file_.good()) {
+				if (!file_.good()) {
 					result = Status::IOError(
 						path_ + " Append", "cannot write");
 				}
@@ -150,11 +151,12 @@ namespace leveldb {
 				Status result;
 
 				try {
-					if(file_.is_open()) {
+					if (file_.is_open()) {
 						Sync();
 						file_.close();
 					}
-				} catch(const std::exception & e) {
+				}
+				catch (const std::exception & e) {
 					result = Status::IOError(path_ + " close", e.what());
 				}
 
@@ -169,7 +171,8 @@ namespace leveldb {
 				Status result;
 				try {
 					file_.flush();
-				} catch(const std::exception & e) {
+				}
+				catch (const std::exception & e) {
 					result = Status::IOError(path_ + " sync", e.what());
 				}
 
@@ -218,10 +221,11 @@ namespace leveldb {
 			virtual Status NewSequentialFile(const std::string& fname,
 				SequentialFile** result) {
 				FILE* f = fopen(fname.c_str(), "rb");
-				if(f == NULL) {
+				if (f == NULL) {
 					*result = NULL;
 					return Status::IOError(fname, strerror(errno));
-				} else {
+				}
+				else {
 					*result = new WinSequentialFile(fname, f);
 					return Status::OK();
 				}
@@ -234,7 +238,7 @@ namespace leveldb {
 #else
 				int fd = open(fname.c_str(), O_RDONLY);
 #endif
-				if(fd < 0) {
+				if (fd < 0) {
 					*result = NULL;
 					return Status::IOError(fname, strerror(errno));
 				}
@@ -248,7 +252,8 @@ namespace leveldb {
 				try {
 					// will create a new empty file to write to
 					*result = new WinFile(fname);
-				} catch(const std::exception & e) {
+				}
+				catch (const std::exception & e) {
 					s = Status::IOError(fname, e.what());
 				}
 
@@ -280,21 +285,22 @@ namespace leveldb {
 				path = dir + "/*";
 				hFind = FindFirstFileA(path.c_str(), &ffd);
 
-				if(INVALID_HANDLE_VALUE == hFind) {
+				if (INVALID_HANDLE_VALUE == hFind) {
 					return getLastWindowsError(path);
 				}
 
 				do {
 					result->push_back(ffd.cFileName);
-				} while(FindNextFile(hFind, &ffd) != 0);
+				} while (FindNextFile(hFind, &ffd) != 0);
 
 				return Status::OK();
 			}
 
 			virtual Status DeleteFile(const std::string& fname) {
-				if(::DeleteFileA(fname.c_str()) != 0) {
+				if (::DeleteFileA(fname.c_str()) != 0) {
 					return Status::OK();
-				} else {
+				}
+				else {
 					return getLastWindowsError(fname);
 				}
 			}
@@ -307,7 +313,7 @@ namespace leveldb {
 				strcpy(tmpName, path.c_str());
 
 				// Create parent directories
-				for(LPTSTR p = strchr(tmpName, '\\'); p; p = strchr(p + 1, '\\')) {
+				for (LPTSTR p = strchr(tmpName, '\\'); p; p = strchr(p + 1, '\\')) {
 					*p = 0;
 					::CreateDirectoryA(tmpName, NULL);  // may or may not already exist
 					*p = '\\';
@@ -338,7 +344,7 @@ namespace leveldb {
 
 				int ret = SHFileOperationA(&fileop);
 				delete[] pszFrom;
-				if(ret != 0) {
+				if (ret != 0) {
 					std::stringstream ss;
 					ss << "Problem deleting directory: " << ret;
 					Status::IOError(name, ss.str());
@@ -354,14 +360,14 @@ namespace leveldb {
 					OPEN_ALWAYS,
 					FILE_ATTRIBUTE_NORMAL,
 					NULL);
-				if(fileHandle == 0) {
+				if (fileHandle == 0) {
 					return getLastWindowsError(fname);
 				}
 				DWORD fileSizeHigh = 0;
 				DWORD fileSizeLow = ::GetFileSize(fileHandle, &fileSizeHigh);
 
 				CloseHandle(fileHandle);
-				if(fileSizeLow == 0) {
+				if (fileSizeLow == 0) {
 					return getLastWindowsError(fname);
 				}
 
@@ -370,9 +376,10 @@ namespace leveldb {
 
 			virtual Status RenameFile(const std::string& src, const std::string& target) {
 				DeleteFile(target);
-				if(MoveFileA(src.c_str(), target.c_str()) != TRUE) {
+				if (MoveFileA(src.c_str(), target.c_str()) != TRUE) {
 					return getLastWindowsError(src);
-				} else {
+				}
+				else {
 					return Status::OK();
 				}
 			}
@@ -381,7 +388,7 @@ namespace leveldb {
 				*lock = NULL;
 
 				Status status;
-				if(!FileExists(fname)) {
+				if (!FileExists(fname)) {
 					std::ofstream of(fname, std::ios_base::trunc | std::ios_base::out);
 				}
 				*lock = new WinFileLock(fname);
@@ -421,14 +428,15 @@ namespace leveldb {
 
 			virtual Status NewLogger(const std::string& fname, Logger** result) {
 				FILE* f = fopen(fname.c_str(), "wt");
-				if(f == NULL) {
+				if (f == NULL) {
 					*result = NULL;
 					return Status::IOError(fname, strerror(errno));
-				} else {
+				}
+				else {
 #ifdef WIN32
-					*result = new WinLogger(f);
+					* result = new WinLogger(f);
 #else
-					*result = new PosixLogger(f, &WinEnv::gettid);
+					* result = new PosixLogger(f, &WinEnv::gettid);
 #endif
 					return Status::OK();
 				}
@@ -443,12 +451,12 @@ namespace leveldb {
 #else
 #define DELTA_EPOCH_IN_MICROSECS  116444736000000000ULL // CORRECT
 #endif
-			int gettimeofday(struct timeval *tv, struct timezone *tz) {
+			int gettimeofday(struct timeval* tv, struct timezone* tz) {
 				FILETIME ft;
 				uint64_t tmpres = 0;
 				static int tzflag = 0;
 
-				if(tv) {
+				if (tv) {
 					GetSystemTimeAsFileTime(&ft);
 					tmpres |= ft.dwHighDateTime;
 					tmpres <<= 32;
@@ -461,8 +469,8 @@ namespace leveldb {
 					tv->tv_usec = (long)(tmpres % 1000000UL);
 				}
 
-				if(tz) {
-					if(!tzflag) {
+				if (tz) {
+					if (!tzflag) {
 						_tzset();
 						tzflag++;
 					}
@@ -486,7 +494,7 @@ namespace leveldb {
 
 		private:
 			void PthreadCall(const char* label, int result) {
-				if(result != 0) {
+				if (result != 0) {
 					fprintf(stderr, "pthread %s: %s\n", label, strerror(result));
 					exit(1);
 				}
@@ -516,7 +524,7 @@ namespace leveldb {
 			std::unique_lock<std::mutex> lock(mu_);
 
 			// Start background thread if necessary
-			if(!bgthread_) {
+			if (!bgthread_) {
 				bgthread_.reset(
 					new std::thread(&WinEnv::BGThreadWrapper, this));
 			}
@@ -533,11 +541,11 @@ namespace leveldb {
 		}
 
 		void WinEnv::BGThread() {
-			while(true) {
+			while (true) {
 				// Wait until there is an item that is ready to run
 				std::unique_lock<std::mutex> lock(mu_);
 
-				while(queue_.empty()) {
+				while (queue_.empty()) {
 					bgsignal_.wait(lock);
 				}
 
@@ -558,25 +566,25 @@ namespace leveldb {
 		}
 
 		DWORD WINAPI StartThreadWrapper(LPVOID lpParam) {
- 			StartThreadState* state = reinterpret_cast<StartThreadState*>(lpParam);
- 			state->user_function(state->arg);
- 			delete state;
- 			return 0;
- 		}
- 
+			StartThreadState* state = reinterpret_cast<StartThreadState*>(lpParam);
+			state->user_function(state->arg);
+			delete state;
+			return 0;
+		}
+
 		void WinEnv::StartThread(void(*function)(void* arg), void* arg) {
- 			StartThreadState* state = new StartThreadState;
- 			state->user_function = function;
- 			state->arg = arg;
+			StartThreadState* state = new StartThreadState;
+			state->user_function = function;
+			state->arg = arg;
 			DWORD     thread_id;
- 			CreateThread(
- 				NULL,                   // default security attributes
- 				0,                      // use default stack size  
+			CreateThread(
+				NULL,                   // default security attributes
+				0,                      // use default stack size  
 				StartThreadWrapper,       // thread function name
- 				state,          // argument to thread function 
- 				0,                      // use default creation flags 
+				state,          // argument to thread function 
+				0,                      // use default creation flags 
 				&thread_id);   // returns the thread identifier 
- 		}
+		}
 
 		//void WinEnv::StartThread(void(*function)(void* arg), void* arg) {
 		//	StartThreadState* state = new StartThreadState;
@@ -591,7 +599,7 @@ namespace leveldb {
 	static Env* default_env;
 	static BOOL CALLBACK InitDefaultEnv(PINIT_ONCE InitOnce,
 		PVOID Parameter,
-		PVOID *lpContext) {
+		PVOID* lpContext) {
 		::memset(global_read_only_buf, 0, sizeof(global_read_only_buf));
 		default_env = new WinEnv;
 		return TRUE;

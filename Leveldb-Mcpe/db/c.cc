@@ -2,24 +2,26 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 
-#include "include/leveldb/c.h"
+#include "leveldb/c.h"
 
 #ifndef _MSC_VER
 #include <unistd.h>
 #endif
 
+#include "leveldb/c.h"
+
 #include <stdlib.h>
-#include "include/leveldb/cache.h"
-#include "include/leveldb/comparator.h"
-#include "include/leveldb/db.h"
-#include "include/leveldb/env.h"
-#include "include/leveldb/filter_policy.h"
-#include "include/leveldb/iterator.h"
-#include "include/leveldb/options.h"
-#include "include/leveldb/status.h"
-#include "include/leveldb/write_batch.h"
-#include "include/leveldb/zlib_compressor.h"
-//#include "include/leveldb/snappy_compressor.h"
+#include "leveldb/cache.h"
+#include "leveldb/comparator.h"
+#include "leveldb/db.h"
+#include "leveldb/env.h"
+#include "leveldb/filter_policy.h"
+#include "leveldb/iterator.h"
+#include "leveldb/options.h"
+#include "leveldb/status.h"
+#include "leveldb/write_batch.h"
+#include "leveldb/zlib_compressor.h"
+#include "leveldb/snappy_compressor.h"
 
 using leveldb::Cache;
 using leveldb::Comparator;
@@ -462,6 +464,10 @@ void leveldb_options_set_compression(leveldb_options_t* opt, int t) {
 #endif
     case leveldb_zlib_compression:
       opt->rep.compressors[0] = new leveldb::ZlibCompressor();
+      break;
+    case leveldb_zlib_raw_compression:
+      opt->rep.compressors[0] = new leveldb::ZlibCompressorRaw();
+      break;
   }
 }
 
