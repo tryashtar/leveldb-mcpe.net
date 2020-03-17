@@ -29,6 +29,10 @@ namespace LevelDB {
             this.Handle = LevelDBInterop.leveldb_open(this.Options.Handle, name, out error);
             LevelDBException.Check(error);
             GC.KeepAlive(this.Options);
+
+#if DEBUG
+            System.Diagnostics.Debug.WriteLine("Opened leveldb: " + name);
+#endif
         }
 
         /// <summary>
@@ -143,10 +147,19 @@ namespace LevelDB {
             GC.KeepAlive(this);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="batch"></param>
         public void Write(WriteBatch batch) {
             this.Write(batch, new WriteOptions());
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="batch"></param>
+        /// <param name="options"></param>
         public void Write(WriteBatch batch, WriteOptions options) {
             IntPtr error;
             LevelDBInterop.leveldb_write(this.Handle, options.Handle, batch.Handle, out error);
@@ -360,6 +373,9 @@ namespace LevelDB {
 
         protected override void FreeUnManagedObjects() {
             if (this.Handle != default(IntPtr)) {
+#if DEBUG
+                System.Diagnostics.Debug.WriteLine("Closing leveldb");
+#endif
                 LevelDBInterop.leveldb_close(this.Handle);
             }
         }

@@ -159,7 +159,7 @@ namespace LevelDB {
         /// <param name="startKeyLen"></param>
         /// <param name="limitKey"></param>
         /// <param name="limitKeyLen"></param>
-        [DllImport("leveldb", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("LevelDB-MCPE.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void leveldb_compact_range(IntPtr db, Byte[] startKey, IntPtr startKeyLen, Byte[] limitKey, IntPtr limitKeyLen);
 
         /// <summary>
