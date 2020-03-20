@@ -14,12 +14,12 @@ namespace leveldb {
 	public:
 
 		uint64_t inputBytes = 0, compressedBytes = 0;
- 
+
 		//an ID that has to be unique across the whole system
 		const char uniqueCompressionID;
 
-        virtual ~Compressor() {}
-        
+		virtual ~Compressor() {}
+
 		Compressor(char uniqueCompressionID) :
 			uniqueCompressionID(uniqueCompressionID) {
 
@@ -48,7 +48,7 @@ namespace leveldb {
 
 		virtual void compressImpl(const char* input, size_t length, ::std::string& output) const = 0;
 
-		virtual bool decompress(const char* input, size_t length, ::std::string &output) const = 0;
+		virtual bool decompress(const char* input, size_t length, ::std::string& output) const = 0;
 
 		bool decompress(const std::string& input, ::std::string& output) const {
 			return decompress(input.data(), input.length(), output);

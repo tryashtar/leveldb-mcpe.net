@@ -5,17 +5,17 @@
 
 namespace leveldb {
 
-	class DLLX ZlibCompressorBase : public Compressor 
+	class DLLX ZlibCompressorBase : public Compressor
 	{
 	public:
-		int inflate(const char* input, size_t length, ::std::string &output) const;
+		int inflate(const char* input, size_t length, ::std::string& output) const;
 
 		const int compressionLevel;
 		const bool raw;
-        
-        virtual ~ZlibCompressorBase() {
-            
-        }
+
+		virtual ~ZlibCompressorBase() {
+
+		}
 
 		ZlibCompressorBase(char uniqueCompressionID, int compressionLevel, bool raw) :
 			Compressor(uniqueCompressionID),
@@ -27,7 +27,7 @@ namespace leveldb {
 
 		virtual void compressImpl(const char* input, size_t length, ::std::string& output) const override;
 
-		virtual bool decompress(const char* input, size_t length, ::std::string &output) const override;
+		virtual bool decompress(const char* input, size_t length, ::std::string& output) const override;
 
 	private:
 
