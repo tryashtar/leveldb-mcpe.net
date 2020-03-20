@@ -119,7 +119,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>copy /B "$(SolutionDir)Leveldb-Mcpe\bin\Release-$(PlatformName)\LevelDB-MCPE.dll" "$(TargetDir)MCPE.dll"
+    <PreBuildEvent>copy /B "$(SolutionDir)Leveldb-Mcpe\bin\Release-$(PlatformName)\LevelDB-MCPE.dll" "$(TargetDir)LevelDB-MCPE.dll"
 copy /B "$(SolutionDir)Leveldb-Mcpe\bin\Release-$(PlatformName)\LevelDB-MCPE.dll" "$(ProjectDir)LevelDB-MCPE.dll"</PreBuildEvent>
   </PropertyGroup>
 </Project>

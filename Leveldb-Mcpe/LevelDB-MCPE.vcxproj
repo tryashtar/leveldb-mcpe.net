@@ -75,23 +75,23 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)Leveldb-Mcpe\bin\Release-$(PlatformName)\</OutDir>
+    <OutDir>$(SolutionDir)Leveldb-Mcpe\bin\$(Configuration)-$(PlatformShortName)\</OutDir>
     <IntDir>$(ProjectDir)obj\$(Configuration)-$(PlatformShortName)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)Leveldb-Mcpe\bin\Release-$(PlatformName)\</OutDir>
+    <OutDir>$(SolutionDir)Leveldb-Mcpe\bin\$(Configuration)-$(PlatformShortName)\</OutDir>
     <IntDir>$(ProjectDir)obj\$(Configuration)-$(PlatformShortName)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)Leveldb-Mcpe\bin\Release-$(PlatformName)\</OutDir>
+    <OutDir>$(SolutionDir)Leveldb-Mcpe\bin\$(Configuration)-$(PlatformShortName)\</OutDir>
     <IntDir>$(ProjectDir)obj\$(Configuration)-$(PlatformShortName)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)Leveldb-Mcpe\bin\Release-$(PlatformName)\</OutDir>
+    <OutDir>$(SolutionDir)Leveldb-Mcpe\bin\$(Configuration)-$(PlatformShortName)\</OutDir>
     <IntDir>$(ProjectDir)obj\$(Configuration)-$(PlatformShortName)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
