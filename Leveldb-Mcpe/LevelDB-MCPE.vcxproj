@@ -75,25 +75,33 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)Leveldb-Mcpe\bin\Release-$(PlatformName)\</OutDir>
+    <OutDir>$(SolutionDir)Leveldb-Mcpe\bin\Release-$(PlatformShortName)\</OutDir>
     <IntDir>$(ProjectDir)obj\$(Configuration)-$(PlatformShortName)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)Leveldb-Mcpe\bin\Release-$(PlatformName)\</OutDir>
+    <OutDir>$(SolutionDir)Leveldb-Mcpe\bin\Release-$(PlatformShortName)\</OutDir>
     <IntDir>$(ProjectDir)obj\$(Configuration)-$(PlatformShortName)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)Leveldb-Mcpe\bin\Release-$(PlatformName)\</OutDir>
+    <OutDir>$(SolutionDir)Leveldb-Mcpe\bin\Release-$(PlatformShortName)\</OutDir>
     <IntDir>$(ProjectDir)obj\$(Configuration)-$(PlatformShortName)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)Leveldb-Mcpe\bin\Release-$(PlatformName)\</OutDir>
+    <OutDir>$(SolutionDir)Leveldb-Mcpe\bin\Release-$(PlatformShortName)\</OutDir>
     <IntDir>$(ProjectDir)obj\$(Configuration)-$(PlatformShortName)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -115,6 +123,9 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
+    <Manifest>
+      <AssemblyIdentity>leveldb-mcpe-$(PlatformShortName)</AssemblyIdentity>
+    </Manifest>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -131,6 +142,9 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
+    <Manifest>
+      <AssemblyIdentity>leveldb-mcpe-$(PlatformShortName)</AssemblyIdentity>
+    </Manifest>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -146,12 +160,18 @@
     <Link>
       <GenerateDebugInformation>false</GenerateDebugInformation>
     </Link>
+    <Manifest>
+      <AssemblyIdentity>leveldb-mcpe-$(PlatformShortName)</AssemblyIdentity>
+    </Manifest>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MCPE_PLATFORM_WINDOWS_FAMILY;EXTERN=extern "C";DLLX=__declspec( dllexport );WIN32;NDEBUG;_WINDOWS;_USRDLL;LEVELDBMCPE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <Manifest>
+      <AssemblyIdentity>leveldb-mcpe-$(PlatformShortName)</AssemblyIdentity>
+    </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="db\builder.cc" />

@@ -18,14 +18,14 @@ namespace leveldb {
 		z_stream strm;
 		strm.zalloc = 0;
 		strm.zfree = 0;
-		strm.next_in = (unsigned char *)(input);
+		strm.next_in = (unsigned char*)(input);
 		strm.avail_in = (uint32_t)length;
 		strm.next_out = temp_buffer;
 		strm.avail_out = BUFSIZE;
 
 		auto res = deflateInit2(&strm, compressionLevel, Z_DEFLATED, _window(), 8, Z_DEFAULT_STRATEGY);
 		assert(res == Z_OK);
-		
+
 		int deflate_res = Z_OK;
 		while (strm.avail_in != 0)
 		{
@@ -55,7 +55,7 @@ namespace leveldb {
 		deflateEnd(&strm);
 	}
 
-	int ZlibCompressorBase::inflate(const char* input, size_t length, ::std::string &output) const {
+	int ZlibCompressorBase::inflate(const char* input, size_t length, ::std::string& output) const {
 		const int CHUNK = 64 * 1024;
 
 		int ret;
@@ -109,10 +109,10 @@ namespace leveldb {
 		return ret == Z_STREAM_END ? Z_OK : Z_DATA_ERROR;
 	}
 
-	bool ZlibCompressorBase::decompress(const char* input, size_t length, ::std::string &output) const {
+	bool ZlibCompressorBase::decompress(const char* input, size_t length, ::std::string& output) const {
 		return inflate(input, length, output) == Z_OK;
 	}
-		
+
 	int ZlibCompressorBase::_window() const {
 		return raw ? -15 : 15;
 	}

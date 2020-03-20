@@ -21,7 +21,7 @@ namespace port {
 #endif
 
 
-	inline filepath toFilePath(const std::string &string) {
+	inline filepath toFilePath(const std::string& string) {
 #if defined(_MSC_VER)
 		std::wstring_convert<std::codecvt_utf8<wchar_t>, wchar_t> converter;
 		return std::move(converter.from_bytes(string));

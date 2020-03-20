@@ -5,18 +5,18 @@
 
 namespace leveldb {
 
-	class DLLX ZopfliCompressor : public Compressor 
+	class DLLX ZopfliCompressor : public Compressor
 	{
 	public:
-		static const int SERIALIZE_ID = 2; //Same as ZLib since it is a replacement
+		static const int SERIALIZE_ID = 2; //Same as ZLib since it is a replacemesnt
 
 		ZopfliCompressor() : Compressor(SERIALIZE_ID) {}
 
-        virtual ~ZopfliCompressor() {}
+		virtual ~ZopfliCompressor() {}
 
 		virtual void compressImpl(const char* input, size_t length, ::std::string& output) const override;
 
-		virtual bool decompress(const char* input, size_t length, ::std::string &output) const override;
+		virtual bool decompress(const char* input, size_t length, ::std::string& output) const override;
 
 	private:
 	};
