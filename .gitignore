@@ -1,5 +1,4 @@
 build_config.mk
-*.dll
 *.pdb
 *.obj
 *.tlog
