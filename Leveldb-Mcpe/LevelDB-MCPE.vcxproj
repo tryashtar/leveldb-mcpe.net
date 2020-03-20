@@ -75,11 +75,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>true</LinkIncremental>
-<<<<<<< HEAD
     <OutDir>$(SolutionDir)Leveldb-Mcpe\bin\$(Configuration)-$(PlatformShortName)\</OutDir>
-=======
-    <OutDir>$(SolutionDir)Leveldb-Mcpe\bin\Release-$(PlatformShortName)\</OutDir>
->>>>>>> 397cd740d1bb096fffe82b10953573d18c81b55e
     <IntDir>$(ProjectDir)obj\$(Configuration)-$(PlatformShortName)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
     <RunCodeAnalysis>true</RunCodeAnalysis>
@@ -87,33 +83,21 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-<<<<<<< HEAD
     <OutDir>$(SolutionDir)Leveldb-Mcpe\bin\$(Configuration)-$(PlatformShortName)\</OutDir>
-=======
-    <OutDir>$(SolutionDir)Leveldb-Mcpe\bin\Release-$(PlatformShortName)\</OutDir>
->>>>>>> 397cd740d1bb096fffe82b10953573d18c81b55e
     <IntDir>$(ProjectDir)obj\$(Configuration)-$(PlatformShortName)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-<<<<<<< HEAD
     <OutDir>$(SolutionDir)Leveldb-Mcpe\bin\$(Configuration)-$(PlatformShortName)\</OutDir>
-=======
-    <OutDir>$(SolutionDir)Leveldb-Mcpe\bin\Release-$(PlatformShortName)\</OutDir>
->>>>>>> 397cd740d1bb096fffe82b10953573d18c81b55e
     <IntDir>$(ProjectDir)obj\$(Configuration)-$(PlatformShortName)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-<<<<<<< HEAD
     <OutDir>$(SolutionDir)Leveldb-Mcpe\bin\$(Configuration)-$(PlatformShortName)\</OutDir>
-=======
-    <OutDir>$(SolutionDir)Leveldb-Mcpe\bin\Release-$(PlatformShortName)\</OutDir>
->>>>>>> 397cd740d1bb096fffe82b10953573d18c81b55e
     <IntDir>$(ProjectDir)obj\$(Configuration)-$(PlatformShortName)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
     <RunCodeAnalysis>true</RunCodeAnalysis>
