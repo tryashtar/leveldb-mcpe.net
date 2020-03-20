@@ -113,13 +113,17 @@
     <Compile Include="Classes\WriteOptions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="LevelDB-MCPE.dll">
+    <Content Include="LevelDB-MCPE-x64.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LevelDB-MCPE-x86.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>copy /B "$(SolutionDir)Leveldb-Mcpe\bin\Release-$(PlatformName)\LevelDB-MCPE.dll" "$(TargetDir)LevelDB-MCPE.dll"
-copy /B "$(SolutionDir)Leveldb-Mcpe\bin\Release-$(PlatformName)\LevelDB-MCPE.dll" "$(ProjectDir)LevelDB-MCPE.dll"</PreBuildEvent>
+    <PreBuildEvent>copy /B "$(SolutionDir)Leveldb-Mcpe\bin\Release-x64\LevelDB-MCPE-x64.dll" "$(ProjectDir)LevelDB-MCPE-x64.dll"
+copy /B "$(SolutionDir)Leveldb-Mcpe\bin\Release-x86\LevelDB-MCPE-x86.dll" "$(ProjectDir)LevelDB-MCPE-x86.dll"
+</PreBuildEvent>
   </PropertyGroup>
 </Project>
