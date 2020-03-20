@@ -78,30 +78,30 @@
     <OutDir>$(SolutionDir)Leveldb-Mcpe\bin\$(Configuration)-$(PlatformShortName)\</OutDir>
     <IntDir>$(ProjectDir)obj\$(Configuration)-$(PlatformShortName)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
-    <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <EnableClangTidyCodeAnalysis>false</EnableClangTidyCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)Leveldb-Mcpe\bin\$(Configuration)-$(PlatformShortName)\</OutDir>
     <IntDir>$(ProjectDir)obj\$(Configuration)-$(PlatformShortName)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
-    <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <EnableClangTidyCodeAnalysis>false</EnableClangTidyCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)Leveldb-Mcpe\bin\$(Configuration)-$(PlatformShortName)\</OutDir>
     <IntDir>$(ProjectDir)obj\$(Configuration)-$(PlatformShortName)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
-    <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <EnableClangTidyCodeAnalysis>false</EnableClangTidyCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)Leveldb-Mcpe\bin\$(Configuration)-$(PlatformShortName)\</OutDir>
     <IntDir>$(ProjectDir)obj\$(Configuration)-$(PlatformShortName)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
-    <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <EnableClangTidyCodeAnalysis>false</EnableClangTidyCodeAnalysis>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
