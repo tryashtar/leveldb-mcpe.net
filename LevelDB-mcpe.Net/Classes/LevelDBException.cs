@@ -2,6 +2,10 @@
 using System.Runtime.InteropServices;
 
 namespace LevelDB {
+    /// <summary>
+    /// 
+    /// </summary>
+    [Serializable]
     public class LevelDBException : Exception {
         public LevelDBException(String message) : base(message) { }
 
