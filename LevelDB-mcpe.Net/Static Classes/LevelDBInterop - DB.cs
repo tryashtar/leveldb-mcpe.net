@@ -11,7 +11,8 @@ namespace LevelDB {
         /// <param name="name"></param>
         /// <param name="error"></param>
         /// <returns></returns>
-        [DllImport("LevelDB-MCPE.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        [DllImport("LevelDB-MCPE.dll", CallingConvention = CallingConvention.Cdecl)]
+        //DO NOT USE CharSet.Unicode, C++ is UTF8 which is 1 Byte big and not two
         internal static extern IntPtr leveldb_open(IntPtr /* Options*/ options, String name, out IntPtr error);
 
         /// <summary>
@@ -130,7 +131,7 @@ namespace LevelDB {
         /// <param name="db"><see cref="DB"/> Pointer</param>
         /// <param name="propname"></param>
         /// <returns></returns>
-        [DllImport("LevelDB-MCPE.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        [DllImport("LevelDB-MCPE.dll", CallingConvention = CallingConvention.Cdecl)]
         internal static extern IntPtr leveldb_property_value(IntPtr db, String propname);
 
         /// <summary>
@@ -139,7 +140,7 @@ namespace LevelDB {
         /// <param name="options"><see cref="Options"/> pointer</param>
         /// <param name="name"></param>
         /// <param name="error"></param>
-        [DllImport("LevelDB-MCPE.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        [DllImport("LevelDB-MCPE.dll", CallingConvention = CallingConvention.Cdecl)]
         internal static extern void leveldb_repair_db(IntPtr options, String name, out IntPtr error);
 
         /// <summary>
@@ -148,7 +149,7 @@ namespace LevelDB {
         /// <param name="options"><see cref="Options"/> pointer</param>
         /// <param name="name"></param>
         /// <param name="error"></param>
-        [DllImport("LevelDB-MCPE.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        [DllImport("LevelDB-MCPE.dll", CallingConvention = CallingConvention.Cdecl)]
         internal static extern void leveldb_destroy_db(IntPtr options, String name, out IntPtr error);
 
         /// <summary>
