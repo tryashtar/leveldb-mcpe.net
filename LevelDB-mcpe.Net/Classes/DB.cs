@@ -321,8 +321,21 @@ namespace LevelDB {
         /// <param name="startKey"></param>
         /// <param name="limitKey"></param>
         public void CompactRange(Byte[] startKey, Byte[] limitKey) {
-            LevelDBInterop.leveldb_compact_range(this.Handle, startKey, LevelDBInterop.MarshalSize(startKey),
-                limitKey, LevelDBInterop.MarshalSize(limitKey));
+            try {
+                LevelDBInterop.leveldb_compact_range(
+                    this.Handle,
+                    startKey, LevelDBInterop.MarshalSize(startKey),
+                    limitKey, LevelDBInterop.MarshalSize(limitKey));
+            }
+            catch (Exception ex) {
+                while (ex != null) {
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                    System.Diagnostics.Debug.WriteLine(ex.StackTrace);
+
+                    ex = ex.InnerException;
+                }
+            }
+
             GC.KeepAlive(this);
         }
 

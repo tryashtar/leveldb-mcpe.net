@@ -10,7 +10,7 @@ namespace LevelDB {
         /// 
         /// </summary>
         /// <returns></returns>
-        [DllImport("LevelDB-MCPE.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("LevelDB-MCPE.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)] //This need unicode
         internal static extern IntPtr leveldb_options_create();
 
         /// <summary>
