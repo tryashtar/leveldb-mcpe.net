@@ -128,7 +128,7 @@ namespace LevelDB {
         }
 
         /// <summary>
-        /// Number of keys between restart points for delta encoding of keys.
+        /// Number of keys between restart points for deltan encoding of keys.
         /// This parameter can be changed dynamically.  
         /// Most clients should leave this parameter alone.
         ///

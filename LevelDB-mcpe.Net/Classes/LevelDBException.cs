@@ -9,10 +9,8 @@ namespace LevelDB {
     public class LevelDBException : Exception {
         public LevelDBException(String message) : base(message) { }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="error"></param>
+        ///DOLATER <summary>Add Description</summary>
+        /// <param name="error">FILL IN</param>
         public static void Check(IntPtr error) {
             if (error != IntPtr.Zero) {
                 try {

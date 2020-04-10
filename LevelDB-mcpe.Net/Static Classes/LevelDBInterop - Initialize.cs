@@ -5,9 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace LevelDB {
     public static partial class LevelDBInterop {
-        /// <summary>
-        /// 
-        /// </summary>
+        ///DOLATER <summary>Add Description</summary>
         static LevelDBInterop() {
             Assembly assembly = Assembly.GetExecutingAssembly();
 
@@ -32,11 +30,9 @@ namespace LevelDB {
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="source"></param>
-        /// <param name="destination"></param>
+        ///DOLATER <summary>Add Description</summary>
+        /// <param name="source">FILL IN</param>
+        /// <param name="destination">FILL IN</param>
         private static void Copy(String source, String destination) {
             if (!File.Exists(source)) {
                 throw new ApplicationException($"Cannot find: {source}");
