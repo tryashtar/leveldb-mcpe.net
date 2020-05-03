@@ -9,31 +9,8 @@ namespace LevelDB {
     /// A DB is a persistent ordered map from keys to values.
     /// A DB is safe for concurrent access from multiple threads without any external synchronization.
     /// </summary>
-    public class DB : LevelDBHandle, IEnumerable<KeyValuePair<String, String>>, IEnumerable<KeyValuePair<Byte[], Byte[]>> {
-        private Options Options;
+    public partial class DB  {
 
-        /// <summary>
-        /// Open the database with the specified "name".
-        /// </summary>
-        public DB(String name)
-            : this(name, new Options()) {
-        }
-
-        /// <summary>
-        /// Open the database with the specified "name".
-        /// Options should not be modified after calling this method.
-        /// </summary>
-        public DB(String name, Options options) {
-            this.Options = options ?? new Options();
-            IntPtr error;
-            this.Handle = LevelDBInterop.leveldb_open(this.Options.Handle, name, out error);
-            LevelDBException.Check(error);
-            GC.KeepAlive(this.Options);
-
-#if DEBUG
-            System.Diagnostics.Debug.WriteLine("Opened leveldb: " + name);
-#endif
-        }
 
         /// <summary>
         /// If a DB cannot be opened, you may attempt to call this method to
@@ -377,32 +354,6 @@ namespace LevelDB {
                 System.Diagnostics.Debug.WriteLine("Closing leveldb");
 #endif
                 LevelDBInterop.leveldb_close(this.Handle);
-            }
-        }
-
-        IEnumerator IEnumerable.GetEnumerator() {
-            return this.GetEnumerator();
-        }
-
-        IEnumerator<KeyValuePair<String, String>> IEnumerable<KeyValuePair<String, String>>.GetEnumerator() {
-            using (SnapShot sn = this.CreateSnapshot())
-            using (Iterator iterator = this.CreateIterator(new ReadOptions { Snapshot = sn })) {
-                iterator.SeekToFirst();
-                while (iterator.Valid()) {
-                    yield return new KeyValuePair<String, String>(iterator.StringKey(), iterator.StringValue());
-                    iterator.Next();
-                }
-            }
-        }
-
-        public IEnumerator<KeyValuePair<Byte[], Byte[]>> GetEnumerator() {
-            using (SnapShot sn = this.CreateSnapshot())
-            using (Iterator iterator = this.CreateIterator(new ReadOptions { Snapshot = sn })) {
-                iterator.SeekToFirst();
-                while (iterator.Valid()) {
-                    yield return new KeyValuePair<Byte[], Byte[]>(iterator.Key(), iterator.Value());
-                    iterator.Next();
-                }
             }
         }
     }
