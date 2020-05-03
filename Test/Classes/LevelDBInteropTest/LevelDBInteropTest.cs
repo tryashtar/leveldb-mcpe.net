@@ -7,9 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace LevelDB.Test {
     [TestClass]
     public partial class LevelDBInteropTest {
-        /// <summary>
-        /// 
-        /// </summary>
+        ///DOLATER <summary>Add Description</summary>
         [TestMethod]
         public void TestDllimport() {
             MethodInfo[] methods = typeof(LevelDBInterop).GetMethods(BindingFlags.Static | BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);

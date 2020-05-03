@@ -124,19 +124,15 @@ namespace LevelDB {
             GC.KeepAlive(this);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="batch"></param>
+        ///DOLATER <summary>Add Description</summary>
+        /// <param name="batch">FILL IN</param>
         public void Write(WriteBatch batch) {
             this.Write(batch, new WriteOptions());
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="batch"></param>
-        /// <param name="options"></param>
+        ///DOLATER <summary>Add Description</summary>
+        /// <param name="batch">FILL IN</param>
+        /// <param name="options">FILL IN</param>
         public void Write(WriteBatch batch, WriteOptions options) {
             IntPtr error;
             LevelDBInterop.leveldb_write(this.Handle, options.Handle, batch.Handle, out error);
@@ -267,8 +263,8 @@ namespace LevelDB {
         /// needed to access the data.  This operation should typically only
         /// be invoked by users who understand the underlying implementation.
         /// </summary>
-        /// <param name="startKey"></param>
-        /// <param name="limitKey"></param>
+        /// <param name="startKey">FILL IN</param>
+        /// <param name="limitKey">FILL IN</param>
         public void Compact() {
             Byte[] startKey = null;
             Byte[] limitKey = null;
@@ -282,8 +278,8 @@ namespace LevelDB {
         /// needed to access the data.  This operation should typically only
         /// be invoked by users who understand the underlying implementation.
         /// </summary>
-        /// <param name="startKey"></param>
-        /// <param name="limitKey"></param>
+        /// <param name="startKey">FILL IN</param>
+        /// <param name="limitKey">FILL IN</param>
         public void CompactRange(String startKey, String limitKey) {
             this.CompactRange(Encoding.UTF8.GetBytes(startKey), Encoding.UTF8.GetBytes(limitKey));
         }
@@ -295,11 +291,24 @@ namespace LevelDB {
         /// needed to access the data.  This operation should typically only
         /// be invoked by users who understand the underlying implementation.
         /// </summary>
-        /// <param name="startKey"></param>
-        /// <param name="limitKey"></param>
+        /// <param name="startKey">FILL IN</param>
+        /// <param name="limitKey">FILL IN</param>
         public void CompactRange(Byte[] startKey, Byte[] limitKey) {
-            LevelDBInterop.leveldb_compact_range(this.Handle, startKey, LevelDBInterop.MarshalSize(startKey),
-                limitKey, LevelDBInterop.MarshalSize(limitKey));
+            try {
+                LevelDBInterop.leveldb_compact_range(
+                    this.Handle,
+                    startKey, LevelDBInterop.MarshalSize(startKey),
+                    limitKey, LevelDBInterop.MarshalSize(limitKey));
+            }
+            catch (Exception ex) {
+                while (ex != null) {
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                    System.Diagnostics.Debug.WriteLine(ex.StackTrace);
+
+                    ex = ex.InnerException;
+                }
+            }
+
             GC.KeepAlive(this);
         }
 
@@ -312,9 +321,9 @@ namespace LevelDB {
         ///
         /// The results may not include the sizes of recently written data.
         /// </summary>
-        /// <param name="startKey"></param>
-        /// <param name="limitKey"></param>
-        /// <returns></returns>
+        /// <param name="startKey">FILL IN</param>
+        /// <param name="limitKey">FILL IN</param>
+        ///DOLATER <returns>Fill in return</returns>
         public unsafe Int64 GetApproximateSize(String startKey, String limitKey) {
             return this.GetApproximateSize(Encoding.UTF8.GetBytes(startKey), Encoding.UTF8.GetBytes(limitKey));
         }
@@ -328,9 +337,9 @@ namespace LevelDB {
         ///
         /// The results may not include the sizes of recently written data.
         /// </summary>
-        /// <param name="startKey"></param>
-        /// <param name="limitKey"></param>
-        /// <returns></returns>
+        /// <param name="startKey">FILL IN</param>
+        /// <param name="limitKey">FILL IN</param>
+        ///DOLATER <returns>Fill in return</returns>
         public unsafe Int64 GetApproximateSize(Byte[] startKey, Byte[] limitKey) {
             IntPtr l1 = (IntPtr)startKey.Length;
             IntPtr l2 = (IntPtr)limitKey.Length;

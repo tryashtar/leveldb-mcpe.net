@@ -3,12 +3,10 @@ using System.Runtime.InteropServices;
 
 namespace LevelDB {
     public static partial class LevelDBInterop {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="left"></param>
-        /// <param name="right"></param>
-        /// <returns></returns>
+        ///DOLATER <summary>Add Description</summary>
+        /// <param name="left">FILL IN</param>
+        /// <param name="right">FILL IN</param>
+        ///DOLATER <returns>Fill in return</returns>
         private static Boolean BuffersEqual(Byte[] left, Byte[] right) {
             if (left.Length != right.Length) {
                 return false;
@@ -23,11 +21,9 @@ namespace LevelDB {
             return true;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="lpFileName"></param>
-        /// <returns></returns>
+        ///DOLATER <summary>Add Description</summary>
+        /// <param name="lpFileName">FILL IN</param>
+        ///DOLATER <returns>Fill in return</returns>
 
         [DllImport("kernel32", SetLastError = true)]
         private static extern IntPtr LoadLibrary(String lpFileName);
