@@ -35,6 +35,8 @@ namespace LevelDB {
 #endif
         }
 
+
+
         /// <summary>
         /// If a DB cannot be opened, you may attempt to call this method to
         /// resurrect as much of the contents of the database as possible.
