@@ -57,11 +57,11 @@ namespace leveldb {
 		};
 	}  // namespace
 
-	Iterator* NewEmptyIterator() {
+	Iterator^ NewEmptyIterator() {
 		return new EmptyIterator(Status::OK());
 	}
 
-	Iterator* NewErrorIterator(const Status& status) {
+	Iterator^ NewErrorIterator(const Status& status) {
 		return new EmptyIterator(status);
 	}
 

@@ -169,7 +169,7 @@ class Constructor {
   // Construct the data structure from the data in "data"
   virtual Status FinishImpl(const Options& options, const KVMap& data) = 0;
 
-  virtual Iterator* NewIterator() const = 0;
+  virtual Iterator^ NewIterator() const = 0;
 
   virtual const KVMap& data() { return data_; }
 
@@ -207,7 +207,7 @@ class BlockConstructor: public Constructor {
     block_ = new Block(contents);
     return Status::OK();
   }
-  virtual Iterator* NewIterator() const {
+  virtual Iterator^ NewIterator() const {
     return block_->NewIterator(comparator_);
   }
 
@@ -251,7 +251,7 @@ class TableConstructor: public Constructor {
     return Table::Open(table_options, source_, sink.contents().size(), &table_);
   }
 
-  virtual Iterator* NewIterator() const {
+  virtual Iterator^ NewIterator() const {
     return table_->NewIterator(ReadOptions());
   }
 
@@ -276,7 +276,7 @@ class TableConstructor: public Constructor {
 // A helper class that converts internal format keys into user keys
 class KeyConvertingIterator: public Iterator {
  public:
-  explicit KeyConvertingIterator(Iterator* iter) : iter_(iter) { }
+  explicit KeyConvertingIterator(Iterator^ iter) : iter_(iter) { }
   virtual ~KeyConvertingIterator() { delete iter_; }
   virtual bool Valid() const { return iter_->Valid(); }
   virtual void Seek(const Slice& target) {
@@ -307,7 +307,7 @@ class KeyConvertingIterator: public Iterator {
 
  private:
   mutable Status status_;
-  Iterator* iter_;
+  Iterator^ iter_;
 
   // No copying allowed
   KeyConvertingIterator(const KeyConvertingIterator&);
@@ -338,7 +338,7 @@ class MemTableConstructor: public Constructor {
     }
     return Status::OK();
   }
-  virtual Iterator* NewIterator() const {
+  virtual Iterator^ NewIterator() const {
     return new KeyConvertingIterator(memtable_->NewIterator());
   }
 
@@ -371,7 +371,7 @@ class DBConstructor: public Constructor {
     }
     return Status::OK();
   }
-  virtual Iterator* NewIterator() const {
+  virtual Iterator^ NewIterator() const {
     return db_->NewIterator(ReadOptions());
   }
 
@@ -487,7 +487,7 @@ class Harness {
 
   void TestForwardScan(const std::vector<std::string>& keys,
                        const KVMap& data) {
-    Iterator* iter = constructor_->NewIterator();
+    Iterator^ iter = constructor_->NewIterator();
     ASSERT_TRUE(!iter->Valid());
     iter->SeekToFirst();
     for (KVMap::const_iterator model_iter = data.begin();
@@ -502,7 +502,7 @@ class Harness {
 
   void TestBackwardScan(const std::vector<std::string>& keys,
                         const KVMap& data) {
-    Iterator* iter = constructor_->NewIterator();
+    Iterator^ iter = constructor_->NewIterator();
     ASSERT_TRUE(!iter->Valid());
     iter->SeekToLast();
     for (KVMap::const_reverse_iterator model_iter = data.rbegin();
@@ -519,7 +519,7 @@ class Harness {
                         const std::vector<std::string>& keys,
                         const KVMap& data) {
     static const bool kVerbose = false;
-    Iterator* iter = constructor_->NewIterator();
+    Iterator^ iter = constructor_->NewIterator();
     ASSERT_TRUE(!iter->Valid());
     KVMap::const_iterator model_iter = data.begin();
     if (kVerbose) fprintf(stderr, "---\n");
@@ -602,7 +602,7 @@ class Harness {
     }
   }
 
-  std::string ToString(const Iterator* it) {
+  std::string ToString(const Iterator^ it) {
     if (!it->Valid()) {
       return "END";
     } else {
@@ -665,7 +665,7 @@ TEST(Harness, ZeroRestartPointsInBlock) {
   contents.cachable = false;
   contents.heap_allocated = false;
   Block block(contents);
-  Iterator* iter = block.NewIterator(BytewiseComparator());
+  Iterator^ iter = block.NewIterator(BytewiseComparator());
   iter->SeekToFirst();
   ASSERT_TRUE(!iter->Valid());
   iter->SeekToLast();
@@ -772,7 +772,7 @@ TEST(MemTableTest, Simple) {
   batch.Put(std::string("largekey"), std::string("vlarge"));
   ASSERT_TRUE(WriteBatchInternal::InsertInto(&batch, memtable).ok());
 
-  Iterator* iter = memtable->NewIterator();
+  Iterator^ iter = memtable->NewIterator();
   iter->SeekToFirst();
   while (iter->Valid()) {
     fprintf(stderr, "key: '%s' -> '%s'\n",

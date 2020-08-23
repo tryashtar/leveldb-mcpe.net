@@ -160,7 +160,7 @@ The following example demonstrates how to print all key,value pairs
 in a database.
 <p>
 <pre>
-  leveldb::Iterator* it = db-&gt;NewIterator(leveldb::ReadOptions());
+  leveldb::Iterator^ it = db-&gt;NewIterator(leveldb::ReadOptions());
   for (it-&gt;SeekToFirst(); it-&gt;Valid(); it-&gt;Next()) {
     cout &lt;&lt; it-&gt;key().ToString() &lt;&lt; ": "  &lt;&lt; it-&gt;value().ToString() &lt;&lt; endl;
   }
@@ -199,7 +199,7 @@ Snapshots are created by the DB::GetSnapshot() method:
   leveldb::ReadOptions options;
   options.snapshot = db-&gt;GetSnapshot();
   ... apply some updates to db ...
-  leveldb::Iterator* iter = db-&gt;NewIterator(options);
+  leveldb::Iterator^ iter = db-&gt;NewIterator(options);
   ... read using iter to view the state when the snapshot was created ...
   delete iter;
   db-&gt;ReleaseSnapshot(options.snapshot);
@@ -375,7 +375,7 @@ used to achieve this:
 <pre>
   leveldb::ReadOptions options;
   options.fill_cache = false;
-  leveldb::Iterator* it = db-&gt;NewIterator(options);
+  leveldb::Iterator^ it = db-&gt;NewIterator(options);
   for (it-&gt;SeekToFirst(); it-&gt;Valid(); it-&gt;Next()) {
     ...
   }

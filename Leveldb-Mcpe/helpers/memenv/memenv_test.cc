@@ -211,7 +211,7 @@ TEST(MemEnvTest, DBTest) {
     ASSERT_TRUE(res == vals[i]);
   }
 
-  Iterator* iterator = db->NewIterator(ReadOptions());
+  Iterator^ iterator = db->NewIterator(ReadOptions());
   iterator->SeekToFirst();
   for (size_t i = 0; i < 3; ++i) {
     ASSERT_TRUE(iterator->Valid());

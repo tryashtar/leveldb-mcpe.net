@@ -92,7 +92,7 @@ class CorruptionTest {
     int bad_values = 0;
     int correct = 0;
     std::string value_space;
-    Iterator* iter = db_->NewIterator(ReadOptions());
+    Iterator^ iter = db_->NewIterator(ReadOptions());
     for (iter->SeekToFirst(); iter->Valid(); iter->Next()) {
       uint64_t key;
       Slice in(iter->key());

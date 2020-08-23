@@ -18,7 +18,7 @@ Status BuildTable(const std::string& dbname,
                   Env* env,
                   const Options& options,
                   TableCache* table_cache,
-                  Iterator* iter,
+                  Iterator^ iter,
                   FileMetaData* meta) {
   Status s;
   meta->file_size = 0;
@@ -64,7 +64,7 @@ Status BuildTable(const std::string& dbname,
 
     if (s.ok()) {
       // Verify that the table is usable
-      Iterator* it = table_cache->NewIterator(ReadOptions(),
+      Iterator^ it = table_cache->NewIterator(ReadOptions(),
                                               meta->number,
                                               meta->file_size);
       s = it->status();

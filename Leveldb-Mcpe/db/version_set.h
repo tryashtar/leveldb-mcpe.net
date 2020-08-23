@@ -61,7 +61,7 @@ namespace leveldb {
 		// Append to *iters a sequence of iterators that will
 		// yield the contents of this Version when merged together.
 		// REQUIRES: This version has been saved (see VersionSet::SaveTo)
-		void AddIterators(const ReadOptions&, std::vector<Iterator*>* iters);
+		void AddIterators(const ReadOptions&, std::vector<Iterator^>* iters);
 
 		// Lookup the value for key.  If found, store it in *val and
 		// return OK.  Else return a non-OK status.  Fills *stats.
@@ -118,7 +118,7 @@ namespace leveldb {
 		friend class VersionSet;
 
 		class LevelFileNumIterator;
-		Iterator* NewConcatenatingIterator(const ReadOptions&, int level) const;
+		Iterator^ NewConcatenatingIterator(const ReadOptions&, int level) const;
 
 		// Call func(arg, level, f) for every file that overlaps user_key in
 		// order from newest to oldest.  If an invocation of func returns
@@ -245,7 +245,7 @@ namespace leveldb {
 
 		// Create an iterator that reads over the compaction inputs for "*c".
 		// The caller should delete the iterator when no longer needed.
-		Iterator* MakeInputIterator(Compaction* c);
+		Iterator^ MakeInputIterator(Compaction* c);
 
 		// Returns true iff some level needs a compaction.
 		bool NeedsCompaction() const {

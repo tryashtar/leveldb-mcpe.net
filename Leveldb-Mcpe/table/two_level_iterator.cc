@@ -13,12 +13,12 @@ namespace leveldb {
 
 namespace {
 
-typedef Iterator* (*BlockFunction)(void*, const ReadOptions&, const Slice&);
+typedef Iterator^ (*BlockFunction)(void*, const ReadOptions&, const Slice&);
 
 class TwoLevelIterator: public Iterator {
  public:
   TwoLevelIterator(
-    Iterator* index_iter,
+    Iterator^ index_iter,
     BlockFunction block_function,
     void* arg,
     const ReadOptions& options);
@@ -59,7 +59,7 @@ class TwoLevelIterator: public Iterator {
   }
   void SkipEmptyDataBlocksForward();
   void SkipEmptyDataBlocksBackward();
-  void SetDataIterator(Iterator* data_iter);
+  void SetDataIterator(Iterator^ data_iter);
   void InitDataBlock();
 
   BlockFunction block_function_;
@@ -74,7 +74,7 @@ class TwoLevelIterator: public Iterator {
 };
 
 TwoLevelIterator::TwoLevelIterator(
-    Iterator* index_iter,
+    Iterator^ index_iter,
     BlockFunction block_function,
     void* arg,
     const ReadOptions& options)
@@ -148,7 +148,7 @@ void TwoLevelIterator::SkipEmptyDataBlocksBackward() {
   }
 }
 
-void TwoLevelIterator::SetDataIterator(Iterator* data_iter) {
+void TwoLevelIterator::SetDataIterator(Iterator^ data_iter) {
   if (data_iter_.iter() != NULL) SaveError(data_iter_.status());
   data_iter_.Set(data_iter);
 }
@@ -162,7 +162,7 @@ void TwoLevelIterator::InitDataBlock() {
       // data_iter_ is already constructed with this iterator, so
       // no need to change anything
     } else {
-      Iterator* iter = (*block_function_)(arg_, options_, handle);
+      Iterator^ iter = (*block_function_)(arg_, options_, handle);
       data_block_handle_.assign(handle.data(), handle.size());
       SetDataIterator(iter);
     }
@@ -171,8 +171,8 @@ void TwoLevelIterator::InitDataBlock() {
 
 }  // namespace
 
-Iterator* NewTwoLevelIterator(
-    Iterator* index_iter,
+Iterator^ NewTwoLevelIterator(
+    Iterator^ index_iter,
     BlockFunction block_function,
     void* arg,
     const ReadOptions& options) {

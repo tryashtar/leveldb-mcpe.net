@@ -147,7 +147,7 @@ The following example demonstrates how to print all key,value pairs in a
 database.
 
 ```c++
-leveldb::Iterator* it = db->NewIterator(leveldb::ReadOptions());
+leveldb::Iterator^ it = db->NewIterator(leveldb::ReadOptions());
 for (it->SeekToFirst(); it->Valid(); it->Next()) {
   cout << it->key().ToString() << ": "  << it->value().ToString() << endl;
 }
@@ -189,7 +189,7 @@ Snapshots are created by the `DB::GetSnapshot()` method:
 leveldb::ReadOptions options;
 options.snapshot = db->GetSnapshot();
 ... apply some updates to db ...
-leveldb::Iterator* iter = db->NewIterator(options);
+leveldb::Iterator^ iter = db->NewIterator(options);
 ... read using iter to view the state when the snapshot was created ...
 delete iter;
 db->ReleaseSnapshot(options.snapshot);
@@ -365,7 +365,7 @@ cached contents. A per-iterator option can be used to achieve this:
 ```c++
 leveldb::ReadOptions options;
 options.fill_cache = false;
-leveldb::Iterator* it = db->NewIterator(options);
+leveldb::Iterator^ it = db->NewIterator(options);
 for (it->SeekToFirst(); it->Valid(); it->Next()) {
   ...
 }

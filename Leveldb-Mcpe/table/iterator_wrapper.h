@@ -17,15 +17,15 @@ namespace leveldb {
 class IteratorWrapper {
  public:
   IteratorWrapper(): iter_(NULL), valid_(false) { }
-  explicit IteratorWrapper(Iterator* iter): iter_(NULL) {
+  explicit IteratorWrapper(Iterator^ iter): iter_(NULL) {
     Set(iter);
   }
   ~IteratorWrapper() { delete iter_; }
-  Iterator* iter() const { return iter_; }
+  Iterator^ iter() const { return iter_; }
 
   // Takes ownership of "iter" and will delete it when destroyed, or
   // when Set() is invoked again.
-  void Set(Iterator* iter) {
+  void Set(Iterator^ iter) {
     delete iter_;
     iter_ = iter;
     if (iter_ == NULL) {
@@ -56,7 +56,7 @@ class IteratorWrapper {
     }
   }
 
-  Iterator* iter_;
+  Iterator^ iter_;
   bool valid_;
   Slice key_;
 };

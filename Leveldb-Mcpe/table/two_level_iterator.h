@@ -20,9 +20,9 @@ namespace leveldb {
 	//
 	// Uses a supplied function to convert an index_iter value into
 	// an iterator over the contents of the corresponding block.
-	extern Iterator* NewTwoLevelIterator(
-		Iterator* index_iter,
-		Iterator* (*block_function)(
+	extern Iterator^ NewTwoLevelIterator(
+		Iterator^ index_iter,
+		Iterator^ (*block_function)(
 			void* arg,
 			const ReadOptions& options,
 			const Slice& index_value),

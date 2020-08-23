@@ -313,7 +313,7 @@ class DBTest {
   std::string Contents() {
     std::vector<std::string> forward;
     std::string result;
-    Iterator* iter = db_->NewIterator(ReadOptions());
+    Iterator^ iter = db_->NewIterator(ReadOptions());
     for (iter->SeekToFirst(); iter->Valid(); iter->Next()) {
       std::string s = IterStatus(iter);
       result.push_back('(');
@@ -336,7 +336,7 @@ class DBTest {
   }
 
   std::string AllEntriesFor(const Slice& user_key) {
-    Iterator* iter = dbfull()->TEST_NewInternalIterator();
+    Iterator^ iter = dbfull()->TEST_NewInternalIterator();
     InternalKey target(user_key, kMaxSequenceNumber, kTypeValue);
     iter->Seek(target.Encode());
     std::string result;
@@ -462,7 +462,7 @@ class DBTest {
     return property;
   }
 
-  std::string IterStatus(Iterator* iter) {
+  std::string IterStatus(Iterator^ iter) {
     std::string result;
     if (iter->Valid()) {
       result = iter->key().ToString() + "->" + iter->value().ToString();
@@ -671,7 +671,7 @@ TEST(DBTest, GetEncountersEmptyLevel) {
 }
 
 TEST(DBTest, IterEmpty) {
-  Iterator* iter = db_->NewIterator(ReadOptions());
+  Iterator^ iter = db_->NewIterator(ReadOptions());
 
   iter->SeekToFirst();
   ASSERT_EQ(IterStatus(iter), "(invalid)");
@@ -687,7 +687,7 @@ TEST(DBTest, IterEmpty) {
 
 TEST(DBTest, IterSingle) {
   ASSERT_OK(Put("a", "va"));
-  Iterator* iter = db_->NewIterator(ReadOptions());
+  Iterator^ iter = db_->NewIterator(ReadOptions());
 
   iter->SeekToFirst();
   ASSERT_EQ(IterStatus(iter), "a->va");
@@ -727,7 +727,7 @@ TEST(DBTest, IterMulti) {
   ASSERT_OK(Put("a", "va"));
   ASSERT_OK(Put("b", "vb"));
   ASSERT_OK(Put("c", "vc"));
-  Iterator* iter = db_->NewIterator(ReadOptions());
+  Iterator^ iter = db_->NewIterator(ReadOptions());
 
   iter->SeekToFirst();
   ASSERT_EQ(IterStatus(iter), "a->va");
@@ -813,7 +813,7 @@ TEST(DBTest, IterSmallAndLargeMix) {
   ASSERT_OK(Put("d", std::string(100000, 'd')));
   ASSERT_OK(Put("e", std::string(100000, 'e')));
 
-  Iterator* iter = db_->NewIterator(ReadOptions());
+  Iterator^ iter = db_->NewIterator(ReadOptions());
 
   iter->SeekToFirst();
   ASSERT_EQ(IterStatus(iter), "a->va");
@@ -852,7 +852,7 @@ TEST(DBTest, IterMultiWithDelete) {
     ASSERT_OK(Delete("b"));
     ASSERT_EQ("NOT_FOUND", Get("b"));
 
-    Iterator* iter = db_->NewIterator(ReadOptions());
+    Iterator^ iter = db_->NewIterator(ReadOptions());
     iter->Seek("c");
     ASSERT_EQ(IterStatus(iter), "c->vc");
     iter->Prev();
@@ -1171,7 +1171,7 @@ TEST(DBTest, IteratorPinsRef) {
   Put("foo", "hello");
 
   // Get iterator that will yield the current contents of the DB.
-  Iterator* iter = db_->NewIterator(ReadOptions());
+  Iterator^ iter = db_->NewIterator(ReadOptions());
 
   // Write to force compactions
   Put("foo", "newvalue1");
@@ -1871,7 +1871,7 @@ class ModelDB: public DB {
     assert(false);      // Not implemented
     return Status::NotFound(key);
   }
-  virtual Iterator* NewIterator(const ReadOptions& options) {
+  virtual Iterator^ NewIterator(const ReadOptions& options) {
     if (options.snapshot == NULL) {
       KVMap* saved = new KVMap;
       *saved = map_;
@@ -1971,9 +1971,9 @@ static bool CompareIterators(int step,
                              const Snapshot* db_snap) {
   ReadOptions options;
   options.snapshot = model_snap;
-  Iterator* miter = model->NewIterator(options);
+  Iterator^ miter = model->NewIterator(options);
   options.snapshot = db_snap;
-  Iterator* dbiter = db->NewIterator(options);
+  Iterator^ dbiter = db->NewIterator(options);
   bool ok = true;
   int count = 0;
   for (miter->SeekToFirst(), dbiter->SeekToFirst();

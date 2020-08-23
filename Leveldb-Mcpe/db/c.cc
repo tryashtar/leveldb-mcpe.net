@@ -50,7 +50,7 @@ using leveldb::WriteOptions;
 extern "C" {
 
 	struct leveldb_t { DB* rep; };
-	struct leveldb_iterator_t { Iterator* rep; };
+	struct leveldb_iterator_t { Iterator^ rep; };
 	struct leveldb_writebatch_t { WriteBatch        rep; };
 	struct leveldb_snapshot_t { const Snapshot* rep; };
 	struct leveldb_readoptions_t { ReadOptions       rep; };

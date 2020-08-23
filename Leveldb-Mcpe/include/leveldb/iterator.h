@@ -90,10 +90,10 @@ class DLLX Iterator {
 };
 
 // Return an empty iterator (yields nothing).
-extern Iterator* NewEmptyIterator();
+extern Iterator^ NewEmptyIterator();
 
 // Return an empty iterator with the specified status.
-extern Iterator* NewErrorIterator(const Status& status);
+extern Iterator^ NewErrorIterator(const Status& status);
 
 }  // namespace leveldb
 

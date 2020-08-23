@@ -75,7 +75,7 @@ class MemTableIterator: public Iterator {
   void operator=(const MemTableIterator&);
 };
 
-Iterator* MemTable::NewIterator() {
+Iterator^ MemTable::NewIterator() {
   return new MemTableIterator(&table_);
 }
 
