@@ -358,5 +358,14 @@ namespace LevelDB {
             Marshal.Copy(ar, 0, p, ar.Length);
             return p;
         }
+
+        protected override void FreeUnManagedObjects() {
+            if (this.Handle != default(IntPtr)) {
+#if DEBUG
+                System.Diagnostics.Debug.WriteLine("Closing leveldb");
+#endif
+                LevelDBInterop.leveldb_close(this.Handle);
+            }
+        }
     }
 }
