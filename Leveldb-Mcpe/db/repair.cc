@@ -223,7 +223,7 @@ class Repairer {
     // since ExtractMetaData() will also generate edits.
     FileMetaData meta;
     meta.number = next_file_number_++;
-    Iterator^ iter = mem->NewIterator();
+    Iterator* iter = mem->NewIterator();
     status = BuildTable(dbname_, env_, options_, table_cache_, iter, &meta);
     delete iter;
     mem->Unref();
@@ -247,7 +247,7 @@ class Repairer {
     }
   }
 
-  Iterator^ NewTableIterator(const FileMetaData& meta) {
+  Iterator* NewTableIterator(const FileMetaData& meta) {
     // Same as compaction iterators: if paranoid_checks are on, turn
     // on checksum verification.
     ReadOptions r;
@@ -279,7 +279,7 @@ class Repairer {
 
     // Extract metadata by scanning through table.
     int counter = 0;
-    Iterator^ iter = NewTableIterator(t.meta);
+    Iterator* iter = NewTableIterator(t.meta);
     bool empty = true;
     ParsedInternalKey parsed;
     t.max_sequence = 0;
@@ -332,7 +332,7 @@ class Repairer {
     TableBuilder* builder = new TableBuilder(options_, file);
 
     // Copy data.
-    Iterator^ iter = NewTableIterator(t.meta);
+    Iterator* iter = NewTableIterator(t.meta);
     int counter = 0;
     for (iter->SeekToFirst(); iter->Valid(); iter->Next()) {
       builder->Add(iter->key(), iter->value());

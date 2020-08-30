@@ -107,7 +107,7 @@ void Table::ReadMeta(const Footer& footer) {
   }
   Block* meta = new Block(contents);
 
-  Iterator^ iter = meta->NewIterator(BytewiseComparator());
+  Iterator* iter = meta->NewIterator(BytewiseComparator());
   std::string key = "filter.";
   key.append(rep_->options.filter_policy->Name());
   iter->Seek(key);
@@ -162,7 +162,7 @@ static void ReleaseBlock(void* arg, void* h) {
 
 // Convert an index iterator value (i.e., an encoded BlockHandle)
 // into an iterator over the contents of the corresponding block.
-Iterator^ Table::BlockReader(void* arg,
+Iterator* Table::BlockReader(void* arg,
                              const ReadOptions& options,
                              const Slice& index_value) {
   Table* table = reinterpret_cast<Table*>(arg);
@@ -204,7 +204,7 @@ Iterator^ Table::BlockReader(void* arg,
     }
   }
 
-  Iterator^ iter;
+  Iterator* iter;
   if (block != NULL) {
     iter = block->NewIterator(table->rep_->options.comparator);
     if (cache_handle == NULL) {
@@ -218,7 +218,7 @@ Iterator^ Table::BlockReader(void* arg,
   return iter;
 }
 
-Iterator^ Table::NewIterator(const ReadOptions& options) const {
+Iterator* Table::NewIterator(const ReadOptions& options) const {
   return NewTwoLevelIterator(
       rep_->index_block->NewIterator(rep_->options.comparator),
       &Table::BlockReader, const_cast<Table*>(this), options);
@@ -228,7 +228,7 @@ Status Table::InternalGet(const ReadOptions& options, const Slice& k,
                           void* arg,
                           void (*saver)(void*, const Slice&, const Slice&)) {
   Status s;
-  Iterator^ iiter = rep_->index_block->NewIterator(rep_->options.comparator);
+  Iterator* iiter = rep_->index_block->NewIterator(rep_->options.comparator);
   iiter->Seek(k);
   if (iiter->Valid()) {
     Slice handle_value = iiter->value();
@@ -239,7 +239,7 @@ Status Table::InternalGet(const ReadOptions& options, const Slice& k,
         !filter->KeyMayMatch(handle.offset(), k)) {
       // Not found
     } else {
-      Iterator^ block_iter = BlockReader(this, options, iiter->value());
+      Iterator* block_iter = BlockReader(this, options, iiter->value());
       block_iter->Seek(k);
       if (block_iter->Valid()) {
         (*saver)(arg, block_iter->key(), block_iter->value());
@@ -257,7 +257,7 @@ Status Table::InternalGet(const ReadOptions& options, const Slice& k,
 
 
 uint64_t Table::ApproximateOffsetOf(const Slice& key) const {
-  Iterator^ index_iter =
+  Iterator* index_iter =
       rep_->index_block->NewIterator(rep_->options.comparator);
   index_iter->Seek(key);
   uint64_t result;

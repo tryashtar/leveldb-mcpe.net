@@ -13,7 +13,7 @@ namespace leveldb {
 namespace {
 class MergingIterator : public Iterator {
  public:
-  MergingIterator(const Comparator* comparator, Iterator^* children, int n)
+  MergingIterator(const Comparator* comparator, Iterator** children, int n)
       : comparator_(comparator),
         children_(new IteratorWrapper[n]),
         n_(n),
@@ -183,7 +183,7 @@ void MergingIterator::FindLargest() {
 }
 }  // namespace
 
-Iterator^ NewMergingIterator(const Comparator* cmp, Iterator^* list, int n) {
+Iterator* NewMergingIterator(const Comparator* cmp, Iterator** list, int n) {
   assert(n >= 0);
   if (n == 0) {
     return NewEmptyIterator();

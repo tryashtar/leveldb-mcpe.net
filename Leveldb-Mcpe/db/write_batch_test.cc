@@ -19,7 +19,7 @@ static std::string PrintContents(WriteBatch* b) {
   std::string state;
   Status s = WriteBatchInternal::InsertInto(b, mem);
   int count = 0;
-  Iterator^ iter = mem->NewIterator();
+  Iterator* iter = mem->NewIterator();
   for (iter->SeekToFirst(); iter->Valid(); iter->Next()) {
     ParsedInternalKey ikey;
     ASSERT_TRUE(ParseInternalKey(iter->key(), &ikey));

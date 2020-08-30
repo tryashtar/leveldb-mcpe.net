@@ -35,7 +35,7 @@ namespace leveldb {
 		virtual Status Get(const ReadOptions& options,
 			const Slice& key,
 			std::string* value);
-		virtual Iterator^ NewIterator(const ReadOptions&);
+		virtual Iterator* NewIterator(const ReadOptions&);
 		virtual const Snapshot* GetSnapshot();
 		virtual void ReleaseSnapshot(const Snapshot* snapshot);
 		virtual bool GetProperty(const Slice& property, std::string* value);
@@ -59,7 +59,7 @@ namespace leveldb {
 		// Return an internal iterator over the current state of the database.
 		// The keys of this iterator are internal keys (see format.h).
 		// The returned iterator should be deleted when no longer needed.
-		Iterator^ TEST_NewInternalIterator();
+		Iterator* TEST_NewInternalIterator();
 
 		// Return the maximum overlapping data (in bytes) at next level for any
 		// file at a level >= 1.
@@ -75,7 +75,7 @@ namespace leveldb {
 		struct CompactionState;
 		struct Writer;
 
-		Iterator^ NewInternalIterator(const ReadOptions&,
+		Iterator* NewInternalIterator(const ReadOptions&,
 			SequenceNumber* latest_snapshot,
 			uint32_t* seed);
 
@@ -120,7 +120,7 @@ namespace leveldb {
 			EXCLUSIVE_LOCKS_REQUIRED(mutex_);
 
 		Status OpenCompactionOutputFile(CompactionState* compact);
-		Status FinishCompactionOutputFile(CompactionState* compact, Iterator^ input);
+		Status FinishCompactionOutputFile(CompactionState* compact, Iterator* input);
 		Status InstallCompactionResults(CompactionState* compact)
 			EXCLUSIVE_LOCKS_REQUIRED(mutex_);
 

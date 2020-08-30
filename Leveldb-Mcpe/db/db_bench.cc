@@ -772,7 +772,7 @@ class Benchmark {
   }
 
   void ReadSequential(ThreadState* thread) {
-    Iterator^ iter = db_->NewIterator(ReadOptions());
+    Iterator* iter = db_->NewIterator(ReadOptions());
     int i = 0;
     int64_t bytes = 0;
     for (iter->SeekToFirst(); i < reads_ && iter->Valid(); iter->Next()) {
@@ -785,7 +785,7 @@ class Benchmark {
   }
 
   void ReadReverse(ThreadState* thread) {
-    Iterator^ iter = db_->NewIterator(ReadOptions());
+    Iterator* iter = db_->NewIterator(ReadOptions());
     int i = 0;
     int64_t bytes = 0;
     for (iter->SeekToLast(); i < reads_ && iter->Valid(); iter->Prev()) {
@@ -844,7 +844,7 @@ class Benchmark {
     ReadOptions options;
     int found = 0;
     for (int i = 0; i < reads_; i++) {
-      Iterator^ iter = db_->NewIterator(options);
+      Iterator* iter = db_->NewIterator(options);
       char key[100];
       const int k = thread->rand.Next() % FLAGS_num;
       snprintf(key, sizeof(key), "%016d", k);

@@ -25,7 +25,7 @@ typedef SSIZE_T ssize_t;
 namespace leveldb {
 
 #if 0
-	static void DumpInternalIter(Iterator^ iter) {
+	static void DumpInternalIter(Iterator* iter) {
 		for (iter->SeekToFirst(); iter->Valid(); iter->Next()) {
 			ParsedInternalKey k;
 			if (!ParseInternalKey(iter->key(), &k)) {
@@ -57,7 +57,7 @@ namespace leveldb {
 				kReverse
 			};
 
-			DBIter(DBImpl* db, const Comparator* cmp, Iterator^ iter, SequenceNumber s,
+			DBIter(DBImpl* db, const Comparator* cmp, Iterator* iter, SequenceNumber s,
 				uint32_t seed)
 				: db_(db),
 				user_comparator_(cmp),
@@ -121,7 +121,7 @@ namespace leveldb {
 
 			DBImpl* db_;
 			const Comparator* const user_comparator_;
-			Iterator^ const iter_;
+			Iterator* const iter_;
 			SequenceNumber const sequence_;
 
 			Status status_;
@@ -324,10 +324,10 @@ namespace leveldb {
 
 	}  // anonymous namespace
 
-	Iterator^ NewDBIterator(
+	Iterator* NewDBIterator(
 		DBImpl* db,
 		const Comparator* user_key_comparator,
-		Iterator^ internal_iter,
+		Iterator* internal_iter,
 		SequenceNumber sequence,
 		uint32_t seed) {
 		return new DBIter(db, user_key_comparator, internal_iter, sequence, seed);

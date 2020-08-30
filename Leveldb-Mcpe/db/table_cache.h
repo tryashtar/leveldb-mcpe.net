@@ -30,7 +30,7 @@ namespace leveldb {
 		// the returned iterator.  The returned "*tableptr" object is owned by
 		// the cache and should not be deleted, and is valid for as long as the
 		// returned iterator is live.
-		Iterator^ NewIterator(const ReadOptions& options,
+		Iterator* NewIterator(const ReadOptions& options,
 			uint64_t file_number,
 			uint64_t file_size,
 			Table** tableptr = NULL);

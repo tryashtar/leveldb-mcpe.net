@@ -26,7 +26,7 @@ namespace leveldb {
 		Env* env,
 		const Options& options,
 		TableCache* table_cache,
-		Iterator^ iter,
+		Iterator* iter,
 		FileMetaData* meta);
 
 }  // namespace leveldb

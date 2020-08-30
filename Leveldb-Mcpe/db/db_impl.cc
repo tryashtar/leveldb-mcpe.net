@@ -499,7 +499,7 @@ namespace leveldb {
 		FileMetaData meta;
 		meta.number = versions_->NewFileNumber();
 		pending_outputs_.insert(meta.number);
-		Iterator^ iter = mem->NewIterator();
+		Iterator* iter = mem->NewIterator();
 		Log(options_.info_log, "Level-0 table #%llu: started",
 			(unsigned long long) meta.number);
 
@@ -859,7 +859,7 @@ namespace leveldb {
 	}
 
 	Status DBImpl::FinishCompactionOutputFile(CompactionState* compact,
-		Iterator^ input) {
+		Iterator* input) {
 		assert(compact != NULL);
 		assert(compact->outfile != NULL);
 		assert(compact->builder != NULL);
@@ -894,7 +894,7 @@ namespace leveldb {
 
 		if (s.ok() && current_entries > 0) {
 			// Verify that the table is usable
-			Iterator^ iter = table_cache_->NewIterator(ReadOptions(),
+			Iterator* iter = table_cache_->NewIterator(ReadOptions(),
 				output_number,
 				current_bytes);
 			s = iter->status();
@@ -956,7 +956,7 @@ namespace leveldb {
 		// Release mutex while we're actually doing the compaction work
 		mutex_.Unlock();
 
-		Iterator^ input = versions_->MakeInputIterator(compact->compaction);
+		Iterator* input = versions_->MakeInputIterator(compact->compaction);
 		input->SeekToFirst();
 		Status status;
 		ParsedInternalKey ikey;
@@ -1116,7 +1116,7 @@ namespace leveldb {
 		}
 	}  // namespace
 
-	Iterator^ DBImpl::NewInternalIterator(const ReadOptions& options,
+	Iterator* DBImpl::NewInternalIterator(const ReadOptions& options,
 		SequenceNumber* latest_snapshot,
 		uint32_t* seed) {
 		IterState* cleanup = new IterState;
@@ -1124,7 +1124,7 @@ namespace leveldb {
 		*latest_snapshot = versions_->LastSequence();
 
 		// Collect together all needed child iterators
-		std::vector<Iterator^> list;
+		std::vector<Iterator*> list;
 		list.push_back(mem_->NewIterator());
 		mem_->Ref();
 		if (imm_ != NULL) {
@@ -1132,7 +1132,7 @@ namespace leveldb {
 			imm_->Ref();
 		}
 		versions_->current()->AddIterators(options, &list);
-		Iterator^ internal_iter =
+		Iterator* internal_iter =
 			NewMergingIterator(&internal_comparator_, &list[0], (uint32_t)list.size());
 		versions_->current()->Ref();
 
@@ -1147,7 +1147,7 @@ namespace leveldb {
 		return internal_iter;
 	}
 
-	Iterator^ DBImpl::TEST_NewInternalIterator() {
+	Iterator* DBImpl::TEST_NewInternalIterator() {
 		SequenceNumber ignored;
 		uint32_t ignored_seed;
 		return NewInternalIterator(ReadOptions(), &ignored, &ignored_seed);
@@ -1208,10 +1208,10 @@ namespace leveldb {
 		return s;
 	}
 
-	Iterator^ DBImpl::NewIterator(const ReadOptions& options) {
+	Iterator* DBImpl::NewIterator(const ReadOptions& options) {
 		SequenceNumber latest_snapshot;
 		uint32_t seed;
-		Iterator^ iter = NewInternalIterator(options, &latest_snapshot, &seed);
+		Iterator* iter = NewInternalIterator(options, &latest_snapshot, &seed);
 		return NewDBIterator(
 			this, user_comparator(), iter,
 			(options.snapshot != NULL

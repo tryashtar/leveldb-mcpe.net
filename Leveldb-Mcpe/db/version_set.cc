@@ -210,7 +210,7 @@ class Version::LevelFileNumIterator : public Iterator {
   mutable char value_buf_[16];
 };
 
-static Iterator^ GetFileIterator(void* arg,
+static Iterator* GetFileIterator(void* arg,
                                  const ReadOptions& options,
                                  const Slice& file_value) {
   TableCache* cache = reinterpret_cast<TableCache*>(arg);
@@ -224,7 +224,7 @@ static Iterator^ GetFileIterator(void* arg,
   }
 }
 
-Iterator^ Version::NewConcatenatingIterator(const ReadOptions& options,
+Iterator* Version::NewConcatenatingIterator(const ReadOptions& options,
                                             int level) const {
   return NewTwoLevelIterator(
       new LevelFileNumIterator(vset_->icmp_, &files_[level]),
@@ -232,7 +232,7 @@ Iterator^ Version::NewConcatenatingIterator(const ReadOptions& options,
 }
 
 void Version::AddIterators(const ReadOptions& options,
-                           std::vector<Iterator^>* iters) {
+                           std::vector<Iterator*>* iters) {
   // Merge all level zero files together since they may overlap
   for (size_t i = 0; i < files_[0].size(); i++) {
     iters->push_back(
@@ -1181,7 +1181,7 @@ uint64_t VersionSet::ApproximateOffsetOf(Version* v, const InternalKey& ikey) {
         // "ikey" falls in the range for this table.  Add the
         // approximate offset of "ikey" within the table.
         Table* tableptr;
-        Iterator^ iter = table_cache_->NewIterator(
+        Iterator* iter = table_cache_->NewIterator(
             ReadOptions(), files[i]->number, files[i]->file_size, &tableptr);
         if (tableptr != NULL) {
           result += tableptr->ApproximateOffsetOf(ikey.Encode());
@@ -1266,7 +1266,7 @@ void VersionSet::GetRange2(const std::vector<FileMetaData*>& inputs1,
   GetRange(all, smallest, largest);
 }
 
-Iterator^ VersionSet::MakeInputIterator(Compaction* c) {
+Iterator* VersionSet::MakeInputIterator(Compaction* c) {
   ReadOptions options;
   options.verify_checksums = options_->paranoid_checks;
   options.fill_cache = false;
@@ -1275,7 +1275,7 @@ Iterator^ VersionSet::MakeInputIterator(Compaction* c) {
   // we will make a concatenating iterator per level.
   // TODO(opt): use concatenating iterator for level-0 if there is no overlap
   const int space = (c->level() == 0 ? (uint32_t)c->inputs_[0].size() + 1 : 2);
-  Iterator^* list = new Iterator^[space];
+  Iterator** list = new Iterator*[space];
   int num = 0;
   for (int which = 0; which < 2; which++) {
     if (!c->inputs_[which].empty()) {
@@ -1294,7 +1294,7 @@ Iterator^ VersionSet::MakeInputIterator(Compaction* c) {
     }
   }
   assert(num <= space);
-  Iterator^ result = NewMergingIterator(&icmp_, list, num);
+  Iterator* result = NewMergingIterator(&icmp_, list, num);
   delete[] list;
   return result;
 }

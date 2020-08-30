@@ -22,7 +22,7 @@ namespace leveldb {
 		~Block();
 
 		size_t size() const { return size_; }
-		Iterator^ NewIterator(const Comparator* comparator);
+		Iterator* NewIterator(const Comparator* comparator);
 
 	private:
 		uint32_t NumRestarts() const;

@@ -45,7 +45,7 @@ namespace leveldb {
 		// Returns a new iterator over the table contents.
 		// The result of NewIterator() is initially invalid (caller must
 		// call one of the Seek methods on the iterator before using it).
-		Iterator^ NewIterator(const ReadOptions&) const;
+		Iterator* NewIterator(const ReadOptions&) const;
 
 		// Given a key, return an approximate byte offset in the file where
 		// the data for that key begins (or would begin if the key were
@@ -60,7 +60,7 @@ namespace leveldb {
 		Rep* rep_;
 
 		explicit Table(Rep* rep) { rep_ = rep; }
-		static Iterator^ BlockReader(void*, const ReadOptions&, const Slice&);
+		static Iterator* BlockReader(void*, const ReadOptions&, const Slice&);
 
 		// Calls (*handle_result)(arg, ...) with the entry found after a call
 		// to Seek(key).  May not make such a call if filter policy says

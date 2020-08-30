@@ -71,7 +71,7 @@ TEST(Issue178, Test) {
   db->CompactRange(&least, &greatest);
 
   // count the keys
-  leveldb::Iterator^ iter = db->NewIterator(leveldb::ReadOptions());
+  leveldb::Iterator* iter = db->NewIterator(leveldb::ReadOptions());
   size_t num_keys = 0;
   for (iter->SeekToFirst(); iter->Valid(); iter->Next()) {
     num_keys++;

@@ -78,7 +78,7 @@ void AutoCompactTest::DoReads(int n) {
   std::string limit_key = Key(n);
   for (int read = 0; true; read++) {
     ASSERT_LT(read, 100) << "Taking too long to compact";
-    Iterator^ iter = db_->NewIterator(ReadOptions());
+    Iterator* iter = db_->NewIterator(ReadOptions());
     for (iter->SeekToFirst();
          iter->Valid() && iter->key().ToString() < limit_key;
          iter->Next()) {
