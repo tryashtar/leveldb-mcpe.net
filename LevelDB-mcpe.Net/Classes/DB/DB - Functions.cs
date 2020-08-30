@@ -11,9 +11,6 @@ namespace LevelDB {
     /// </summary>
     public partial class DB  {
 
-
-
-
         /// <summary>
         /// If a DB cannot be opened, you may attempt to call this method to
         /// resurrect as much of the contents of the database as possible.

@@ -25,15 +25,5 @@ namespace LevelDB {
             System.Diagnostics.Debug.WriteLine("Opened leveldb: " + name);
 #endif
         }
-
-        /// <summary>When the database is getting destroyed, close the database handle</summary>
-        protected override void FreeUnManagedObjects() {
-            if (this.Handle != default) {
-#if DEBUG
-                System.Diagnostics.Debug.WriteLine("Closing leveldb");
-#endif
-                LevelDBInterop.leveldb_close(this.Handle);
-            }
-        }
     }
 }
