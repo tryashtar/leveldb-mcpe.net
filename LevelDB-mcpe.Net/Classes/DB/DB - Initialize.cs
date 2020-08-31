@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace LevelDB {
     /// <summary>
@@ -24,6 +23,10 @@ namespace LevelDB {
 #if DEBUG
             System.Diagnostics.Debug.WriteLine("Opened leveldb: " + name);
 #endif
+        }
+
+        ~DB() {
+            this.FreeUnManagedObjects();
         }
     }
 }

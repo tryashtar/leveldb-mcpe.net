@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -9,7 +7,7 @@ namespace LevelDB {
     /// A DB is a persistent ordered map from keys to values.
     /// A DB is safe for concurrent access from multiple threads without any external synchronization.
     /// </summary>
-    public partial class DB  {
+    public partial class DB {
 
         /// <summary>
         /// If a DB cannot be opened, you may attempt to call this method to
@@ -29,8 +27,7 @@ namespace LevelDB {
         /// Options should not be modified after calling this method.
         /// </summary>
         public static void Repair(String name, Options options) {
-            IntPtr error;
-            LevelDBInterop.leveldb_repair_db(options.Handle, name, out error);
+            LevelDBInterop.leveldb_repair_db(options.Handle, name, out IntPtr error);
             LevelDBException.Check(error);
             GC.KeepAlive(options);
         }
@@ -49,8 +46,7 @@ namespace LevelDB {
         /// Options should not be modified after calling this method.
         /// </summary>
         public static void Destroy(String name, Options options) {
-            IntPtr error;
-            LevelDBInterop.leveldb_destroy_db(options.Handle, name, out error);
+            LevelDBInterop.leveldb_destroy_db(options.Handle, name, out IntPtr error);
             LevelDBException.Check(error);
             GC.KeepAlive(options);
         }
@@ -80,8 +76,7 @@ namespace LevelDB {
         /// Set the database entry for "key" to "value".  
         /// </summary>
         public void Put(Byte[] key, Byte[] value, WriteOptions options) {
-            IntPtr error;
-            LevelDBInterop.leveldb_put(this.Handle, options.Handle, key, (IntPtr)key.Length, value, (IntPtr)value.LongLength, out error);
+            LevelDBInterop.leveldb_put(this.Handle, options.Handle, key, (IntPtr)key.Length, value, (IntPtr)value.LongLength, out IntPtr error);
             LevelDBException.Check(error);
             GC.KeepAlive(options);
             GC.KeepAlive(this);
@@ -116,8 +111,7 @@ namespace LevelDB {
         /// It is not an error if "key" did not exist in the database.
         /// </summary>
         public void Delete(Byte[] key, WriteOptions options) {
-            IntPtr error;
-            LevelDBInterop.leveldb_delete(this.Handle, options.Handle, key, (IntPtr)key.Length, out error);
+            LevelDBInterop.leveldb_delete(this.Handle, options.Handle, key, (IntPtr)key.Length, out IntPtr error);
             LevelDBException.Check(error);
             GC.KeepAlive(options);
             GC.KeepAlive(this);
@@ -133,8 +127,7 @@ namespace LevelDB {
         /// <param name="batch">FILL IN</param>
         /// <param name="options">FILL IN</param>
         public void Write(WriteBatch batch, WriteOptions options) {
-            IntPtr error;
-            LevelDBInterop.leveldb_write(this.Handle, options.Handle, batch.Handle, out error);
+            LevelDBInterop.leveldb_write(this.Handle, options.Handle, batch.Handle, out IntPtr error);
             LevelDBException.Check(error);
             GC.KeepAlive(batch);
             GC.KeepAlive(options);
@@ -171,9 +164,7 @@ namespace LevelDB {
         /// otherwise return null.
         /// </summary>
         public unsafe Byte[] Get(Byte[] key, ReadOptions options) {
-            IntPtr error;
-            IntPtr lengthPtr;
-            IntPtr valuePtr = LevelDBInterop.leveldb_get(this.Handle, options.Handle, key, (IntPtr)key.Length, out lengthPtr, out error);
+            IntPtr valuePtr = LevelDBInterop.leveldb_get(this.Handle, options.Handle, key, (IntPtr)key.Length, out IntPtr lengthPtr, out IntPtr error);
             LevelDBException.Check(error);
             if (valuePtr == IntPtr.Zero) {
                 return null;
@@ -350,18 +341,34 @@ namespace LevelDB {
             return sizes[0];
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Close() {
+            this.FreeUnManagedObjects();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ar"></param>
+        /// <returns></returns>
         private IntPtr MarshalArray(Byte[] ar) {
             IntPtr p = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(Byte)) * ar.Length);
             Marshal.Copy(ar, 0, p, ar.Length);
             return p;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         protected override void FreeUnManagedObjects() {
-            if (this.Handle != default(IntPtr)) {
+            if (this.Handle != default) {
 #if DEBUG
                 System.Diagnostics.Debug.WriteLine("Closing leveldb");
 #endif
                 LevelDBInterop.leveldb_close(this.Handle);
+                this.Handle = default;
             }
         }
     }

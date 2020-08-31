@@ -11,6 +11,5 @@ namespace LevelDB {
     /// </summary>
     public partial class DB  {
         private Options Options;
-
     }
 }

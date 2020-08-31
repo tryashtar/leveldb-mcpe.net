@@ -133,7 +133,7 @@
     <Compile Include="Classes\DB\DB - Functions.cs" />
     <Compile Include="Classes\DB\DB - IEnumerable.cs" />
     <Compile Include="Classes\DB\DB - Variable.cs" />
-    <Compile Include="Classes\DB\DB.cs" />
+    <Compile Include="Classes\DB\DB - Initialize.cs" />
     <Compile Include="Classes\Env.cs" />
     <Compile Include="Classes\Iterator.cs" />
     <Compile Include="Classes\LevelDBException.cs" />
