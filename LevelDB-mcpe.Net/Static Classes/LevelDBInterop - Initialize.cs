@@ -7,7 +7,7 @@ namespace LevelDB {
     public static partial class LevelDBInterop {
         ///DOLATER <summary>Add Description</summary>
         static LevelDBInterop() {
-            Assembly assembly = Assembly.GetExecutingAssembly();
+            var assembly = Assembly.GetExecutingAssembly();
 
             //Library provide should be the same platform/archetecture
             String folder = Path.GetDirectoryName(assembly.Location);

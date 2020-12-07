@@ -285,7 +285,7 @@ namespace LevelDB {
                 for (Int32 i = 0; i < this.array.Length; i++) {
                     this.handles[i] = GCHandle.Alloc(this.array[i], GCHandleType.Pinned);
                 }
-                IntPtr[] pointers = new IntPtr[this.handles.Length];
+                var pointers = new IntPtr[this.handles.Length];
                 for (Int32 i = 0; i < this.handles.Length; i++) {
                     pointers[i] = this.handles[i].AddrOfPinnedObject();
                 }

@@ -63,17 +63,17 @@ namespace LevelDB {
         }
 
         private static DestructorSignature Destructor = (selfHandle) => {
-            GCHandle gcHandle = GCHandle.FromIntPtr(selfHandle);
-            Comparator self = (Comparator)gcHandle.Target;
+            var gcHandle = GCHandle.FromIntPtr(selfHandle);
+            var self = (Comparator)gcHandle.Target;
             self.Dispose();
             gcHandle.Free();
         };
         private static CompareSignature Compare = (selfHandle, data1, size1, data2, size2) => {
-            Comparator self = (Comparator)GCHandle.FromIntPtr(selfHandle).Target;
+            var self = (Comparator)GCHandle.FromIntPtr(selfHandle).Target;
             return self.ExecuteComparison(data1, size1, data2, size2);
         };
         private static GetNameSignature GetName = (selfHandle) => {
-            Comparator self = (Comparator)GCHandle.FromIntPtr(selfHandle).Target;
+            var self = (Comparator)GCHandle.FromIntPtr(selfHandle).Target;
             return self.NativeName;
         };
 

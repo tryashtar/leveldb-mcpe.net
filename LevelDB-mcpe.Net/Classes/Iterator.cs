@@ -92,8 +92,7 @@ namespace LevelDB {
         /// REQUIRES: IsValid()
         /// </summary>
         public Byte[] Key() {
-            IntPtr length;
-            IntPtr key = LevelDBInterop.leveldb_iter_key(this.Handle, out length);
+            IntPtr key = LevelDBInterop.leveldb_iter_key(this.Handle, out IntPtr length);
             this.Throw();
 
             Byte[] bytes = new Byte[(Int32)length];
@@ -115,8 +114,7 @@ namespace LevelDB {
         /// REQUIRES: IsValid()
         /// </summary>
         public unsafe Byte[] Value() {
-            IntPtr length;
-            IntPtr value = LevelDBInterop.leveldb_iter_value(this.Handle, out length);
+            IntPtr value = LevelDBInterop.leveldb_iter_value(this.Handle, out IntPtr length);
             this.Throw();
 
             Byte[] bytes = new Byte[(Int64)length];
@@ -133,8 +131,7 @@ namespace LevelDB {
         /// If an error has occurred, throw it.  
         /// </summary>
         private void Throw() {
-            IntPtr error;
-            LevelDBInterop.leveldb_iter_get_error(this.Handle, out error);
+            LevelDBInterop.leveldb_iter_get_error(this.Handle, out IntPtr error);
             LevelDBException.Check(error);
             GC.KeepAlive(this);
         }

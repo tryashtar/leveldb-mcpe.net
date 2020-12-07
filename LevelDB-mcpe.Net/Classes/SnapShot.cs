@@ -20,7 +20,7 @@ namespace LevelDB {
         }
 
         protected override void FreeUnManagedObjects() {
-            DB parent = this.Parent.Target as DB;
+            var parent = this.Parent.Target as DB;
             if (parent != null) {
                 LevelDBInterop.leveldb_release_snapshot(parent.Handle, this.Handle);
             }

@@ -14,7 +14,7 @@ namespace LevelDB {
         /// verified against corresponding checksums.
         /// </summary>
         public Boolean VerifyCheckSums {
-            set { LevelDBInterop.leveldb_readoptions_set_verify_checksums(this.Handle, value ? (Byte)1 : (Byte)0); }
+            set => LevelDBInterop.leveldb_readoptions_set_verify_checksums(this.Handle, value ? (Byte)1 : (Byte)0);
         }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace LevelDB {
         /// Default: true
         /// </summary>
         public Boolean FillCache {
-            set { LevelDBInterop.leveldb_readoptions_set_fill_cache(this.Handle, value ? (Byte)1 : (Byte)0); }
+            set => LevelDBInterop.leveldb_readoptions_set_fill_cache(this.Handle, value ? (Byte)1 : (Byte)0);
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace LevelDB {
         /// snapshot of the state at the beginning of this read operation.
         /// </summary>
         public SnapShot Snapshot {
-            set { LevelDBInterop.leveldb_readoptions_set_snapshot(this.Handle, value.Handle); }
+            set => LevelDBInterop.leveldb_readoptions_set_snapshot(this.Handle, value.Handle);
         }
 
         protected override void FreeUnManagedObjects() {

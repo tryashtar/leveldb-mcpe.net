@@ -202,7 +202,7 @@ namespace LevelDB {
         /// call one of the Seek methods on the iterator before using it).
         /// </summary>
         public Iterator CreateIterator(ReadOptions options) {
-            Iterator result = new Iterator(LevelDBInterop.leveldb_create_iterator(this.Handle, options.Handle));
+            var result = new Iterator(LevelDBInterop.leveldb_create_iterator(this.Handle, options.Handle));
             GC.KeepAlive(options);
             GC.KeepAlive(this);
             return result;
@@ -213,7 +213,7 @@ namespace LevelDB {
         /// Iterators and Gets created with this handle will all observe a stable snapshot of the current DB state.  
         /// </summary>
         public SnapShot CreateSnapshot() {
-            SnapShot result = new SnapShot(LevelDBInterop.leveldb_create_snapshot(this.Handle), this);
+            var result = new SnapShot(LevelDBInterop.leveldb_create_snapshot(this.Handle), this);
             GC.KeepAlive(this);
             return result;
         }
@@ -331,8 +331,8 @@ namespace LevelDB {
         /// <param name="limitKey">FILL IN</param>
         ///DOLATER <returns>Fill in return</returns>
         public unsafe Int64 GetApproximateSize(Byte[] startKey, Byte[] limitKey) {
-            IntPtr l1 = (IntPtr)startKey.Length;
-            IntPtr l2 = (IntPtr)limitKey.Length;
+            var l1 = (IntPtr)startKey.Length;
+            var l2 = (IntPtr)limitKey.Length;
             Int64[] sizes = new Int64[1];
 
             LevelDBInterop.leveldb_approximate_sizes(this.Handle, 1, new Byte[][] { startKey }, new IntPtr[] { l1 }, new Byte[][] { limitKey }, new IntPtr[] { l2 }, sizes);

@@ -26,7 +26,7 @@ namespace LevelDB {
         /// system call followed by "fsync()".
         /// </summary>
         public Boolean Sync {
-            set { LevelDBInterop.leveldb_writeoptions_set_sync(this.Handle, value ? (Byte)1 : (Byte)0); }
+            set => LevelDBInterop.leveldb_writeoptions_set_sync(this.Handle, value ? (Byte)1 : (Byte)0);
         }
 
         protected override void FreeUnManagedObjects() {
