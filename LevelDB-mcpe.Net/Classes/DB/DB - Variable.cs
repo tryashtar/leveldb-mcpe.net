@@ -4,6 +4,6 @@
     /// A DB is safe for concurrent access from multiple threads without any external synchronization.
     /// </summary>
     public partial class DB  {
-        private Options Options;
+        private Options _Options;
     }
 }

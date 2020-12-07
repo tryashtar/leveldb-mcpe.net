@@ -15,10 +15,10 @@ namespace LevelDB {
         /// <param name="name">The name (subfolder) of the database</param>
         /// <param name="options">Options should not be modified after calling this method.</param>
         public DB(String name, Options options) {
-            this.Options = options ?? new Options();
-            this.Handle = LevelDBInterop.leveldb_open(this.Options.Handle, name, out IntPtr error);
+            this._Options = options ?? new Options();
+            this.Handle = LevelDBInterop.leveldb_open(this._Options.Handle, name, out IntPtr error);
             LevelDBException.Check(error);
-            GC.KeepAlive(this.Options);
+            GC.KeepAlive(this._Options);
 
 #if DEBUG
             System.Diagnostics.Debug.WriteLine("Opened leveldb: " + name);

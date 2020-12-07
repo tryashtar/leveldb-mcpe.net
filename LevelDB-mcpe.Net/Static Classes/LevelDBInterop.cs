@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-#pragma warning disable CA1401 // P/Invokes should not be visible
 namespace LevelDB {
     public static partial class LevelDBInterop {
 
@@ -235,9 +234,9 @@ namespace LevelDB {
 
         ///DOLATER <summary>Add Description</summary>
         public class JaggedArrayMarshaler : ICustomMarshaler {
-            private GCHandle[] handles;
-            private GCHandle buffer;
-            private Array[] array;
+            private GCHandle[] _Handles;
+            private GCHandle _Buffer;
+            private Array[] _Array;
 
             /// <summary>
             /// 
@@ -260,8 +259,8 @@ namespace LevelDB {
             /// </summary>
             /// <param name="pNativeData">FILL IN</param>
             public void CleanUpNativeData(IntPtr pNativeData) {
-                this.buffer.Free();
-                foreach (GCHandle handle in this.handles) {
+                this._Buffer.Free();
+                foreach (GCHandle handle in this._Handles) {
                     handle.Free();
                 }
             }
@@ -280,17 +279,17 @@ namespace LevelDB {
             /// <param name="ManagedObj">FILL IN</param>
             ///DOLATER <returns>Fill in return</returns>
             public IntPtr MarshalManagedToNative(Object ManagedObj) {
-                this.array = (Array[])ManagedObj;
-                this.handles = new GCHandle[this.array.Length];
-                for (Int32 i = 0; i < this.array.Length; i++) {
-                    this.handles[i] = GCHandle.Alloc(this.array[i], GCHandleType.Pinned);
+                this._Array = (Array[])ManagedObj;
+                this._Handles = new GCHandle[this._Array.Length];
+                for (Int32 i = 0; i < this._Array.Length; i++) {
+                    this._Handles[i] = GCHandle.Alloc(this._Array[i], GCHandleType.Pinned);
                 }
-                var pointers = new IntPtr[this.handles.Length];
-                for (Int32 i = 0; i < this.handles.Length; i++) {
-                    pointers[i] = this.handles[i].AddrOfPinnedObject();
+                var pointers = new IntPtr[this._Handles.Length];
+                for (Int32 i = 0; i < this._Handles.Length; i++) {
+                    pointers[i] = this._Handles[i].AddrOfPinnedObject();
                 }
-                this.buffer = GCHandle.Alloc(pointers, GCHandleType.Pinned);
-                return this.buffer.AddrOfPinnedObject();
+                this._Buffer = GCHandle.Alloc(pointers, GCHandleType.Pinned);
+                return this._Buffer.AddrOfPinnedObject();
             }
 
             /// <summary>
@@ -299,12 +298,10 @@ namespace LevelDB {
             /// <param name="pNativeData">FILL IN</param>
             ///DOLATER <returns>Fill in return</returns>
             public Object MarshalNativeToManaged(IntPtr pNativeData) {
-                return this.array;
+                return this._Array;
             }
         }
 
         #endregion
     }
 }
-
-#pragma warning restore CA1401 // P/Invokes should not be visible
