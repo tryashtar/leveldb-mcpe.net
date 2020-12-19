@@ -24,6 +24,9 @@ namespace LevelDB {
             this.Handle = LevelDBInterop.leveldb_cache_create_lru((IntPtr)capacity);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         protected override void FreeUnManagedObjects() {
             LevelDBInterop.leveldb_cache_destroy(this.Handle);
         }

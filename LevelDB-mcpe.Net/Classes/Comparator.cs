@@ -4,6 +4,9 @@ using System.Runtime.InteropServices;
 using System.Text;
 
 namespace LevelDB {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Comparator : LevelDBHandle {
         /// <summary>
         /// 
