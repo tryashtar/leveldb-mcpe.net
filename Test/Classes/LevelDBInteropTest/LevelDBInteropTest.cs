@@ -12,7 +12,7 @@ namespace LevelDB.Test {
         public void TestDllimport() {
             MethodInfo[] methods = typeof(LevelDBInterop).GetMethods(BindingFlags.Static | BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 
-            List<String> Errors = new List<String>();
+            List<String> Errors = new List<String>(2);
 
             foreach (MethodInfo M in methods) {
                 Object[] Attributes = M.GetCustomAttributes(typeof(DllImportAttribute), true);
