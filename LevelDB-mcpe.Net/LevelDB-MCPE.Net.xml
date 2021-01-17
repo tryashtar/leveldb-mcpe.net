@@ -4,6 +4,22 @@
         <name>LevelDB-MCPE.Net</name>
     </assembly>
     <members>
+        <member name="T:LevelDB.BloomFilterPolicy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:LevelDB.BloomFilterPolicy.#ctor(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="bits_per_key"></param>
+        </member>
+        <member name="M:LevelDB.BloomFilterPolicy.FreeUnManagedObjects">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:LevelDB.Cache">
              <summary>
              A Cache is an interface that maps keys to values.  It has internal
@@ -24,6 +40,16 @@
             <summary>
             Create a new cache with a fixed size capacity.  This implementation
             of Cache uses a LRU eviction policy.
+            </summary>
+        </member>
+        <member name="M:LevelDB.Cache.FreeUnManagedObjects">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:LevelDB.Comparator">
+            <summary>
+            
             </summary>
         </member>
         <member name="F:LevelDB.Comparator._NativeName">
