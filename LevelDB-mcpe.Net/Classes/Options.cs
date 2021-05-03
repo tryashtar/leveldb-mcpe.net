@@ -8,11 +8,29 @@ namespace LevelDB {
     /// use Option object if throws.
     /// </summary>
     public class Options : LevelDBHandle {
+        /// <summary>
+        /// 
+        /// </summary>
         private Env EnvValue { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         private Cache CacheValue { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         private Comparator ComparatorValue { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         private BloomFilterPolicy BloomValue { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Options() {
             this.Handle = LevelDBInterop.leveldb_options_create();
         }

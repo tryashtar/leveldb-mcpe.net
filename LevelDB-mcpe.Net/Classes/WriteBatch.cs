@@ -15,6 +15,9 @@ namespace LevelDB {
     ///    batch.Put("key", "v3");
     /// </summary>
     public class WriteBatch : LevelDBHandle {
+        /// <summary>
+        /// 
+        /// </summary>
         public WriteBatch() {
             this.Handle = LevelDBInterop.leveldb_writebatch_create();
         }

@@ -5,6 +5,9 @@ namespace LevelDB {
     /// Options that control write operations.
     /// </summary>
     public class WriteOptions : LevelDBHandle {
+        /// <summary>
+        /// 
+        /// </summary>
         public WriteOptions() {
             this.Handle = LevelDBInterop.leveldb_writeoptions_create();
         }

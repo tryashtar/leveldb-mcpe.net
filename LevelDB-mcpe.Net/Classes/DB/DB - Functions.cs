@@ -230,6 +230,7 @@ namespace LevelDB {
         /// "leveldb.stats" - returns a multi-line string that describes statistics
         /// about the internal operation of the DB.
         /// </summary>
+        /// <paramref name="name"></paramref>
         public String PropertyValue(String name) {
             IntPtr ptr = LevelDBInterop.leveldb_property_value(this.Handle, name);
             if (ptr == IntPtr.Zero) {

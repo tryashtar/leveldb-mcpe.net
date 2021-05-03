@@ -1026,6 +1026,31 @@
             use Option object if throws.
             </summary>
         </member>
+        <member name="P:LevelDB.Options.EnvValue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:LevelDB.Options.CacheValue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:LevelDB.Options.ComparatorValue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:LevelDB.Options.BloomValue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:LevelDB.Options.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="P:LevelDB.Options.CreateIfMissing">
             <summary>
             If true, the database will be created if it is missing.
@@ -1211,6 +1236,11 @@
                 batch.Put("key", "v3");
              </summary>
         </member>
+        <member name="M:LevelDB.WriteBatch.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:LevelDB.WriteBatch.Clear">
             <summary>
             Clear all updates buffered in this batch.
@@ -1251,6 +1281,11 @@
         <member name="T:LevelDB.WriteOptions">
             <summary>
             Options that control write operations.
+            </summary>
+        </member>
+        <member name="M:LevelDB.WriteOptions.#ctor">
+            <summary>
+            
             </summary>
         </member>
         <member name="P:LevelDB.WriteOptions.Sync">
