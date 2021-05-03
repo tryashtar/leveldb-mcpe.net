@@ -112,14 +112,14 @@ namespace LevelDB {
 
         ///DOLATER <summary>Add Description</summary>
         /// <param name="options"><see cref="Options"/> pointer</param>
-        /// <param name="Name">The name of the instance</param>
+        /// <param name="name">The name of the instance</param>
         /// <param name="error">FILL IN</param>
         [DllImport("LevelDB-MCPE.dll", CallingConvention = CallingConvention.Cdecl)]
         internal static extern void leveldb_repair_db(IntPtr options, String name, out IntPtr error);
 
         ///DOLATER <summary>Add Description</summary>
         /// <param name="options"><see cref="Options"/> pointer</param>
-        /// <param name="Name">The name of the instance</param>
+        /// <param name="name">The name of the instance</param>
         /// <param name="error">FILL IN</param>
         [DllImport("LevelDB-MCPE.dll", CallingConvention = CallingConvention.Cdecl)]
         internal static extern void leveldb_destroy_db(IntPtr options, String name, out IntPtr error);

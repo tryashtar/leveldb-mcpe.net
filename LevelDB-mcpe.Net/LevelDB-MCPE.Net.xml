@@ -135,12 +135,42 @@
             
             </summary>
         </member>
+        <member name="F:LevelDB.Comparator.NativeArray.Data">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:LevelDB.Comparator.NativeArray.Length">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:LevelDB.CompressionLevel">
             <summary>
             DB contents are stored in a set of blocks, each of which holds a
             sequence of key,value pairs.  Each block may be compressed before
             being stored in a file. The following enum describes which
             compression method (if any) is used to compress a block.
+            </summary>
+        </member>
+        <member name="F:LevelDB.CompressionLevel.NoCompression">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:LevelDB.CompressionLevel.SnappyCompression">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:LevelDB.CompressionLevel.ZlibCompression">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:LevelDB.CompressionLevel.ZlibRawCompression">
+            <summary>
+            
             </summary>
         </member>
         <member name="T:LevelDB.DB">
@@ -297,8 +327,6 @@
             needed to access the data.  This operation should typically only
             be invoked by users who understand the underlying implementation.
             </summary>
-            <param name="startKey">FILL IN</param>
-            <param name="limitKey">FILL IN</param>
         </member>
         <member name="M:LevelDB.DB.CompactRange(System.String,System.String)">
             <summary>
@@ -394,10 +422,25 @@
             <param name="name">The name (subfolder) of the database</param>
             <param name="options">Options should not be modified after calling this method.</param>
         </member>
+        <member name="M:LevelDB.DB.Finalize">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:LevelDB.Env">
             <summary>
             A default environment to access operating system functionality like 
             the filesystem etc of the current operating system.
+            </summary>
+        </member>
+        <member name="M:LevelDB.Env.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:LevelDB.Env.FreeUnManagedObjects">
+            <summary>
+            
             </summary>
         </member>
         <member name="T:LevelDB.Iterator">
@@ -481,10 +524,21 @@
             If an error has occurred, throw it.  
             </summary>
         </member>
+        <member name="M:LevelDB.Iterator.FreeUnManagedObjects">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:LevelDB.LevelDBException">
             <summary>
             
             </summary>
+        </member>
+        <member name="M:LevelDB.LevelDBException.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
         </member>
         <member name="M:LevelDB.LevelDBException.Check(System.IntPtr)">
             DOLATER <summary>Add Description</summary>
@@ -494,6 +548,47 @@
             <summary>
             Base class for all LevelDB objects
             Implement IDisposable as prescribed by http://msdn.microsoft.com/en-us/library/b1yfkh5e.aspx by overriding the two additional virtual methods
+            </summary>
+        </member>
+        <member name="F:LevelDB.LevelDBHandle.Disposed">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:LevelDB.LevelDBHandle.Handle">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:LevelDB.LevelDBHandle.Dispose">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:LevelDB.LevelDBHandle.FreeManagedObjects">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:LevelDB.LevelDBHandle.FreeUnManagedObjects">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:LevelDB.LevelDBHandle.Dispose(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:LevelDB.LevelDBHandle.Finalize">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:LevelDB.LevelDBInterop">
+            <summary>
+            
             </summary>
         </member>
         <member name="M:LevelDB.LevelDBInterop.leveldb_options_create">
@@ -706,6 +801,74 @@
              <param name="pNativeData">FILL IN</param>
             DOLATER <returns>Fill in return</returns>
         </member>
+        <member name="M:LevelDB.LevelDBInterop.leveldb_iter_destroy(System.IntPtr)">
+            <summary>
+            
+            </summary>
+            <param name="iterator"></param>
+        </member>
+        <member name="M:LevelDB.LevelDBInterop.leveldb_iter_valid(System.IntPtr)">
+            <summary>
+            
+            </summary>
+            <param name="iterator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LevelDB.LevelDBInterop.leveldb_iter_seek_to_first(System.IntPtr)">
+            <summary>
+            
+            </summary>
+            <param name="iterator"></param>
+        </member>
+        <member name="M:LevelDB.LevelDBInterop.leveldb_iter_seek_to_last(System.IntPtr)">
+            <summary>
+            
+            </summary>
+            <param name="iterator"></param>
+        </member>
+        <member name="M:LevelDB.LevelDBInterop.leveldb_iter_seek(System.IntPtr,System.Byte[],System.IntPtr)">
+            <summary>
+            
+            </summary>
+            <param name="iterator"></param>
+            <param name="key"></param>
+            <param name="length"></param>
+        </member>
+        <member name="M:LevelDB.LevelDBInterop.leveldb_iter_next(System.IntPtr)">
+            <summary>
+            
+            </summary>
+            <param name="iterator"></param>
+        </member>
+        <member name="M:LevelDB.LevelDBInterop.leveldb_iter_prev(System.IntPtr)">
+            <summary>
+            
+            </summary>
+            <param name="iterator"></param>
+        </member>
+        <member name="M:LevelDB.LevelDBInterop.leveldb_iter_key(System.IntPtr,System.IntPtr@)">
+            <summary>
+            
+            </summary>
+            <param name="iterator"></param>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LevelDB.LevelDBInterop.leveldb_iter_value(System.IntPtr,System.IntPtr@)">
+            <summary>
+            
+            </summary>
+            <param name="iterator"></param>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LevelDB.LevelDBInterop.leveldb_iter_get_error(System.IntPtr,System.IntPtr@)">
+            <summary>
+            
+            </summary>
+            <param name="iterator"></param>
+            <param name="error"></param>
+        </member>
         <member name="M:LevelDB.LevelDBInterop.leveldb_create_default_env">
             <summary>Creates the new default enviroment for leveldb</summary>
             <returns></returns>
@@ -826,13 +989,13 @@
         <member name="M:LevelDB.LevelDBInterop.leveldb_repair_db(System.IntPtr,System.String,System.IntPtr@)">
             DOLATER <summary>Add Description</summary>
              <param name="options"><see cref="T:LevelDB.Options"/> pointer</param>
-             <param name="Name">The name of the instance</param>
+             <param name="name">The name of the instance</param>
              <param name="error">FILL IN</param>
         </member>
         <member name="M:LevelDB.LevelDBInterop.leveldb_destroy_db(System.IntPtr,System.String,System.IntPtr@)">
             DOLATER <summary>Add Description</summary>
              <param name="options"><see cref="T:LevelDB.Options"/> pointer</param>
-             <param name="Name">The name of the instance</param>
+             <param name="name">The name of the instance</param>
              <param name="error">FILL IN</param>
         </member>
         <member name="M:LevelDB.LevelDBInterop.leveldb_compact_range(System.IntPtr,System.Byte[],System.IntPtr,System.Byte[],System.IntPtr)">
@@ -919,6 +1082,16 @@
              If not set, leveldb will automatically create and use an 8MB internal cache.
              </summary>
         </member>
+        <member name="P:LevelDB.Options.Comparator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:LevelDB.Options.BloomFilter">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="P:LevelDB.Options.BlockSize">
              <summary>
              Approximate size of user data packed per block.  Note that the
@@ -955,9 +1128,19 @@
              efficiently detect that and will switch to uncompressed mode.
              </summary>
         </member>
+        <member name="M:LevelDB.Options.FreeUnManagedObjects">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:LevelDB.ReadOptions">
             <summary>
             Options that control read operations.
+            </summary>
+        </member>
+        <member name="M:LevelDB.ReadOptions.#ctor">
+            <summary>
+            
             </summary>
         </member>
         <member name="P:LevelDB.ReadOptions.VerifyCheckSums">
@@ -982,10 +1165,36 @@
             snapshot of the state at the beginning of this read operation.
             </summary>
         </member>
+        <member name="M:LevelDB.ReadOptions.FreeUnManagedObjects">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:LevelDB.SnapShot">
             <summary>
             A Snapshot is an immutable object and can therefore be safely
             accessed from multiple threads without any external synchronization.
+            </summary>
+        </member>
+        <member name="F:LevelDB.SnapShot.Parent">
+            <summary>pointer to parent so that we can call ReleaseSnapshot(this) when disposed</summary>
+        </member>
+        <member name="M:LevelDB.SnapShot.#ctor(System.IntPtr,LevelDB.DB)">
+            <summary>
+            
+            </summary>
+            <param name="handle"></param>
+            <param name="parent"></param>
+        </member>
+        <member name="M:LevelDB.SnapShot.#ctor(System.IntPtr)">
+            <summary>
+            
+            </summary>
+            <param name="handle"></param>
+        </member>
+        <member name="M:LevelDB.SnapShot.FreeUnManagedObjects">
+            <summary>
+            
             </summary>
         </member>
         <member name="T:LevelDB.WriteBatch">
@@ -1034,6 +1243,11 @@
             Support for iterating over a batch.
             </summary>
         </member>
+        <member name="M:LevelDB.WriteBatch.FreeUnManagedObjects">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:LevelDB.WriteOptions">
             <summary>
             Options that control write operations.
@@ -1056,6 +1270,11 @@
              with sync==true has similar crash semantics to a "write()"
              system call followed by "fsync()".
              </summary>
+        </member>
+        <member name="M:LevelDB.WriteOptions.FreeUnManagedObjects">
+            <summary>
+            
+            </summary>
         </member>
     </members>
 </doc>

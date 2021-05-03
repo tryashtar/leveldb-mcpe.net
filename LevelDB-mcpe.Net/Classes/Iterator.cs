@@ -136,6 +136,9 @@ namespace LevelDB {
             GC.KeepAlive(this);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         protected override void FreeUnManagedObjects() {
             LevelDBInterop.leveldb_iter_destroy(this.Handle);
         }

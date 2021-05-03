@@ -252,8 +252,6 @@ namespace LevelDB {
         /// needed to access the data.  This operation should typically only
         /// be invoked by users who understand the underlying implementation.
         /// </summary>
-        /// <param name="startKey">FILL IN</param>
-        /// <param name="limitKey">FILL IN</param>
         public void Compact() {
             Byte[] startKey = null;
             Byte[] limitKey = null;

@@ -29,6 +29,9 @@ namespace LevelDB {
             set => LevelDBInterop.leveldb_writeoptions_set_sync(this.Handle, value ? (Byte)1 : (Byte)0);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         protected override void FreeUnManagedObjects() {
             LevelDBInterop.leveldb_writeoptions_destroy(this.Handle);
         }

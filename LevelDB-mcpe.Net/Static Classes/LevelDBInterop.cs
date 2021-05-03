@@ -2,6 +2,9 @@
 using System.Runtime.InteropServices;
 
 namespace LevelDB {
+    /// <summary>
+    /// 
+    /// </summary>
     public static partial class LevelDBInterop {
 
         #region Options

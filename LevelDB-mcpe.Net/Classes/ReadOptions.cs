@@ -5,6 +5,9 @@ namespace LevelDB {
     /// Options that control read operations.
     /// </summary>
     public class ReadOptions : LevelDBHandle {
+        /// <summary>
+        /// 
+        /// </summary>
         public ReadOptions() {
             this.Handle = LevelDBInterop.leveldb_readoptions_create();
         }
@@ -37,6 +40,9 @@ namespace LevelDB {
             set => LevelDBInterop.leveldb_readoptions_set_snapshot(this.Handle, value.Handle);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         protected override void FreeUnManagedObjects() {
             LevelDBInterop.leveldb_readoptions_destroy(this.Handle);
         }

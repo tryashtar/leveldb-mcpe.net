@@ -65,6 +65,9 @@ namespace LevelDB {
             LevelDBInterop.leveldb_writebatch_iterate(this.Handle, state, put, deleted);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         protected override void FreeUnManagedObjects() {
             LevelDBInterop.leveldb_writebatch_destroy(this.Handle);
         }

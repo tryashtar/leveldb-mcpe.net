@@ -99,6 +99,9 @@ namespace LevelDB {
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Comparator Comparator {
             get => this.ComparatorValue;
             set {
@@ -107,6 +110,9 @@ namespace LevelDB {
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public BloomFilterPolicy BloomFilter {
             get => this.BloomValue;
             set {
@@ -157,6 +163,9 @@ namespace LevelDB {
             set => LevelDBInterop.leveldb_options_set_compression(this.Handle, (Int32)value);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         protected override void FreeUnManagedObjects() {
             LevelDBInterop.leveldb_options_destroy(this.Handle);
         }

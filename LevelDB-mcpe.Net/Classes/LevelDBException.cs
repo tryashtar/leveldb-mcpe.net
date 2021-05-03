@@ -7,6 +7,10 @@ namespace LevelDB {
     /// </summary>
     [Serializable]
     public class LevelDBException : Exception {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="message"></param>
         public LevelDBException(String message) : base(message) { }
 
         ///DOLATER <summary>Add Description</summary>

@@ -147,7 +147,13 @@ namespace LevelDB {
         /// 
         /// </summary>
         public unsafe struct NativeArray {
+            /// <summary>
+            /// 
+            /// </summary>
             public Byte* Data;
+            /// <summary>
+            /// 
+            /// </summary>
             public Int32 Length;
         }
     }
