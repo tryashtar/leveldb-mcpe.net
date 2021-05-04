@@ -218,15 +218,16 @@ namespace LevelDB {
             return result;
         }
 
-        /// <summary>DB implementations can export properties about their state
+        /// <summary>
+        /// DB implementations can export properties about their state
         /// via this method.  If "property" is a valid property understood by this
         /// DB implementation, fills "*value" with its current value and returns
         /// true.  Otherwise returns false.
         /// 
         /// Valid property names include:
         ///
-        /// "leveldb.num-files-at-level<N>" - return the number of files at level <N>,
-        /// where <N> is an ASCII representation of a level number (e.g. "0").
+        /// "leveldb.num-files-at-level{N}" - return the number of files at level {N},
+        /// where {N} is an ASCII representation of a level number (e.g. "0").
         /// "leveldb.stats" - returns a multi-line string that describes statistics
         /// about the internal operation of the DB.
         /// </summary>

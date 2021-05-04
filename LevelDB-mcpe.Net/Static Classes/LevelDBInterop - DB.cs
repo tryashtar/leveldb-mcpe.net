@@ -6,7 +6,7 @@ namespace LevelDB {
 
         ///DOLATER <summary>Add Description</summary>
         /// <param name="options"><see cref="Options"/> pointer</param>
-        /// <param name="Name">The name of the instance</param>
+        /// <param name="name">The name of the instance</param>
         /// <param name="error">FILL IN</param>
         ///DOLATER <returns>Fill in return</returns>
         [DllImport("LevelDB-MCPE.dll", CallingConvention = CallingConvention.Cdecl)]

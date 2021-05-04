@@ -205,7 +205,7 @@ namespace LevelDB {
         /// <param name="state">FILL IN</param>
         /// <param name="destructor">FILL IN</param>
         /// <param name="compare">FILL IN</param>
-        /// <param name="Name">The name of the instance</param>
+        /// <param name="name">The name of the instance</param>
         ///DOLATER <returns>Fill in return</returns>
         [DllImport("LevelDB-MCPE.dll", CallingConvention = CallingConvention.Cdecl)]
         internal static extern IntPtr /* leveldb_comparator_t* */
