@@ -1026,7 +1026,7 @@
              <param name="ptr">FILL IN</param>
         </member>
         <member name="M:LevelDB.LevelDBInterop.#cctor">
-            DOLATER <summary>Add Description</summary>
+            <summary>Initializes the static instance of the LevelDBInterop</summary>
         </member>
         <member name="M:LevelDB.LevelDBInterop.Copy(System.String,System.String)">
             DOLATER <summary>Add Description</summary>

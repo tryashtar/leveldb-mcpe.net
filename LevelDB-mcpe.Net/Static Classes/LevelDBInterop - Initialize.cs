@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace LevelDB {
     public static partial class LevelDBInterop {
-        ///DOLATER <summary>Add Description</summary>
+        /// <summary>Initializes the static instance of the LevelDBInterop</summary>
         static LevelDBInterop() {
             var assembly = Assembly.GetExecutingAssembly();
 
