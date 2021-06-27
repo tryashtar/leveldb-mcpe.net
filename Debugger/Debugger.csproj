@@ -93,12 +93,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LevelDB-MCPE.Net\LevelDB-MCPE.Net.csproj">
-      <Project>{c9fedfaf-baa8-4112-8743-66994164af73}</Project>
-      <Name>LevelDB-MCPE.Net</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>
