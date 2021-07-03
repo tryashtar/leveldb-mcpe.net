@@ -6,24 +6,16 @@
     /// compression method (if any) is used to compress a block.
     /// </summary>
     public enum CompressionLevel {
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         NoCompression = 0,
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         SnappyCompression = 1,
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         ZlibCompression = 2,
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         ZlibRawCompression = 4
     }
 }

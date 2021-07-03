@@ -5,15 +5,12 @@ namespace LevelDB {
     /// Options that control write operations.
     /// </summary>
     public class WriteOptions : LevelDBHandle {
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         public WriteOptions() {
             this.Handle = LevelDBInterop.leveldb_writeoptions_create();
         }
 
-        /// <summary>
-        /// If true, the write will be flushed from the operating system
+        /// <summary>If true, the write will be flushed from the operating system
         /// buffer cache (by calling WritableFile::Sync()) before the write
         /// is considered complete.  If this flag is true, writes will be
         /// slower.
@@ -26,15 +23,12 @@ namespace LevelDB {
         /// In other words, a DB write with sync==false has similar
         /// crash semantics as the "write()" system call.  A DB write
         /// with sync==true has similar crash semantics to a "write()"
-        /// system call followed by "fsync()".
-        /// </summary>
+        /// system call followed by "fsync()". </summary>
         public Boolean Sync {
             set => LevelDBInterop.leveldb_writeoptions_set_sync(this.Handle, value ? (Byte)1 : (Byte)0);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         protected override void FreeUnManagedObjects() {
             LevelDBInterop.leveldb_writeoptions_destroy(this.Handle);
         }

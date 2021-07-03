@@ -9,9 +9,7 @@ namespace LevelDB {
         /// <summary>pointer to parent so that we can call ReleaseSnapshot(this) when disposed</summary>
         public WeakReference Parent;  // as DB
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         /// <param name="handle"></param>
         /// <param name="parent"></param>
         internal SnapShot(IntPtr handle, DB parent) {
@@ -19,18 +17,14 @@ namespace LevelDB {
             this.Parent = new WeakReference(parent);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         /// <param name="handle"></param>
         internal SnapShot(IntPtr handle) {
             this.Handle = handle;
             this.Parent = new WeakReference(null);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         protected override void FreeUnManagedObjects() {
             if (this.Parent.Target is DB parent) {
                 LevelDBInterop.leveldb_release_snapshot(parent.Handle, this.Handle);
