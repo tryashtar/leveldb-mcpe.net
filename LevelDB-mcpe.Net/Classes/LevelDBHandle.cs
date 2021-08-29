@@ -6,37 +6,25 @@ namespace LevelDB {
     /// Implement IDisposable as prescribed by http://msdn.microsoft.com/en-us/library/b1yfkh5e.aspx by overriding the two additional virtual methods
     /// </summary>
     public abstract class LevelDBHandle : IDisposable {
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         private Boolean Disposed;
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         public IntPtr Handle { protected set; get; }
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         public void Dispose() {
             this.Dispose(true);
             GC.SuppressFinalize(this);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         protected virtual void FreeManagedObjects() { }
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         protected virtual void FreeUnManagedObjects() {}
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         /// <param name="disposing"></param>
         private void Dispose(Boolean disposing) {
             if (!this.Disposed) {
@@ -51,9 +39,7 @@ namespace LevelDB {
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         ~LevelDBHandle() {
             this.Dispose(false);
         }

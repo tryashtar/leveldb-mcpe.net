@@ -25,9 +25,7 @@ namespace LevelDB {
 #endif
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         ~DB() {
             this.FreeUnManagedObjects();
         }

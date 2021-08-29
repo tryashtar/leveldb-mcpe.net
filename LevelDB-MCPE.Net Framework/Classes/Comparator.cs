@@ -8,26 +8,18 @@ namespace LevelDB {
     /// 
     /// </summary>
     public class Comparator : LevelDBHandle {
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         private IntPtr _NativeName;
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         private Comparison<NativeArray> _Comparison;
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         /// <param name="GCHandleThis"></param>
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate void DestructorSignature(IntPtr GCHandleThis);
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         /// <param name="GCHandleThis"></param>
         /// <param name="data1"></param>
         /// <param name="size1"></param>
@@ -37,24 +29,18 @@ namespace LevelDB {
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate Int32 CompareSignature(IntPtr GCHandleThis, IntPtr data1, IntPtr size1, IntPtr data2, IntPtr size2);
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         /// <param name="GCHandleThis"></param>
         /// <returns></returns>
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate IntPtr GetNameSignature(IntPtr GCHandleThis);
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         /// <param name="name"></param>
         /// <param name="comparer"></param>
         public Comparator(String name, IComparer<NativeArray> comparer) : this(name, (a, b) => comparer.Compare(a, b)) { }
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         /// <param name="name"></param>
         /// <param name="comparison"></param>
         public Comparator(String name, Comparison<NativeArray> comparison) {
@@ -90,9 +76,7 @@ namespace LevelDB {
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         protected override void FreeUnManagedObjects() {
             if (this.Handle != IntPtr.Zero) {
                 LevelDBInterop.leveldb_comparator_destroy(this.Handle);
@@ -103,9 +87,7 @@ namespace LevelDB {
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         private static DestructorSignature _Destructor = (selfHandle) => {
             var gcHandle = GCHandle.FromIntPtr(selfHandle);
             var self = (Comparator)gcHandle.Target;
@@ -113,25 +95,19 @@ namespace LevelDB {
             gcHandle.Free();
         };
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         private static CompareSignature Compare = (selfHandle, data1, size1, data2, size2) => {
             var self = (Comparator)GCHandle.FromIntPtr(selfHandle).Target;
             return self.ExecuteComparison(data1, size1, data2, size2);
         };
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         private static GetNameSignature _GetName = (selfHandle) => {
             var self = (Comparator)GCHandle.FromIntPtr(selfHandle).Target;
             return self._NativeName;
         };
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         /// <param name="data1"></param>
         /// <param name="size1"></param>
         /// <param name="data2"></param>
@@ -143,9 +119,7 @@ namespace LevelDB {
                 new NativeArray() { Data = (Byte*)data2, Length = (Int32)size2 });
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         public unsafe struct NativeArray {
             /// <summary>
             /// 

@@ -8,17 +8,13 @@ namespace LevelDB {
     /// A DB is safe for concurrent access from multiple threads without any external synchronization.
     /// </summary>
     public partial class DB : IEnumerable<KeyValuePair<String, String>>, IEnumerable<KeyValuePair<Byte[], Byte[]>> {
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         /// <returns></returns>
         IEnumerator IEnumerable.GetEnumerator() {
             return this.GetEnumerator();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         /// <returns></returns>
         IEnumerator<KeyValuePair<String, String>> IEnumerable<KeyValuePair<String, String>>.GetEnumerator() {
             using SnapShot sn = this.CreateSnapshot();
@@ -31,9 +27,7 @@ namespace LevelDB {
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary> </summary>
         /// <returns></returns>
         public IEnumerator<KeyValuePair<Byte[], Byte[]>> GetEnumerator() {
             using SnapShot sn = this.CreateSnapshot();

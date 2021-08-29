@@ -16,10 +16,8 @@ namespace LevelDB {
     /// custom eviction policy, variable cache sizing, etc.)
     /// </summary>
     public class Cache : LevelDBHandle {
-        /// <summary>
-        /// Create a new cache with a fixed size capacity.  This implementation
-        /// of Cache uses a LRU eviction policy.
-        /// </summary>
+        /// <summary>Create a new cache with a fixed size capacity.  This implementation
+        /// of Cache uses a LRU eviction policy. </summary>
         public Cache(Int32 capacity) {
             this.Handle = LevelDBInterop.leveldb_cache_create_lru((IntPtr)capacity);
         }
