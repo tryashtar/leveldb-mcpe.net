@@ -3,18 +3,13 @@ using System.Runtime.InteropServices;
 using System.Text;
 
 namespace LevelDB {
-    /// <summary>
-    /// An iterator yields a sequence of key/value pairs from a database.
-    /// </summary>
+    /// <summary>An iterator yields a sequence of key/value pairs from a database.</summary>
     public class Iterator : LevelDBHandle {
         internal Iterator(IntPtr handle) {
             this.Handle = handle;
         }
 
-        /// <summary>
-        /// An iterator is either positioned at a key/value pair, or
-        /// not valid.  
-        /// </summary>
+        /// <summary>An iterator is either positioned at a key/value pair, or not valid./// </summary>
         /// <returns>This method returns true iff the iterator is valid.</returns>
         public Boolean Valid() {
             Boolean result = LevelDBInterop.leveldb_iter_valid(this.Handle) != 0;
@@ -56,7 +51,7 @@ namespace LevelDB {
         /// an entry that comes at or past target.
         /// </summary>
         public void Seek(String key) {
-            this.Seek(Encoding.UTF8.GetBytes(key));
+            this.Seek(Cpp.ToByteArray(key));
         }
 
         /// <summary>
@@ -84,7 +79,7 @@ namespace LevelDB {
         /// REQUIRES: IsValid()
         /// </summary>
         public String StringKey() {
-            return Encoding.UTF8.GetString(this.Key());
+            return Cpp.ToString(this.Key());
         }
 
         /// <summary>
@@ -106,7 +101,7 @@ namespace LevelDB {
         /// REQUIRES: IsValid()
         /// </summary>
         public String StringValue() {
-            return Encoding.UTF8.GetString(this.Value());
+            return Cpp.ToString(this.Value());
         }
 
         /// <summary>

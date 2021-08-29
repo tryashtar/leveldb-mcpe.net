@@ -190,6 +190,40 @@
             A DB is a persistent ordered map from keys to values.
             A DB is safe for concurrent access from multiple threads without any external synchronization.
             </summary>
+            <summary>
+            A DB is a persistent ordered map from keys to values.
+            A DB is safe for concurrent access from multiple threads without any external synchronization.
+            </summary>
+        </member>
+        <member name="M:LevelDB.DB.Put(System.String,System.String)">
+            <summary>
+            Set the database entry for "key" to "value".  
+            </summary>
+        </member>
+        <member name="M:LevelDB.DB.Put(System.String,System.String,LevelDB.WriteOptions)">
+            <summary>
+            Set the database entry for "key" to "value".  
+            </summary>
+        </member>
+        <member name="M:LevelDB.DB.Put(System.Byte[],System.Byte[])">
+            <summary>
+            Set the database entry for "key" to "value".  
+            </summary>
+        </member>
+        <member name="M:LevelDB.DB.Put(System.Byte[],System.Byte[],LevelDB.WriteOptions)">
+            <summary>
+            Set the database entry for "key" to "value".  
+            </summary>
+        </member>
+        <member name="M:LevelDB.DB.Put(System.Collections.Generic.KeyValuePair{System.Byte[],System.Byte[]})">
+            <summary>
+            Set the database entry for "key" to "value".  
+            </summary>
+        </member>
+        <member name="M:LevelDB.DB.Put(System.Collections.Generic.KeyValuePair{System.Byte[],System.Byte[]},LevelDB.WriteOptions)">
+            <summary>
+            Set the database entry for "key" to "value".  
+            </summary>
         </member>
         <member name="M:LevelDB.DB.Repair(System.String)">
             <summary>
@@ -219,26 +253,6 @@
             Destroy the contents of the specified database.
             Be very careful using this method.
             Options should not be modified after calling this method.
-            </summary>
-        </member>
-        <member name="M:LevelDB.DB.Put(System.String,System.String)">
-            <summary>
-            Set the database entry for "key" to "value".  
-            </summary>
-        </member>
-        <member name="M:LevelDB.DB.Put(System.String,System.String,LevelDB.WriteOptions)">
-            <summary>
-            Set the database entry for "key" to "value".  
-            </summary>
-        </member>
-        <member name="M:LevelDB.DB.Put(System.Byte[],System.Byte[])">
-            <summary>
-            Set the database entry for "key" to "value".  
-            </summary>
-        </member>
-        <member name="M:LevelDB.DB.Put(System.Byte[],System.Byte[],LevelDB.WriteOptions)">
-            <summary>
-            Set the database entry for "key" to "value".  
             </summary>
         </member>
         <member name="M:LevelDB.DB.Delete(System.String)">
@@ -459,15 +473,10 @@
             </summary>
         </member>
         <member name="T:LevelDB.Iterator">
-            <summary>
-            An iterator yields a sequence of key/value pairs from a database.
-            </summary>
+            <summary>An iterator yields a sequence of key/value pairs from a database.</summary>
         </member>
         <member name="M:LevelDB.Iterator.Valid">
-            <summary>
-            An iterator is either positioned at a key/value pair, or
-            not valid.  
-            </summary>
+            <summary>An iterator is either positioned at a key/value pair, or not valid./// </summary>
             <returns>This method returns true iff the iterator is valid.</returns>
         </member>
         <member name="M:LevelDB.Iterator.SeekToFirst">
@@ -600,6 +609,23 @@
             <summary>
             
             </summary>
+        </member>
+        <member name="T:LevelDB.Cpp">
+            DOLATER <summary>add description for class: Cpp</summary>
+        </member>
+        <member name="M:LevelDB.Cpp.ToByteArray(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LevelDB.Cpp.ToString(System.Byte[])">
+            <summary>
+            
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
         </member>
         <member name="T:LevelDB.LevelDBInterop">
             <summary>
@@ -1026,7 +1052,7 @@
              <param name="ptr">FILL IN</param>
         </member>
         <member name="M:LevelDB.LevelDBInterop.#cctor">
-            <summary>Initializes the static instance of the LevelDBInterop</summary>
+            DOLATER <summary>Add Description</summary>
         </member>
         <member name="M:LevelDB.LevelDBInterop.Copy(System.String,System.String)">
             DOLATER <summary>Add Description</summary>

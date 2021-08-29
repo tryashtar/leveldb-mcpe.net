@@ -33,7 +33,7 @@ namespace LevelDB {
         /// Store the mapping "key->value" in the database.
         /// </summary>
         public WriteBatch Put(String key, String value) {
-            return this.Put(Encoding.UTF8.GetBytes(key), Encoding.UTF8.GetBytes(value));
+            return this.Put(Cpp.ToByteArray(key), Cpp.ToByteArray(value));
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace LevelDB {
         /// Else do nothing.
         /// </summary>
         public WriteBatch Delete(String key) {
-            return this.Delete(Encoding.UTF8.GetBytes(key));
+            return this.Delete(Cpp.ToByteArray(key));
         }
 
         /// <summary>

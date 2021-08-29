@@ -60,7 +60,7 @@ namespace LevelDB {
         public Comparator(String name, Comparison<NativeArray> comparison) {
             GCHandle selfHandle = default;
             try {
-                Byte[] utf = Encoding.UTF8.GetBytes(name);
+                Byte[] utf = Cpp.ToByteArray(name);
                 this._NativeName = Marshal.AllocHGlobal(utf.Length + 1);
                 Marshal.Copy(utf, 0, this._NativeName, utf.Length);
 

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C9FEDFAF-BAA8-4112-8743-66994164AF73}</ProjectGuid>
+    <ProjectGuid>{4BB0B022-F4BC-4A23-8821-153E9C329114}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LevelDB</RootNamespace>
@@ -131,6 +131,7 @@
     <Compile Include="Classes\Cache\Cache.cs" />
     <Compile Include="Classes\Comparator.cs" />
     <Compile Include="Classes\CompressionLevel.cs" />
+    <Compile Include="Classes\DB\DB - Put.cs" />
     <Compile Include="Classes\DB\DB - Functions.cs" />
     <Compile Include="Classes\DB\DB - IEnumerable.cs" />
     <Compile Include="Classes\DB\DB - Variable.cs" />
@@ -139,12 +140,13 @@
     <Compile Include="Classes\Iterator.cs" />
     <Compile Include="Classes\LevelDBException.cs" />
     <Compile Include="Classes\LevelDBHandle.cs" />
-    <Compile Include="Static Classes\LevelDBInterop.cs" />
-    <Compile Include="Static Classes\LevelDBInterop - Iterator.cs" />
-    <Compile Include="Static Classes\LevelDBInterop - Env.cs" />
-    <Compile Include="Static Classes\LevelDBInterop - Functions.cs" />
-    <Compile Include="Static Classes\LevelDBInterop - DB.cs" />
-    <Compile Include="Static Classes\LevelDBInterop - Initialize.cs" />
+    <Compile Include="Static Classes\Cpp\Cpp.cs" />
+    <Compile Include="Static Classes\LevelDBInterop\LevelDBInterop.cs" />
+    <Compile Include="Static Classes\LevelDBInterop\LevelDBInterop - Iterator.cs" />
+    <Compile Include="Static Classes\LevelDBInterop\LevelDBInterop - Env.cs" />
+    <Compile Include="Static Classes\LevelDBInterop\LevelDBInterop - Functions.cs" />
+    <Compile Include="Static Classes\LevelDBInterop\LevelDBInterop - DB.cs" />
+    <Compile Include="Static Classes\LevelDBInterop\LevelDBInterop - Initialize.cs" />
     <Compile Include="Classes\Options.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\ReadOptions.cs" />

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -52,37 +53,6 @@ namespace LevelDB {
         }
 
         /// <summary>
-        /// Set the database entry for "key" to "value".  
-        /// </summary>
-        public void Put(String key, String value) {
-            this.Put(key, value, new WriteOptions());
-        }
-
-        /// <summary>
-        /// Set the database entry for "key" to "value".  
-        /// </summary>
-        public void Put(String key, String value, WriteOptions options) {
-            this.Put(Encoding.UTF8.GetBytes(key), Encoding.UTF8.GetBytes(value), options);
-        }
-
-        /// <summary>
-        /// Set the database entry for "key" to "value".  
-        /// </summary>
-        public void Put(Byte[] key, Byte[] value) {
-            this.Put(key, value, new WriteOptions());
-        }
-
-        /// <summary>
-        /// Set the database entry for "key" to "value".  
-        /// </summary>
-        public void Put(Byte[] key, Byte[] value, WriteOptions options) {
-            LevelDBInterop.leveldb_put(this.Handle, options.Handle, key, (IntPtr)key.Length, value, (IntPtr)value.LongLength, out IntPtr error);
-            LevelDBException.Check(error);
-            GC.KeepAlive(options);
-            GC.KeepAlive(this);
-        }
-
-        /// <summary>
         /// Remove the database entry (if any) for "key".  
         /// It is not an error if "key" did not exist in the database.
         /// </summary>
@@ -95,7 +65,7 @@ namespace LevelDB {
         /// It is not an error if "key" did not exist in the database.
         /// </summary>
         public void Delete(String key, WriteOptions options) {
-            this.Delete(Encoding.UTF8.GetBytes(key), options);
+            this.Delete(Cpp.ToByteArray(key), options);
         }
 
         /// <summary>
@@ -147,8 +117,8 @@ namespace LevelDB {
         /// otherwise return null.
         /// </summary>
         public String Get(String key, ReadOptions options) {
-            Byte[] value = this.Get(Encoding.UTF8.GetBytes(key), options);
-            return value != null ? Encoding.UTF8.GetString(value) : null;
+            Byte[] value = this.Get(Cpp.ToByteArray(key), options);
+            return value != null ? Cpp.ToString(value) : null;
         }
 
         /// <summary>
@@ -270,7 +240,7 @@ namespace LevelDB {
         /// <param name="startKey">FILL IN</param>
         /// <param name="limitKey">FILL IN</param>
         public void CompactRange(String startKey, String limitKey) {
-            this.CompactRange(Encoding.UTF8.GetBytes(startKey), Encoding.UTF8.GetBytes(limitKey));
+            this.CompactRange(Cpp.ToByteArray(startKey), Cpp.ToByteArray(limitKey));
         }
 
         /// <summary>
@@ -314,7 +284,7 @@ namespace LevelDB {
         /// <param name="limitKey">FILL IN</param>
         ///DOLATER <returns>Fill in return</returns>
         public unsafe Int64 GetApproximateSize(String startKey, String limitKey) {
-            return this.GetApproximateSize(Encoding.UTF8.GetBytes(startKey), Encoding.UTF8.GetBytes(limitKey));
+            return this.GetApproximateSize(Cpp.ToByteArray(startKey), Cpp.ToByteArray(limitKey));
         }
 
         /// <summary>

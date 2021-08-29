@@ -10,11 +10,12 @@ namespace LevelDB {
         /// 
         /// </summary>
         private Boolean Disposed;
+        private IntPtr _Handle;
 
         /// <summary>
         /// 
         /// </summary>
-        public IntPtr Handle { protected set; get; }
+        public IntPtr Handle { get => _Handle; protected set => _Handle = value; }
 
         /// <summary>
         /// 
@@ -32,7 +33,7 @@ namespace LevelDB {
         /// <summary>
         /// 
         /// </summary>
-        protected virtual void FreeUnManagedObjects() {}
+        protected virtual void FreeUnManagedObjects() { }
 
         /// <summary>
         /// 
