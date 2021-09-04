@@ -4,6 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>LevelDB</RootNamespace>
     <Platforms>AnyCPU;x64;x86</Platforms>
+    <Authors>LevelDB-mcpe.Net</Authors>
+    <Copyright>Copyright (c) 2011 The LevelDB Authors. All rights reserved.</Copyright>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -33,6 +36,10 @@
   <ItemGroup>
     <None Remove="LevelDB-MCPE-x64.dll" />
     <None Remove="LevelDB-MCPE-x86.dll" />
+    <None Include="..\..\..\..\Projects\Software\Git Hub\DaanV2.NBT.Net\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

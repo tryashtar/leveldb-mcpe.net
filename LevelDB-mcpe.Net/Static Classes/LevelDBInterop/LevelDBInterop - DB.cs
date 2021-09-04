@@ -9,7 +9,7 @@ namespace LevelDB {
         /// <param name="name">The name of the instance</param>
         /// <param name="error">FILL IN</param>
         ///DOLATER <returns>Fill in return</returns>
-        [DllImport("LevelDB-MCPE.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("LevelDB-MCPE.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
         //DO NOT USE CharSet.Unicode, C++ is UTF8 which is 1 Byte big and not two
         internal static extern IntPtr leveldb_open(IntPtr /* Options*/ options, String name, out IntPtr error);
 
@@ -107,21 +107,21 @@ namespace LevelDB {
         /// <param name="db"><see cref="DB"/> Pointer</param>
         /// <param name="propname">FILL IN</param>
         ///DOLATER <returns>Fill in return</returns>
-        [DllImport("LevelDB-MCPE.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("LevelDB-MCPE.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
         internal static extern IntPtr leveldb_property_value(IntPtr db, String propname);
 
         ///DOLATER <summary>Add Description</summary>
         /// <param name="options"><see cref="Options"/> pointer</param>
         /// <param name="name">The name of the instance</param>
         /// <param name="error">FILL IN</param>
-        [DllImport("LevelDB-MCPE.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("LevelDB-MCPE.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
         internal static extern void leveldb_repair_db(IntPtr options, String name, out IntPtr error);
 
         ///DOLATER <summary>Add Description</summary>
         /// <param name="options"><see cref="Options"/> pointer</param>
         /// <param name="name">The name of the instance</param>
         /// <param name="error">FILL IN</param>
-        [DllImport("LevelDB-MCPE.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("LevelDB-MCPE.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
         internal static extern void leveldb_destroy_db(IntPtr options, String name, out IntPtr error);
 
         ///DOLATER <summary>Add Description</summary>

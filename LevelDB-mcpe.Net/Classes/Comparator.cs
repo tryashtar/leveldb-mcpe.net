@@ -9,10 +9,10 @@ namespace LevelDB {
     /// </summary>
     public class Comparator : LevelDBHandle {
         /// <summary> </summary>
-        private IntPtr _NativeName;
+        private readonly IntPtr _NativeName;
 
         /// <summary> </summary>
-        private Comparison<NativeArray> _Comparison;
+        private readonly Comparison<NativeArray> _Comparison;
 
         /// <summary> </summary>
         /// <param name="GCHandleThis"></param>
@@ -88,7 +88,7 @@ namespace LevelDB {
         }
 
         /// <summary> </summary>
-        private static DestructorSignature _Destructor = (selfHandle) => {
+        private static readonly DestructorSignature _Destructor = (selfHandle) => {
             var gcHandle = GCHandle.FromIntPtr(selfHandle);
             var self = (Comparator)gcHandle.Target;
             self.Dispose();
@@ -96,13 +96,13 @@ namespace LevelDB {
         };
 
         /// <summary> </summary>
-        private static CompareSignature Compare = (selfHandle, data1, size1, data2, size2) => {
+        private static readonly CompareSignature Compare = (selfHandle, data1, size1, data2, size2) => {
             var self = (Comparator)GCHandle.FromIntPtr(selfHandle).Target;
             return self.ExecuteComparison(data1, size1, data2, size2);
         };
 
         /// <summary> </summary>
-        private static GetNameSignature _GetName = (selfHandle) => {
+        private static readonly GetNameSignature _GetName = (selfHandle) => {
             var self = (Comparator)GCHandle.FromIntPtr(selfHandle).Target;
             return self._NativeName;
         };

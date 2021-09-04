@@ -83,8 +83,6 @@ namespace LevelDB {
             this.Put(Key.ToArray(), Value.ToArray());
         }
 
-
-
         /// <summary>Remove the database entry (if any) for "key".  
         /// It is not an error if "key" did not exist in the database. </summary>
         public void Delete(String key) {
@@ -317,7 +315,7 @@ namespace LevelDB {
         /// <summary> </summary>
         /// <param name="ar"></param>
         /// <returns></returns>
-        private IntPtr MarshalArray(Byte[] ar) {
+        private static IntPtr MarshalArray(Byte[] ar) {
             IntPtr p = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(Byte)) * ar.Length);
             Marshal.Copy(ar, 0, p, ar.Length);
             return p;

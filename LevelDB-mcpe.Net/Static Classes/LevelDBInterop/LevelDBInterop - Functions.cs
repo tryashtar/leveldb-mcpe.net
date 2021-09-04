@@ -7,7 +7,7 @@ namespace LevelDB {
         /// <param name="left">FILL IN</param>
         /// <param name="right">FILL IN</param>
         ///DOLATER <returns>Fill in return</returns>
-        private static Boolean BuffersEqual(Byte[] left, Byte[] right) {
+        internal static Boolean BuffersEqual(Byte[] left, Byte[] right) {
             if (left.Length != right.Length) {
                 return false;
             }
@@ -25,7 +25,7 @@ namespace LevelDB {
         /// <param name="lpFileName">FILL IN</param>
         ///DOLATER <returns>Fill in return</returns>
 
-        [DllImport("kernel32", SetLastError = true)]
-        private static extern IntPtr LoadLibrary(String lpFileName);
+        [DllImport("kernel32", SetLastError = true, CharSet = CharSet.Unicode)]
+        internal static extern IntPtr LoadLibrary(String lpFileName);
     }
 }

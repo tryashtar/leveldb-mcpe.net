@@ -3,9 +3,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 
 namespace LevelDB {
-    /// <summary>
-    /// An iterator yields a sequence of key/value pairs from a database.
-    /// </summary>
+    /// <summary>An iterator yields a sequence of key/value pairs from a database.</summary>
     public class Iterator : LevelDBHandle {
         internal Iterator(IntPtr handle) {
             this.Handle = handle;
