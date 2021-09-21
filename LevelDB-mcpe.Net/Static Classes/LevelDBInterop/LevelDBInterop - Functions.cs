@@ -25,7 +25,7 @@ namespace LevelDB {
         /// <param name="lpFileName">FILL IN</param>
         ///DOLATER <returns>Fill in return</returns>
 
-        [DllImport("kernel32", SetLastError = true, CharSet = CharSet.Unicode)]
+        [DllImport("kernel32", SetLastError = true, CharSet = CharSet.Ansi)]
         internal static extern IntPtr LoadLibrary(String lpFileName);
     }
 }

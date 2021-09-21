@@ -19,7 +19,7 @@ namespace LevelDB.Test {
 
                 for (Int32 I = 0; I < Attributes.Length; I++) {
                     if (Attributes[I] is DllImportAttribute DLLAtr) {
-                        if (DLLAtr.CharSet == CharSet.Unicode) {
+                        if (DLLAtr.CharSet == CharSet.Ansi) {
                             Errors.Add($"{M.Name} uses charset unicode but that usually leads to problems");
                         }
                     }

@@ -10,7 +10,7 @@ namespace LevelDB {
         #region Options
         ///DOLATER <summary>Add Description</summary>
         ///DOLATER <returns>Fill in return</returns>
-        [DllImport("LevelDB-MCPE.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)] //This need unicode
+        [DllImport("LevelDB-MCPE.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)] //This need unicode
         internal static extern IntPtr leveldb_options_create();
 
         ///DOLATER <summary>Add Description</summary>

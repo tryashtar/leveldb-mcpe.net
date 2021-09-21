@@ -43,46 +43,6 @@ namespace LevelDB {
             GC.KeepAlive(options);
         }
 
-        /// <summary>Set the database entry for "key" to "value". </summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        public void Put(String key, String value) {
-            this.Put(key, value, new WriteOptions());
-        }
-
-        /// <summary>Set the database entry for "key" to "value". </summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        /// <param name="options"></param>
-        public void Put(String key, String value, WriteOptions options) {
-            this.Put(Encoding.UTF8.GetBytes(key), Encoding.UTF8.GetBytes(value), options);
-        }
-
-        /// <summary>Set the database entry for "key" to "value".</summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        public void Put(Byte[] key, Byte[] value) {
-            this.Put(key, value, new WriteOptions());
-        }
-
-        /// <summary>Set the database entry for "key" to "value".</summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        /// <param name="options"></param>
-        public void Put(Byte[] key, Byte[] value, WriteOptions options) {
-            LevelDBInterop.leveldb_put(this.Handle, options.Handle, key, (IntPtr)key.Length, value, (IntPtr)value.LongLength, out IntPtr error);
-            LevelDBException.Check(error);
-            GC.KeepAlive(options);
-            GC.KeepAlive(this);
-        }
-
-        /// <summary> </summary>
-        /// <param name="Key"></param>
-        /// <param name="Value"></param>
-        public void Put(ReadOnlySpan<Byte> Key, ReadOnlySpan<Byte> Value) {
-            this.Put(Key.ToArray(), Value.ToArray());
-        }
-
         /// <summary>Remove the database entry (if any) for "key".  
         /// It is not an error if "key" did not exist in the database. </summary>
         public void Delete(String key) {
@@ -125,51 +85,6 @@ namespace LevelDB {
             GC.KeepAlive(batch);
             GC.KeepAlive(options);
             GC.KeepAlive(this);
-        }
-
-        /// <summary>If the database contains an entry for "key" return the value,
-        /// otherwise return null. </summary>
-        public String Get(String key) {
-            return this.Get(key, new ReadOptions());
-        }
-
-        /// <summary>If the database contains an entry for "key" return the value,
-        /// otherwise return null. </summary>
-        public String Get(String key, ReadOptions options) {
-            Byte[] value = this.Get(Encoding.UTF8.GetBytes(key), options);
-            return value != null ? Encoding.UTF8.GetString(value) : null;
-        }
-
-        /// <summary>If the database contains an entry for "key" return the value,
-        /// otherwise return null. </summary>
-        public Byte[] Get(Byte[] key) {
-            return this.Get(key, new ReadOptions());
-        }
-
-        /// <summary>If the database contains an entry for "key" return the value,
-        /// otherwise return null. </summary>
-        public unsafe Byte[] Get(Byte[] key, ReadOptions options) {
-            IntPtr valuePtr = LevelDBInterop.leveldb_get(this.Handle, options.Handle, key, (IntPtr)key.Length, out IntPtr lengthPtr, out IntPtr error);
-            LevelDBException.Check(error);
-            if (valuePtr == IntPtr.Zero) {
-                return null;
-            }
-
-            try {
-                Int64 length = (Int64)lengthPtr;
-                Byte[] value = new Byte[length];
-                Byte* valueNative = (Byte*)valuePtr.ToPointer();
-                for (Int64 i = 0; i < length; ++i) {
-                    value[i] = valueNative[i];
-                }
-
-                return value;
-            }
-            finally {
-                LevelDBInterop.leveldb_free(valuePtr);
-                GC.KeepAlive(options);
-                GC.KeepAlive(this);
-            }
         }
 
         /// <summary>Return an iterator over the contents of the database.
