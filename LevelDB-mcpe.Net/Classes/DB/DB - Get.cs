@@ -17,7 +17,7 @@ namespace LevelDB {
         /// otherwise return null. </summary>
         public String Get(String key, ReadOptions options) {
             Byte[] value = this.Get(Encoding.UTF8.GetBytes(key), options);
-            return value != null ? Encoding.UTF8.GetString(value) : null;
+            return value is not null ? Encoding.UTF8.GetString(value) : null;
         }
 
         /// <summary>If the database contains an entry for "key" return the value,

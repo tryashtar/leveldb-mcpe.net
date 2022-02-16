@@ -35,7 +35,7 @@ namespace LevelDB {
         /// <param name="destination">FILL IN</param>
         private static void Copy(String source, String destination) {
             if (!File.Exists(source)) {
-                throw new ApplicationException($"Cannot find: {source}");
+                throw new ApplicationException($"Cannot find: '{source}'");
             }
 
             File.Copy(source, destination, true);

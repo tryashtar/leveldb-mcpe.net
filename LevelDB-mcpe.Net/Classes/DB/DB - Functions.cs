@@ -176,7 +176,7 @@ namespace LevelDB {
                     limitKey, LevelDBInterop.MarshalSize(limitKey));
             }
             catch (Exception ex) {
-                while (ex != null) {
+                while (ex is not null) {
                     System.Diagnostics.Debug.WriteLine(ex.Message);
                     System.Diagnostics.Debug.WriteLine(ex.StackTrace);
 
