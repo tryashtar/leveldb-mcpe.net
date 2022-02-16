@@ -57,7 +57,7 @@ namespace LevelDB {
                 this.Handle = LevelDBInterop.leveldb_comparator_create(
                     GCHandle.ToIntPtr(selfHandle),
                     Marshal.GetFunctionPointerForDelegate(_Destructor),
-                    Marshal.GetFunctionPointerForDelegate(Compare),
+                    Marshal.GetFunctionPointerForDelegate(_Compare),
                     Marshal.GetFunctionPointerForDelegate(_GetName));
                 if (this.Handle == IntPtr.Zero) {
                     throw new ApplicationException("Failed to initialize LevelDB comparator");
@@ -96,7 +96,7 @@ namespace LevelDB {
         };
 
         /// <summary> </summary>
-        private static readonly CompareSignature Compare = (selfHandle, data1, size1, data2, size2) => {
+        private static readonly CompareSignature _Compare = (selfHandle, data1, size1, data2, size2) => {
             var self = (Comparator)GCHandle.FromIntPtr(selfHandle).Target;
             return self.ExecuteComparison(data1, size1, data2, size2);
         };
