@@ -7,10 +7,8 @@ namespace LevelDB {
     public static partial class LevelDBInterop {
         /// <summary>Initializes the static instance of the LevelDBInterop</summary>
         static LevelDBInterop() {
-            var assembly = Assembly.GetExecutingAssembly();
-
             //Library provide should be the same platform/archetecture
-            String folder = Path.GetDirectoryName(assembly.Location);
+            String folder = AppContext.BaseDirectory;
             String path = Path.Combine(folder, "LevelDB-MCPE.dll");
 
             if (!File.Exists(path)) {
