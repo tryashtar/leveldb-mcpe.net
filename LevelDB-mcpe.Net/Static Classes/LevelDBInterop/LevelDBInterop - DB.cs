@@ -11,7 +11,7 @@ namespace LevelDB {
         ///DOLATER <returns>Fill in return</returns>
         [DllImport("LevelDB-MCPE.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         //DO NOT USE CharSet.Ansi, C++ is UTF8 which is 1 Byte big and not two
-        internal static extern IntPtr leveldb_open(IntPtr /* Options*/ options, String name, out IntPtr error);
+        internal static extern IntPtr leveldb_open(IntPtr /* Options*/ options, Byte[] name, out IntPtr error);
 
         ///DOLATER <summary>Add Description</summary>
         /// <param name="db"><see cref="DB"/> Pointer</param>
