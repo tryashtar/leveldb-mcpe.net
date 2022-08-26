@@ -7,7 +7,7 @@ namespace LevelDB {
     /// </summary>
     public abstract class LevelDBHandle : IDisposable {
         /// <summary> </summary>
-        private Boolean _Disposed;
+        public Boolean IsDisposed { get; private set; }
 
         /// <summary> </summary>
         public IntPtr Handle { protected set; get; }
@@ -27,7 +27,7 @@ namespace LevelDB {
         /// <summary> </summary>
         /// <param name="disposing"></param>
         private void Dispose(Boolean disposing) {
-            if (!this._Disposed) {
+            if (!this.IsDisposed) {
                 if (disposing) {
                     this.FreeManagedObjects();
                 }
@@ -35,7 +35,7 @@ namespace LevelDB {
                     this.FreeUnManagedObjects();
                     this.Handle = IntPtr.Zero;
                 }
-                this._Disposed = true;
+                this.IsDisposed = true;
             }
         }
 

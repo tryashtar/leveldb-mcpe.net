@@ -13,9 +13,24 @@ namespace LevelDB {
         /// <summary>Set the database entry for "key" to "value". </summary>
         /// <param name="key"></param>
         /// <param name="value"></param>
+        public void Put(String key, Byte[] value) {
+            this.Put(Encoding.UTF8.GetBytes(key), value, new WriteOptions());
+        }
+
+        /// <summary>Set the database entry for "key" to "value". </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
         /// <param name="options"></param>
         public void Put(String key, String value, WriteOptions options) {
             this.Put(Encoding.UTF8.GetBytes(key), Encoding.UTF8.GetBytes(value), options);
+        }
+
+        /// <summary>Set the database entry for "key" to "value". </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <param name="options"></param>
+        public void Put(String key, Byte[] value, WriteOptions options) {
+            this.Put(Encoding.UTF8.GetBytes(key), value, options);
         }
 
         /// <summary>Set the database entry for "key" to "value".</summary>

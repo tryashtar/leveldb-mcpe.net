@@ -31,6 +31,11 @@ namespace LevelDB {
         }
 
         /// <summary>Store the mapping "key->value" in the database. </summary>
+        public WriteBatch Put(String key, Byte[] value) {
+            return this.Put(Encoding.UTF8.GetBytes(key), value);
+        }
+
+        /// <summary>Store the mapping "key->value" in the database. </summary>
         public WriteBatch Put(Byte[] key, Byte[] value) {
             LevelDBInterop.leveldb_writebatch_put(this.Handle, key, (IntPtr)key.Length, value, (IntPtr)value.Length);
             return this;
