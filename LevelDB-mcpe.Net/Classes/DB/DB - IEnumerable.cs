@@ -7,16 +7,10 @@ namespace LevelDB {
     /// A DB is a persistent ordered map from keys to values.
     /// A DB is safe for concurrent access from multiple threads without any external synchronization.
     /// </summary>
-    public partial class DB : IEnumerable<KeyValuePair<String, String>>, IEnumerable<KeyValuePair<Byte[], Byte[]>> {
+    public partial class DB {
         /// <summary> </summary>
         /// <returns></returns>
-        IEnumerator IEnumerable.GetEnumerator() {
-            return this.GetEnumerator();
-        }
-
-        /// <summary> </summary>
-        /// <returns></returns>
-        IEnumerator<KeyValuePair<String, String>> IEnumerable<KeyValuePair<String, String>>.GetEnumerator() {
+        public IEnumerable<KeyValuePair<String, String>> StringPairs() {
             using (SnapShot sn = this.CreateSnapshot())
             using (Iterator iterator = this.CreateIterator(new ReadOptions { Snapshot = sn })) {
                 iterator.SeekToFirst();
@@ -29,12 +23,60 @@ namespace LevelDB {
 
         /// <summary> </summary>
         /// <returns></returns>
-        public IEnumerator<KeyValuePair<Byte[], Byte[]>> GetEnumerator() {
+        public IEnumerable<KeyValuePair<Byte[], Byte[]>> BytePairs() {
             using (SnapShot sn = this.CreateSnapshot())
             using (Iterator iterator = this.CreateIterator(new ReadOptions { Snapshot = sn })) {
                 iterator.SeekToFirst();
                 while (iterator.Valid()) {
                     yield return new KeyValuePair<Byte[], Byte[]>(iterator.Key(), iterator.Value());
+                    iterator.Next();
+                }
+            }
+        }
+
+        /// <summary> </summary>
+        /// <returns></returns>
+        public IEnumerable<KeyValuePair<String, Byte[]>> StringBytePairs()
+        {
+            using (SnapShot sn = this.CreateSnapshot())
+            using (Iterator iterator = this.CreateIterator(new ReadOptions { Snapshot = sn }))
+            {
+                iterator.SeekToFirst();
+                while (iterator.Valid())
+                {
+                    yield return new KeyValuePair<String, Byte[]>(iterator.StringKey(), iterator.Value());
+                    iterator.Next();
+                }
+            }
+        }
+
+        /// <summary> </summary>
+        /// <returns></returns>
+        public IEnumerable<String> StringKeys()
+        {
+            using (SnapShot sn = this.CreateSnapshot())
+            using (Iterator iterator = this.CreateIterator(new ReadOptions { Snapshot = sn }))
+            {
+                iterator.SeekToFirst();
+                while (iterator.Valid())
+                {
+                    yield return iterator.StringKey();
+                    iterator.Next();
+                }
+            }
+        }
+
+        /// <summary> </summary>
+        /// <returns></returns>
+        public IEnumerable<Byte[]> ByteKeys()
+        {
+            using (SnapShot sn = this.CreateSnapshot())
+            using (Iterator iterator = this.CreateIterator(new ReadOptions { Snapshot = sn }))
+            {
+                iterator.SeekToFirst();
+                while (iterator.Valid())
+                {
+                    yield return iterator.Key();
                     iterator.Next();
                 }
             }
